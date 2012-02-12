@@ -125,13 +125,12 @@ class ClientManager {
     {
         $clientDAL=ClientDALFactory::instance();
         $result=$clientDAL->GetAllAccounts($gmail);
-        $data=array();
+        $accounts=array();
         foreach($result as $row)
         {
-            $account=AccountDataReader::findAccountData($row->nus,$row->account_number,AccountDataReader::V_INFO_CUENTA);
-
+          array_push($accounts, AccountManager::getFullAccountData($row->id));
         }
-        return $data;
+        return $accounts;
     }
 
 } 
