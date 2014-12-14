@@ -10,8 +10,8 @@
 	<title>Simple MVC Framework - Documentation</title>
 	
 	<meta name="description" content="">
-	<meta name="author" content="David Carr">
-	<meta name="copyright" content="David Carr">
+	<meta name="author" content="Jarry Carr">
+	<meta name="copyright" content="Jarry Carr">
 	<meta name="generator" content="Documenter v2.0 http://rxa.li/documenter">
 	<meta name="date" content="2014-12-03T00:00:00+01:00">
 	
