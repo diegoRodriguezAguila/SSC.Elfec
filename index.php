@@ -66,6 +66,7 @@ use \core\router,
 //define routes
 Router::any('', '\controllers\welcome@index');
 Router::any('/subpage', '\controllers\welcome@subpage');
+Router::any('/testeo', '\controllers\web_services@testeo');
 Router::any('/funcion', '\controllers\welcome@funcion');
 
 //if no route found

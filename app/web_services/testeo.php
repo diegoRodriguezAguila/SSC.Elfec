@@ -1,11 +1,11 @@
-<?php
+<?php namespace web_services;
 /**
  * Created by PhpStorm.
  * User: Zuki
  * Date: 12/17/14
  * Time: 7:18 PM
  */
-include_once('lib/nusoap.php');
+include_once("lib/nusoap.php");
 
 $server = new soap_server();
 $server->configureWSDL('demo', 'urn:demo');
