@@ -43,9 +43,7 @@ class Welcome extends \core\controller{
 	}
 
     public function funcion() {
-        $tuvieja = "hola harry";
-        $data['title'] = $tuvieja;
-        View::render('welcome/subpage',$data);
+        View::render('../web_services/testeo');
     }
 
 }

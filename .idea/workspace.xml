@@ -2,14 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10adbb98-3b10-4e65-a79b-4f61ae5cfeb9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/Account.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/Device.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Diego.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/User.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/Welcome.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/changelog" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.nusoap_base.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.soap_fault.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.soap_parser.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.soap_server.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.soap_transport_http.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.soap_val.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.soapclient.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.wsdl.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.wsdlcache.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.xmlschema.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/nusoap.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/nusoapmime.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/web_services.php" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\texto para subir.txt" afterPath="" />
+      <change type="MOVED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\Test.php" afterPath="$PROJECT_DIR$/web_services/Test.php" />
+      <change type="MOVED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\testeo.php" afterPath="$PROJECT_DIR$/web_services/testeo.php" />
+      <change type="MOVED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\texto para subir.txt" afterPath="$PROJECT_DIR$/web_services/texto para subir.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/core/config.php" afterPath="$PROJECT_DIR$/app/core/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/web_services/testeo.php" afterPath="$PROJECT_DIR$/app/web_services/testeo.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/welcome.php" afterPath="$PROJECT_DIR$/app/controllers/welcome.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -34,37 +47,66 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="0" selection-start="10" selection-end="10" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="texto para subir.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web_services/texto para subir.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/core/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="47" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1088">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="class.nusoap_base.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web_services/lib/class.nusoap_base.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="995" column="2" selection-start="29229" selection-end="29229" vertical-scroll-proportion="0.0" vertical-offset="16915" max-vertical-offset="17017">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="class.soap_fault.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web_services/lib/class.soap_fault.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web_services/Test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="0" selection-start="112" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="680">
+              <folding>
+                <marker date="1418858434788" expanded="true" signature="178:265" placeholder="SELECT name,..rio_de_janeiro_water..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="testeo.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/web_services/testeo.php">
+        <entry file="file://$PROJECT_DIR$/web_services/testeo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="14" selection-start="158" selection-end="158" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="544">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="class.soap_server.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/web_services/lib/class.soap_server.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="19" selection-start="351" selection-end="364" vertical-scroll-proportion="0.2989449" vertical-offset="0" max-vertical-offset="19244">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="13" selection-start="23" selection-end="23" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="391">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Device.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/Device.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="21" selection-start="182" selection-end="182" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="340">
+            <state line="13" column="0" selection-start="195" selection-end="195" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="544">
               <folding />
             </state>
           </provider>
@@ -73,7 +115,7 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="36" selection-start="1948" selection-end="1948" vertical-scroll-proportion="-21.692308" vertical-offset="592" max-vertical-offset="1445">
+            <state line="70" column="64" selection-start="2093" selection-end="2093" vertical-scroll-proportion="-14.0" vertical-offset="826" max-vertical-offset="1462">
               <folding />
             </state>
           </provider>
@@ -82,10 +124,19 @@
       <file leaf-file-name="welcome.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/welcome.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="2" selection-start="66" selection-end="66" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="969">
+            <state line="61" column="4" selection-start="1871" selection-end="1952" vertical-scroll-proportion="-15.307693" vertical-offset="639" max-vertical-offset="1224">
               <folding>
-                <element signature="e#29#43#0" expanded="true" />
+                <marker date="1419280700218" expanded="true" signature="658:681" placeholder="SELECT * FRO..testeando..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web_services.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/web_services.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="49" selection-start="344" selection-end="344" vertical-scroll-proportion="0.52870816" vertical-offset="0" max-vertical-offset="418">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,6 +151,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Nelson" />
         <option value="Diego" />
       </list>
     </option>
@@ -115,27 +167,25 @@
         <option value="$PROJECT_DIR$/app/views/welcome/welcome.php" />
         <option value="$PROJECT_DIR$/documentation/index.php" />
         <option value="$PROJECT_DIR$/documentation/notas.txt" />
-        <option value="$PROJECT_DIR$/app/core/config.php" />
         <option value="$PROJECT_DIR$/app/helpers/database.php" />
         <option value="$PROJECT_DIR$/app/web_services/texto para subir.txt" />
         <option value="$PROJECT_DIR$/app/data_access/dasdasd.txt" />
-        <option value="$PROJECT_DIR$/app/models/Account.php5" />
-        <option value="$PROJECT_DIR$/app/models/User.php" />
-        <option value="$PROJECT_DIR$/app/models/Device.php" />
-        <option value="$PROJECT_DIR$/app/models/Account.php" />
+        <option value="$PROJECT_DIR$/app/web_services/Test.php" />
+        <option value="$PROJECT_DIR$/app/web_services/testeo.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/core/config.php" />
         <option value="$PROJECT_DIR$/app/controllers/welcome.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/app/controllers/web_services.php" />
-        <option value="$PROJECT_DIR$/app/web_services/testeo.php" />
       </list>
     </option>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="WampServer" />
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="Wamp server" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1932" />
-    <option name="height" value="1050" />
+    <option name="x" value="61" />
+    <option name="y" value="-8" />
+    <option name="width" value="1313" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -160,7 +210,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -207,10 +257,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="web_services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -229,78 +275,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SSC.Elfec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SSC.Elfec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SSC.Elfec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SSC.Elfec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="language" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SSC.Elfec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SSC.Elfec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SSC.Elfec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SSC.Elfec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -316,14 +290,15 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../bin/php/php5.4.12/php-cgi.exe" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/SSC.Elfec-master/SSC.Elfec-master" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\SSC.Elfec" />
+      <recent name="C:\wamp\www\SSC.Elfec\app\web_services" />
+    </key>
   </component>
   <component name="RunManager" selected="PHP Script.testeo.php">
-    <configuration default="false" name="Index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" temporary="true" uri="http://localhost:63342/SSC.Elfec/Index.html">
-      <RunnerSettings RunnerId="JavascriptDebugRunner" />
-      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="Index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" singleton="true" temporary="true" path="$PROJECT_DIR$/Index.php">
       <RunnerSettings RunnerId="PhpRunner" />
       <RunnerSettings RunnerId="PhpScriptDebugRunner" />
@@ -341,11 +316,14 @@
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
+    <configuration default="false" name="Test.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/app/web_services/Test.php">
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
     <configuration default="false" name="testeo.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/app/web_services/testeo.php">
       <RunnerSettings RunnerId="PhpRunner" />
-      <RunnerSettings RunnerId="PhpScriptDebugRunner" />
       <ConfigurationWrapper RunnerId="PhpRunner" />
-      <ConfigurationWrapper RunnerId="PhpScriptDebugRunner" />
       <method />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -383,19 +361,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Index.html" />
-      <item index="1" class="java.lang.String" itemvalue="PHP Script.Index.php" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php (1)" />
+      <item index="0" class="java.lang.String" itemvalue="PHP Script.Index.php" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php (1)" />
+      <item index="3" class="java.lang.String" itemvalue="PHP Script.Test.php" />
       <item index="4" class="java.lang.String" itemvalue="PHP Script.testeo.php" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="PHP Script.testeo.php" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php (1)" />
-        <item index="3" class="java.lang.String" itemvalue="PHP Script.Index.php" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.Index.html" />
+        <item index="1" class="java.lang.String" itemvalue="PHP Script.Test.php" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php (1)" />
+        <item index="4" class="java.lang.String" itemvalue="PHP Script.Index.php" />
       </list>
     </recent_temporary>
   </component>
@@ -435,15 +413,15 @@
       <created>1418856814801</created>
       <updated>1418856814801</updated>
     </task>
-    <task id="LOCAL-00004" summary="directorios">
-      <created>1418857037006</created>
-      <updated>1418857037006</updated>
+    <task id="LOCAL-00004" summary="Nusoap anadido">
+      <created>1418859036827</created>
+      <updated>1418859036828</updated>
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1932" height="1050" extended-state="0" />
+    <frame x="61" y="-8" width="1313" height="780" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -451,21 +429,21 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15651709" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27012128" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35620663" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26962963" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26901874" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26825634" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -504,25 +482,158 @@
     <MESSAGE value="Notas agregadas" />
     <MESSAGE value="PG configurado" />
     <MESSAGE value="config.php agregado" />
-    <MESSAGE value="directorios" />
-    <option name="LAST_COMMIT_MESSAGE" value="directorios" />
+    <MESSAGE value="Nusoap" />
+    <MESSAGE value="Nusoap anadido" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nusoap anadido" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/web_services/testeo.php">
+    <entry file="file://$PROJECT_DIR$/web_services/texto para subir.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="1" selection-start="410" selection-end="410" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="544">
+        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/web_services/Test.php">
+    <entry file="file://$PROJECT_DIR$/app/core/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+        <state line="30" column="16" selection-start="766" selection-end="766" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/lib/class.nusoap_base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="995" column="2" selection-start="29229" selection-end="29229" vertical-scroll-proportion="0.0" vertical-offset="16915" max-vertical-offset="17017">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/lib/class.soap_fault.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/Test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="112" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="680">
+          <folding>
+            <marker date="1418858434788" expanded="true" signature="178:265" placeholder="SELECT name,..rio_de_janeiro_water..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/testeo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="10" selection-end="10" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/texto para subir.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="16" selection-start="766" selection-end="766" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/lib/class.nusoap_base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="995" column="2" selection-start="29229" selection-end="29229" vertical-scroll-proportion="0.0" vertical-offset="16915" max-vertical-offset="17017">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/lib/class.soap_fault.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/Test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="112" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="680">
+          <folding>
+            <marker date="1418858434788" expanded="true" signature="178:265" placeholder="SELECT name,..rio_de_janeiro_water..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/testeo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="10" selection-end="10" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/texto para subir.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="33" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/lib/class.nusoap_base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="995" column="2" selection-start="29229" selection-end="29229" vertical-scroll-proportion="0.0" vertical-offset="16915" max-vertical-offset="17017">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/lib/class.soap_fault.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/Test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="112" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="680">
+          <folding>
+            <marker date="1418858434788" expanded="true" signature="178:265" placeholder="SELECT name,..rio_de_janeiro_water..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/testeo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="544">
           <folding />
         </state>
       </provider>
@@ -577,6 +688,11 @@
         <state line="2" column="0" selection-start="27" selection-end="27" vertical-scroll-proportion="0.03985932" vertical-offset="0" max-vertical-offset="853" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/simplecurl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="23" selection-start="1102" selection-end="1113" vertical-scroll-proportion="0.045614034" vertical-offset="760" max-vertical-offset="1615" />
@@ -602,6 +718,11 @@
         <state line="0" column="45" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="881" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="45" selection-start="428" selection-end="452" vertical-scroll-proportion="0.47831184" vertical-offset="0" max-vertical-offset="853" />
+      </provider>
+    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/PDO.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="0" selection-start="474" selection-end="474" vertical-scroll-proportion="0.4384525" vertical-offset="0" max-vertical-offset="22899" />
@@ -614,16 +735,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="46" selection-start="2028" selection-end="2033" vertical-scroll-proportion="0.37907377" vertical-offset="1071" max-vertical-offset="3536">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/core/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="10" selection-start="1214" selection-end="1214" vertical-scroll-proportion="0.6365132" vertical-offset="378" max-vertical-offset="1088">
-          <folding />
-        </state>
+        <state line="76" column="46" selection-start="2028" selection-end="2033" vertical-scroll-proportion="0.37907377" vertical-offset="1071" max-vertical-offset="3536" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/data_access/dasdasd.txt">
@@ -631,110 +743,76 @@
         <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="634" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/index.html">
+    <entry file="file://$PROJECT_DIR$/web_services/texto para subir.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="881">
+        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="634">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/core/controller.php">
+    <entry file="file://$PROJECT_DIR$/web_services/lib/class.nusoap_base.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="31" selection-start="433" selection-end="444" vertical-scroll-proportion="0.47719297" vertical-offset="0" max-vertical-offset="855">
+        <state line="995" column="2" selection-start="29229" selection-end="29229" vertical-scroll-proportion="0.0" vertical-offset="16915" max-vertical-offset="17017">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/core/model.php">
+    <entry file="file://$PROJECT_DIR$/web_services/lib/class.soap_fault.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="22" selection-end="22" vertical-scroll-proportion="0.01992966" vertical-offset="0" max-vertical-offset="853">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/web_services/Test.php">
+    <entry file="file://$PROJECT_DIR$/web_services/Test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/language/en/welcome.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="14" selection-start="80" selection-end="80" vertical-scroll-proportion="0.11957796" vertical-offset="0" max-vertical-offset="853">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/web_services.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="122" selection-end="126" vertical-scroll-proportion="0.17936695" vertical-offset="0" max-vertical-offset="853">
+        <state line="10" column="0" selection-start="112" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="680">
           <folding>
-            <element signature="e#6#88#0" expanded="false" />
+            <marker date="1418858434788" expanded="true" signature="178:265" placeholder="SELECT name,..rio_de_janeiro_water..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="36" selection-start="1948" selection-end="1948" vertical-scroll-proportion="-21.692308" vertical-offset="592" max-vertical-offset="1445">
+        <state line="1" column="0" selection-start="10" selection-end="10" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Device.php">
+    <entry file="file://$PROJECT_DIR$/app/core/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="21" selection-start="182" selection-end="182" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="340">
+        <state line="40" column="47" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1088">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Account.php">
+    <entry file="file://$PROJECT_DIR$/web_services/testeo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="0" selection-start="2054" selection-end="2054" vertical-scroll-proportion="0.4384525" vertical-offset="0" max-vertical-offset="853">
-          <folding>
-            <element signature="e#6#69#0" expanded="true" />
-            <element signature="e#268#295#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/web_services/lib/nusoap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="20" selection-start="2057" selection-end="2057" vertical-scroll-proportion="-0.114285715" vertical-offset="510" max-vertical-offset="138023">
-          <folding>
-            <marker date="1272314288000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1272314288000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="23" selection-end="23" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="391">
+        <state line="13" column="0" selection-start="195" selection-end="195" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="544">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/welcome.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="2" selection-start="66" selection-end="66" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="969">
+        <state line="61" column="4" selection-start="1871" selection-end="1952" vertical-scroll-proportion="-15.307693" vertical-offset="639" max-vertical-offset="1224">
           <folding>
-            <element signature="e#29#43#0" expanded="true" />
+            <marker date="1419280700218" expanded="true" signature="658:681" placeholder="SELECT * FRO..testeando..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/web_services/testeo.php">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="14" selection-start="158" selection-end="158" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="544">
+        <state line="70" column="64" selection-start="2093" selection-end="2093" vertical-scroll-proportion="-14.0" vertical-offset="826" max-vertical-offset="1462">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/web_services/lib/class.soap_server.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/web_services.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="19" selection-start="351" selection-end="364" vertical-scroll-proportion="0.2989449" vertical-offset="0" max-vertical-offset="19244">
+        <state line="18" column="49" selection-start="344" selection-end="344" vertical-scroll-proportion="0.52870816" vertical-offset="0" max-vertical-offset="418">
           <folding />
         </state>
       </provider>

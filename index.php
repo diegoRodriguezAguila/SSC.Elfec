@@ -68,6 +68,8 @@ Router::any('', '\controllers\welcome@index');
 Router::any('/subpage', '\controllers\welcome@subpage');
 Router::any('/testeo', '\controllers\web_services@testeo');
 Router::any('/funcion', '\controllers\welcome@funcion');
+Router::any('/testeo', '\controllers\web_services@testeo');
+Router::any('/testeo?wsdl', '\controllers\web_services@testeowsdl');
 
 //if no route found
 Router::error('\core\error@index');
