@@ -11,7 +11,7 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.soap_val.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/Welcome.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.soapclient.php" />
-      <change type="NEW" beforePath="" afterPath="C:\wamp\www\SSC.Elfec\app\controllers\web_services.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/web_services.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.soap_parser.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.nusoap_base.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/lib/class.soap_fault.php" />
