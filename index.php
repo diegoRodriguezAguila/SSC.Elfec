@@ -43,7 +43,7 @@ if (defined('ENVIRONMENT')){
 
 	switch (ENVIRONMENT){
 		case 'development':
-			error_reporting(E_ALL);
+			error_reporting(0);
 		break;
 
 		case 'production':
@@ -66,14 +66,6 @@ use \core\router,
 //define routes
 Router::any('', '\controllers\welcome@index');
 Router::any('/subpage', '\controllers\welcome@subpage');
-<<<<<<< HEAD
-Router::any('/funcion', '\controllers\welcome@funcion');
-=======
-Router::any('/testeo', '\controllers\web_services@testeo');
-Router::any('/funcion', '\controllers\welcome@funcion');
-Router::any('/testeo', '\controllers\web_services@testeo');
-Router::any('/testeo?wsdl', '\controllers\web_services@testeowsdl');
->>>>>>> 093ccc6679b6180b15f8909547525bbd3974466d
 
 //if no route found
 Router::error('\core\error@index');

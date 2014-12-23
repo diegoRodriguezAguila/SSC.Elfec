@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10adbb98-3b10-4e65-a79b-4f61ae5cfeb9" name="Default" comment="Nusoap anadido">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/css/bootstrap-theme.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/css/bootstrap-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/css/bootstrap.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/default/js/npm.js" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\css\bootstrap-theme.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\css\bootstrap-theme.css.map" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\css\bootstrap-theme.min.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\css\bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\css\bootstrap.css.map" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\css\bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\fonts\glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\fonts\glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\fonts\glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\fonts\glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\js\bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\js\bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\js\npm.js" afterPath="" />
+    <list default="true" id="10adbb98-3b10-4e65-a79b-4f61ae5cfeb9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/data_access/PG/AccountDAL.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/AccountWS.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/data_access/IAccountDAL.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/pgsql/create_db.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\controllers\web_services.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\changelog" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\class.nusoap_base.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\class.soap_fault.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\class.soap_parser.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\class.soap_server.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\class.soap_transport_http.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\class.soap_val.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\class.soapclient.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\class.wsdl.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\class.wsdlcache.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\class.xmlschema.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\nusoap.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\SSC.Elfec\app\web_services\lib\nusoapmime.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Account.php" afterPath="$PROJECT_DIR$/app/models/Account.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Diego.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Diego.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/welcome.php" afterPath="$PROJECT_DIR$/app/controllers/welcome.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SSC.Elfec.iws" />
@@ -50,7 +48,49 @@
     <favorites_list name="SSC.Elfec" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="AccountDAL.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/data_access/PG/AccountDAL.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="17" selection-start="475" selection-end="481" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="595">
+              <folding>
+                <element signature="e#6#69#0" expanded="true" />
+                <element signature="e#211#254#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="welcome.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/welcome.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="24" selection-start="1193" selection-end="1193" vertical-scroll-proportion="0.6946108" vertical-offset="185" max-vertical-offset="1020">
+              <folding>
+                <element signature="e#29#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="welcome.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/welcome/welcome.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="4" selection-start="254" selection-end="254" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="255">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IAccountDAL.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/data_access/IAccountDAL.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="17" selection-start="458" selection-end="464" vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="425">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -60,8 +100,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="Nelson" />
         <option value="Diego" />
+        <option value="Nelson" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,7 +113,6 @@
         <option value="$PROJECT_DIR$/Index.php" />
         <option value="$PROJECT_DIR$/app/core/config.example.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/app/views/welcome/welcome.php" />
         <option value="$PROJECT_DIR$/documentation/index.php" />
         <option value="$PROJECT_DIR$/documentation/notas.txt" />
         <option value="$PROJECT_DIR$/app/helpers/database.php" />
@@ -83,18 +122,27 @@
         <option value="$PROJECT_DIR$/app/web_services/testeo.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/core/config.php" />
-        <option value="$PROJECT_DIR$/app/controllers/welcome.php" />
         <option value="$PROJECT_DIR$/app/controllers/web_services.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/web_services/testeo.php" />
+        <option value="$PROJECT_DIR$/web_services/AccountsWS.php" />
+        <option value="$PROJECT_DIR$/database/pgsql/create_db.sql" />
+        <option value="$PROJECT_DIR$/web_services/AccountWS.php" />
+        <option value="$PROJECT_DIR$/app/data_access/AccountDAL.php" />
+        <option value="$PROJECT_DIR$/app/models/Account.php" />
+        <option value="$PROJECT_DIR$/app/core/language.php" />
+        <option value="$PROJECT_DIR$/app/views/welcome/welcome.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/app/controllers/welcome.php" />
+        <option value="$PROJECT_DIR$/app/data_access/IAccountDAL.php" />
+        <option value="$PROJECT_DIR$/app/data_access/PG/AccountDAL.php" />
       </list>
     </option>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="Wamp server" />
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="WampServer" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
     <option name="width" value="1932" />
-    <option name="height" value="1050" />
+    <option name="height" value="1032" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -103,10 +151,13 @@
           <State>
             <id />
           </State>
+          <State>
+            <id>SQL</id>
+          </State>
         </expanded-state>
         <selected-state>
           <State>
-            <id>CoffeeScript</id>
+            <id>SqlDialectInspection</id>
           </State>
         </selected-state>
       </profile-state>
@@ -119,7 +170,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -183,6 +234,14 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="welcome" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -198,11 +257,97 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSC.Elfec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSC.Elfec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="default" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSC.Elfec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSC.Elfec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSC.Elfec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSC.Elfec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data_access" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSC.Elfec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSC.Elfec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data_access" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSC.Elfec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSC.Elfec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -235,7 +380,7 @@
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
-    <property name="options.lastSelected" value="web.server" />
+    <property name="options.lastSelected" value="SQL Dialects" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -243,34 +388,33 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\SSC.Elfec\app\data_access\PG" />
       <recent name="C:\wamp\www\SSC.Elfec" />
       <recent name="C:\wamp\www\SSC.Elfec\app\web_services" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Script.testeo.php">
-    <configuration default="false" name="Index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" singleton="true" temporary="true" path="$PROJECT_DIR$/Index.php">
-      <RunnerSettings RunnerId="PhpRunner" />
-      <RunnerSettings RunnerId="PhpScriptDebugRunner" />
-      <ConfigurationWrapper RunnerId="PhpRunner" />
-      <ConfigurationWrapper RunnerId="PhpScriptDebugRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="welcome.php" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" temporary="true" uri="http://localhost/SCC.Elfec/app/controllers/welcome.php">
-      <RunnerSettings RunnerId="JavascriptDebugRunner" />
-      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="welcome.php (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" temporary="true" uri="http://localhost/SCC.Elfec/app/views/welcome/welcome.php">
-      <RunnerSettings RunnerId="JavascriptDebugRunner" />
-      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="PHP Script.welcome.php">
     <configuration default="false" name="Test.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/app/web_services/Test.php">
       <RunnerSettings RunnerId="PhpRunner" />
       <ConfigurationWrapper RunnerId="PhpRunner" />
       <method />
     </configuration>
     <configuration default="false" name="testeo.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/app/web_services/testeo.php">
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="IAccountDAL.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/app/data_access/IAccountDAL.php">
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="AccountDAL.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/app/data_access/PG/AccountDAL.php">
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="welcome.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/app/controllers/welcome.php">
       <RunnerSettings RunnerId="PhpRunner" />
       <ConfigurationWrapper RunnerId="PhpRunner" />
       <method />
@@ -285,10 +429,10 @@
     <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application">
       <method />
     </configuration>
-    <configuration default="true" type="PhpHttpRequestRunConfigurationType" factoryName="PHP HTTP Request">
+    <configuration default="true" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug">
       <method />
     </configuration>
-    <configuration default="true" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug">
+    <configuration default="true" type="PhpHttpRequestRunConfigurationType" factoryName="PHP HTTP Request">
       <method />
     </configuration>
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
@@ -310,19 +454,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="PHP Script.Index.php" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php (1)" />
-      <item index="3" class="java.lang.String" itemvalue="PHP Script.Test.php" />
-      <item index="4" class="java.lang.String" itemvalue="PHP Script.testeo.php" />
+      <item index="0" class="java.lang.String" itemvalue="PHP Script.Test.php" />
+      <item index="1" class="java.lang.String" itemvalue="PHP Script.testeo.php" />
+      <item index="2" class="java.lang.String" itemvalue="PHP Script.IAccountDAL.php" />
+      <item index="3" class="java.lang.String" itemvalue="PHP Script.AccountDAL.php" />
+      <item index="4" class="java.lang.String" itemvalue="PHP Script.welcome.php" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="PHP Script.testeo.php" />
-        <item index="1" class="java.lang.String" itemvalue="PHP Script.Test.php" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.welcome.php (1)" />
-        <item index="4" class="java.lang.String" itemvalue="PHP Script.Index.php" />
+        <item index="0" class="java.lang.String" itemvalue="PHP Script.welcome.php" />
+        <item index="1" class="java.lang.String" itemvalue="PHP Script.AccountDAL.php" />
+        <item index="2" class="java.lang.String" itemvalue="PHP Script.IAccountDAL.php" />
+        <item index="3" class="java.lang.String" itemvalue="PHP Script.testeo.php" />
+        <item index="4" class="java.lang.String" itemvalue="PHP Script.Test.php" />
       </list>
     </recent_temporary>
   </component>
@@ -366,33 +510,37 @@
       <created>1418859036827</created>
       <updated>1418859036828</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="cambiadas las carpetas de JS y CSS">
+      <created>1419282778289</created>
+      <updated>1419282778289</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="0" width="1932" height="1050" extended-state="0" />
+    <frame x="-9" y="0" width="1932" height="1032" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2013889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20352565" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26962963" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26774195" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26771653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -411,9 +559,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14696486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26989248" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -433,58 +581,15 @@
     <MESSAGE value="config.php agregado" />
     <MESSAGE value="Nusoap" />
     <MESSAGE value="Nusoap anadido" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nusoap anadido" />
+    <MESSAGE value="cambiadas las carpetas de JS y CSS" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambiadas las carpetas de JS y CSS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web_services/testeo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_services/texto para subir.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/core/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="16" selection-start="766" selection-end="766" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1088" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_services/lib/class.nusoap_base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="995" column="2" selection-start="29229" selection-end="29229" vertical-scroll-proportion="0.0" vertical-offset="16915" max-vertical-offset="17017" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_services/lib/class.soap_fault.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_services/Test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="112" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="680" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_services/testeo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="10" selection-end="10" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web_services/texto para subir.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102" />
@@ -574,11 +679,6 @@
         <state line="23" column="40" selection-start="607" selection-end="607" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="1071" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/core/router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="616" selection-end="616" vertical-scroll-proportion="-7.93038" vertical-offset="4133" max-vertical-offset="4607" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/errorlog.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="487" />
@@ -597,11 +697,6 @@
     <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="25" selection-start="88" selection-end="88" vertical-scroll-proportion="0.13056836" vertical-offset="0" max-vertical-offset="651" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/welcome/welcome.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="27" selection-end="27" vertical-scroll-proportion="0.03985932" vertical-offset="0" max-vertical-offset="853" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/index.html">
@@ -679,30 +774,113 @@
         <state line="10" column="0" selection-start="112" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="680" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/core/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="47" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1088" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="56" selection-start="1911" selection-end="1911" vertical-scroll-proportion="0.66119576" vertical-offset="575" max-vertical-offset="1428" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/welcome.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1174" selection-end="1174" vertical-scroll-proportion="0.88042206" vertical-offset="65" max-vertical-offset="918" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="0" selection-start="10" selection-end="10" vertical-scroll-proportion="0.019906323" vertical-offset="0" max-vertical-offset="854" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/assets.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="30" selection-start="970" selection-end="973" vertical-scroll-proportion="0.8007034" vertical-offset="235" max-vertical-offset="1088" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/pgsql/create_db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="48" selection-start="424" selection-end="424" vertical-scroll-proportion="0.34569377" vertical-offset="0" max-vertical-offset="2057">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_services/AccountWS.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="36" selection-start="439" selection-end="439" vertical-scroll-proportion="0.3257485" vertical-offset="0" max-vertical-offset="835">
+          <folding>
+            <element signature="e#6#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="160" selection-end="160" vertical-scroll-proportion="0.2035928" vertical-offset="0" max-vertical-offset="835">
+          <folding>
+            <element signature="e#539#566#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/router.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="6" selection-start="264" selection-end="264" vertical-scroll-proportion="-3.776048" vertical-offset="3306" max-vertical-offset="4607">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="47" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.5113773" vertical-offset="253" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="20" selection-start="433" selection-end="433" vertical-scroll-proportion="0.48862275" vertical-offset="0" max-vertical-offset="835">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web_services/testeo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="853">
+        <state line="25" column="38" selection-start="87" selection-end="531" vertical-scroll-proportion="0.50898206" vertical-offset="0" max-vertical-offset="835">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/language.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="20" selection-start="1196" selection-end="1196" vertical-scroll-proportion="0.34371257" vertical-offset="818" max-vertical-offset="1683">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="29" selection-start="1538" selection-end="1539" vertical-scroll-proportion="0.22634731" vertical-offset="576" max-vertical-offset="1411">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/data_access/PG/AccountDAL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="17" selection-start="475" selection-end="481" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="595">
+          <folding>
+            <element signature="e#6#69#0" expanded="true" />
+            <element signature="e#211#254#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/data_access/IAccountDAL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="17" selection-start="458" selection-end="464" vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/welcome/welcome.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="4" selection-start="254" selection-end="254" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/welcome.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="24" selection-start="1193" selection-end="1193" vertical-scroll-proportion="0.6946108" vertical-offset="185" max-vertical-offset="1020">
+          <folding>
+            <element signature="e#29#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

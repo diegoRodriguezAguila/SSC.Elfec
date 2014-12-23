@@ -7,7 +7,11 @@
 
 namespace models;
 
-
+/**
+ * Modelo para una cuenta
+ * Class Account
+ * @package models
+ */
 class Account
 {
     private $Id;
@@ -18,18 +22,32 @@ class Account
     private $InsertDate;
     private $UpdateDate;
 
+    public function __construct()
+    {
+    }
+
+    /**
+     * Static constructor / factory
+     */
+    public static function create() {
+        $instance = new self();
+        return $instance;
+    }
+
 
     //region  Getters y Setters
     /**
-     * @param mixed $AccountNumber
+     * @param int $AccountNumber
+     * @return $this
      */
     public function setAccountNumber($AccountNumber)
     {
         $this->AccountNumber = $AccountNumber;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getAccountNumber()
     {
@@ -37,15 +55,17 @@ class Account
     }
 
     /**
-     * @param mixed $Id
+     * @param int $Id
+     * @return $this
      */
     public function setId($Id)
     {
         $this->Id = $Id;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -53,15 +73,17 @@ class Account
     }
 
     /**
-     * @param mixed $InsertDate
+     * @param date $InsertDate
+     * @return $this
      */
     public function setInsertDate($InsertDate)
     {
         $this->InsertDate = $InsertDate;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return date
      */
     public function getInsertDate()
     {
@@ -69,15 +91,17 @@ class Account
     }
 
     /**
-     * @param mixed $NUS
+     * @param int $NUS
+     * @return $this
      */
     public function setNUS($NUS)
     {
         $this->NUS = $NUS;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getNUS()
     {
@@ -85,15 +109,17 @@ class Account
     }
 
     /**
-     * @param mixed $Status
+     * @param int $Status
+     * @return $this
      */
     public function setStatus($Status)
     {
         $this->Status = $Status;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getStatus()
     {
@@ -101,15 +127,17 @@ class Account
     }
 
     /**
-     * @param mixed $UpdateDate
+     * @param date $UpdateDate
+     * @return $this
      */
     public function setUpdateDate($UpdateDate)
     {
         $this->UpdateDate = $UpdateDate;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return date
      */
     public function getUpdateDate()
     {
@@ -117,15 +145,17 @@ class Account
     }
 
     /**
-     * @param mixed $UserId
+     * @param int $UserId
+     * @return $this
      */
     public function setUserId($UserId)
     {
         $this->UserId = $UserId;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getUserId()
     {

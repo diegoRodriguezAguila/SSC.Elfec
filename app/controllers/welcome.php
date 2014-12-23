@@ -1,5 +1,6 @@
 <?php namespace controllers;
 use core\view;
+use data_access\PG\AccountDAL;
 use models\Account;
 /*
  * Welcome controller
@@ -25,6 +26,10 @@ class Welcome extends \core\controller{
 	public function index() {
 		$data['title'] = $this->language->get('welcome_text');
 		$data['welcome_message'] = $this->language->get('welcome_message');
+
+        $testAccountDAL = new AccountDAL();
+        $testAccountDAL->RegisterAccount(Account::create()->setNUS(2321)->setAccountNumber(23566));
+
 		View::rendertemplate('header', $data);
 		View::render('welcome/welcome', $data);
 		View::rendertemplate('footer', $data);
