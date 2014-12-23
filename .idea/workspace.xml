@@ -2,15 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10adbb98-3b10-4e65-a79b-4f61ae5cfeb9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/data_access/AbstractFactory.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/data_access/pgsql/ClientDAL.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/data_access/ClientDALFactory.php" />
-      <change type="MOVED" beforePath="C:\wamp\www\SSC.Elfec\app\data_access\IUserDAL.php" afterPath="$PROJECT_DIR$/app/data_access/IClientDAL.php" />
-      <change type="MOVED" beforePath="C:\wamp\www\SSC.Elfec\app\models\User.php" afterPath="$PROJECT_DIR$/app/models/Client.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/data_access/AccountDALFactory.php" afterPath="$PROJECT_DIR$/app/data_access/AccountDALFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/core/config.php" afterPath="$PROJECT_DIR$/app/core/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/pgsql/create_db.sql" afterPath="$PROJECT_DIR$/database/pgsql/create_db.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/welcome.php" afterPath="$PROJECT_DIR$/app/controllers/welcome.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SSC.Elfec.iws" />
@@ -462,7 +453,11 @@
       <created>1419350709691</created>
       <updated>1419350709691</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Capa de acceso a datos deifnida">
+      <created>1419363349659</created>
+      <updated>1419363349659</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -532,7 +527,8 @@
     <MESSAGE value="cambiadas las carpetas de JS y CSS" />
     <MESSAGE value="Estructura de data access establecida" />
     <MESSAGE value="Capa de acceso a datos para cuentas estructurada y comienzo de capa de acceso a datos para usuarios" />
-    <option name="LAST_COMMIT_MESSAGE" value="Capa de acceso a datos para cuentas estructurada y comienzo de capa de acceso a datos para usuarios" />
+    <MESSAGE value="Capa de acceso a datos deifnida" />
+    <option name="LAST_COMMIT_MESSAGE" value="Capa de acceso a datos deifnida" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
