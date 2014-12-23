@@ -1,8 +1,8 @@
 <?php namespace controllers;
 use core\view;
-use data_access\pgsql\AccountDAL;
 use data_access\AccountDALFactory;
-use models\Account;
+use data_access\ClientDALFactory;
+use models\Client;
 /*
  * Welcome controller
  *
@@ -27,10 +27,9 @@ class Welcome extends \core\controller{
 	public function index() {
 		$data['title'] = $this->language->get('welcome_text');
 		$data['welcome_message'] = $this->language->get('welcome_message');
-
-        $testAccountDAL = new AccountDAL();
-        $testAccountDAL->RegisterAccount(Account::create()->setNUS(2321)->setAccountNumber(23566));
-        $data['welcome_message'] = AccountDALFactory::instance();
+        $userDAL = ClientDALFactory::instance();
+        $newUser = $userDAL->RegisterUser(Client::create()->setGmail('diroag2@gmail.com'));
+        $data['welcome_message'] = 'usuario registrado con email: '.$newUser->getGmail().' y id: '.$newUser->getId();
 		View::rendertemplate('header', $data);
 		View::render('welcome/welcome', $data);
 		View::rendertemplate('footer', $data);

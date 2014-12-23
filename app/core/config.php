@@ -32,7 +32,7 @@ class Config {
         define('DB_PORT', '5432');
 		define('DB_NAME', 'SSC.Elfec');
 		define('DB_USER', 'SSC.Elfec');
-		define('DB_PASS', 'Aurora');
+		define('DB_PASS', 'sscelfec2014');
 		define('PREFIX', 'SSC.Elfec');
 
 		//set prefix for sessions

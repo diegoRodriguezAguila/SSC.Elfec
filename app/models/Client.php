@@ -10,7 +10,7 @@ namespace models;
 
 use DateTime;
 
-class User
+class Client
 {
     public $Id;
     public $Gmail;

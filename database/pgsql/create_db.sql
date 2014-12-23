@@ -4,112 +4,127 @@
 -- Project :      ModeloEntidadRelación.dm1
 -- Author :       Diego
 --
--- Date Created : Tuesday, December 23, 2014 09:07:00
+-- Date Created : Tuesday, December 23, 2014 15:00:42
 -- Target DBMS : PostgreSQL 8.0
 --
 
 -- 
--- TABLE: "Account" 
+-- TABLE: Account 
 --
 
-CREATE TABLE "Account"(
-    "Id"             numeric(10, 0)    NOT NULL,
-    "UserId"         numeric(10, 0)    NOT NULL,
-    "AccountNumber"  varchar(12)       NOT NULL,
-    "NUS"            varchar(15)       NOT NULL,
-    "Status"         int4              NOT NULL,
-    "InsertDate"     timestamp         NOT NULL,
-    "UpdateDate"     timestamp,
-    CONSTRAINT "PK1" PRIMARY KEY ("Id", "UserId"),
-    CONSTRAINT "NUS_Index"  UNIQUE ("Id")
+CREATE TABLE Account(
+    Id             SERIAL UNIQUE    NOT NULL,
+    ClientId       integer    NOT NULL,
+    AccountNumber  varchar(12)       NOT NULL,
+    NUS            varchar(15)       NOT NULL,
+    Status         int4              NOT NULL,
+    InsertDate     timestamp         NOT NULL,
+    UpdateDate     timestamp,
+    CONSTRAINT PK1 PRIMARY KEY (Id, ClientId)
 )
 ;
 
 
 
 -- 
--- TABLE: "Device" 
+-- TABLE: Client 
 --
 
-CREATE TABLE "Device"(
-    "Id"          numeric(10, 0)    NOT NULL,
-    "UserId"      numeric(10, 0)    NOT NULL,
-    "GCMToken"    varchar(4096)     NOT NULL,
-    "IMEI"        varchar(16)       NOT NULL,
-    "Brand"       varchar(25)       NOT NULL,
-    "Model"       varchar(50)       NOT NULL,
-    "Status"      int4              NOT NULL,
-    "InsertDate"  timestamp         NOT NULL,
-    "UpdateDate"  timestamp,
-    CONSTRAINT "PK1_1" PRIMARY KEY ("Id", "UserId"),
-    CONSTRAINT "IMEI_Index"  UNIQUE ("IMEI")
+CREATE TABLE Client(
+    Id          SERIAL UNIQUE    NOT NULL,
+    Gmail       varchar(50)       NOT NULL,
+    Status      int4              NOT NULL,
+    InsertDate  timestamp         NOT NULL,
+    UpdateDate  timestamp,
+    CONSTRAINT PK1_2 PRIMARY KEY (Id),
+    CONSTRAINT Gmail_Index  UNIQUE (Gmail)
 )
 ;
 
 
 
 -- 
--- TABLE: "MobilePhone" 
+-- TABLE: Device 
 --
 
-CREATE TABLE "MobilePhone"(
-    "Id"          numeric(10, 0)    NOT NULL,
-    "UserId"      numeric(10, 0)    NOT NULL,
-    "Number"      varchar(18)       NOT NULL,
-    "Status"      int4              NOT NULL,
-    "InsertDate"  timestamp         NOT NULL,
-    "UpdateDate"  timestamp,
-    CONSTRAINT "PK1_1_1" PRIMARY KEY ("Id", "UserId"),
-    CONSTRAINT "Number_Index"  UNIQUE ("Id")
+CREATE TABLE Device(
+    Id           SERIAL UNIQUE    NOT NULL,
+    ClientId    integer    NOT NULL,
+    GCMToken    varchar(4096)     NOT NULL,
+    IMEI        varchar(16)       NOT NULL,
+    Brand       varchar(25)       NOT NULL,
+    Model       varchar(50)       NOT NULL,
+    Status      int4              NOT NULL,
+    InsertDate  timestamp         NOT NULL,
+    UpdateDate  timestamp,
+    CONSTRAINT PK1_1 PRIMARY KEY (Id, ClientId)
 )
 ;
 
 
 
 -- 
--- TABLE: "User" 
+-- TABLE: MobilePhone 
 --
 
-CREATE TABLE "user"(
-    "Id"          numeric(10, 0)    NOT NULL,
-    "Gmail"       varchar(50)       NOT NULL,
-    "Status"      int4              NOT NULL,
-    "InsertDate"  timestamp         NOT NULL,
-    "UpdateDate"  timestamp,
-    CONSTRAINT "PK1_2" PRIMARY KEY ("Id"),
-    CONSTRAINT "Gmail_Index"  UNIQUE ("Gmail")
+CREATE TABLE MobilePhone(
+    Id          SERIAL UNIQUE    NOT NULL,
+    ClientId    integer    NOT NULL,
+    Number      varchar(18)       NOT NULL,
+    Status      int4              NOT NULL,
+    InsertDate  timestamp         NOT NULL,
+    UpdateDate  timestamp,
+    CONSTRAINT PK1_1_1 PRIMARY KEY (Id, ClientId)
 )
 ;
 
 
 
 -- 
--- TABLE: "Account" 
+-- INDEX: NUS_Index 
 --
 
-ALTER TABLE "Account" ADD CONSTRAINT "RefUser1" 
-    FOREIGN KEY ("UserId")
-    REFERENCES "User"("Id")
+CREATE UNIQUE INDEX NUS_Index ON Account(NUS)
+;
+-- 
+-- INDEX: IMEI_Index 
+--
+
+CREATE UNIQUE INDEX IMEI_Index ON Device(IMEI)
+;
+-- 
+-- INDEX: Number_Index 
+--
+
+CREATE UNIQUE INDEX Number_Index ON MobilePhone(Number)
+;
+-- 
+-- TABLE: Account 
+--
+
+ALTER TABLE Account ADD CONSTRAINT RefClient1 
+    FOREIGN KEY (ClientId)
+    REFERENCES Client(Id)
 ;
 
 
 -- 
--- TABLE: "Device" 
+-- TABLE: Device 
 --
 
-ALTER TABLE "Device" ADD CONSTRAINT "RefUser2" 
-    FOREIGN KEY ("UserId")
-    REFERENCES "User"("Id")
+ALTER TABLE Device ADD CONSTRAINT RefClient2 
+    FOREIGN KEY (ClientId)
+    REFERENCES Client(Id)
 ;
 
 
 -- 
--- TABLE: "MobilePhone" 
+-- TABLE: MobilePhone 
 --
 
-ALTER TABLE "MobilePhone" ADD CONSTRAINT "RefUser5" 
-    FOREIGN KEY ("UserId")
-    REFERENCES "User"("Id")
+ALTER TABLE MobilePhone ADD CONSTRAINT RefClient5 
+    FOREIGN KEY (ClientId)
+    REFERENCES Client(Id)
 ;
 
 
