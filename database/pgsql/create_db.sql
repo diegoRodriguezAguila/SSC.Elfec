@@ -70,7 +70,7 @@ CREATE TABLE "MobilePhone"(
 -- TABLE: "User" 
 --
 
-CREATE TABLE "User"(
+CREATE TABLE "user"(
     "Id"          numeric(10, 0)    NOT NULL,
     "Gmail"       varchar(50)       NOT NULL,
     "Status"      int4              NOT NULL,

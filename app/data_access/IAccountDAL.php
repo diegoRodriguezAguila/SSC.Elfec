@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Diego
+ * Created by Diego
  * Date: 23-12-14
  * Time: 09:53 AM
  */
@@ -21,5 +20,5 @@ interface IAccountDAL
      * @param Account $newAccount
      * @return Account
      */
-    public static function RegisterAccount(Account $newAccount);
+    public function RegisterAccount(Account $newAccount);
 }

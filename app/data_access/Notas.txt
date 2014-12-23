@@ -1,0 +1,2 @@
+Para extender un nuevo tipo de acceso a datos, el nombre de la carpeta tiene que coincidir
+con el namespace de las clases y con la cadena configurada en core/config.php en la variable DB_TYPE

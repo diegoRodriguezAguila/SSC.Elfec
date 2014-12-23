@@ -6,6 +6,7 @@
  */
 
 namespace models;
+use DateTime;
 
 /**
  * Modelo para una cuenta
@@ -37,24 +38,6 @@ class Account
 
     //region  Getters y Setters
     /**
-     * @param int $AccountNumber
-     * @return $this
-     */
-    public function setAccountNumber($AccountNumber)
-    {
-        $this->AccountNumber = $AccountNumber;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getAccountNumber()
-    {
-        return $this->AccountNumber;
-    }
-
-    /**
      * @param int $Id
      * @return $this
      */
@@ -73,21 +56,39 @@ class Account
     }
 
     /**
-     * @param date $InsertDate
+     * @param int $UserId
      * @return $this
      */
-    public function setInsertDate($InsertDate)
+    public function setUserId($UserId)
     {
-        $this->InsertDate = $InsertDate;
+        $this->UserId = $UserId;
         return $this;
     }
 
     /**
-     * @return date
+     * @return int
      */
-    public function getInsertDate()
+    public function getUserId()
     {
-        return $this->InsertDate;
+        return $this->UserId;
+    }
+
+    /**
+     * @param int $AccountNumber
+     * @return $this
+     */
+    public function setAccountNumber($AccountNumber)
+    {
+        $this->AccountNumber = $AccountNumber;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAccountNumber()
+    {
+        return $this->AccountNumber;
     }
 
     /**
@@ -127,7 +128,25 @@ class Account
     }
 
     /**
-     * @param date $UpdateDate
+     * @param DateTime $InsertDate
+     * @return $this
+     */
+    public function setInsertDate($InsertDate)
+    {
+        $this->InsertDate = $InsertDate;
+        return $this;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getInsertDate()
+    {
+        return $this->InsertDate;
+    }
+
+    /**
+     * @param DateTime $UpdateDate
      * @return $this
      */
     public function setUpdateDate($UpdateDate)
@@ -137,29 +156,11 @@ class Account
     }
 
     /**
-     * @return date
+     * @return DateTime
      */
     public function getUpdateDate()
     {
         return $this->UpdateDate;
-    }
-
-    /**
-     * @param int $UserId
-     * @return $this
-     */
-    public function setUserId($UserId)
-    {
-        $this->UserId = $UserId;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->UserId;
     }
     //endregion
 

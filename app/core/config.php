@@ -33,10 +33,10 @@ class Config {
 		define('DB_NAME', 'SSC.Elfec');
 		define('DB_USER', 'SSC.Elfec');
 		define('DB_PASS', 'Aurora');
-		define('PREFIX', '');
+		define('PREFIX', 'SSC.Elfec');
 
 		//set prefix for sessions
-		define('SESSION_PREFIX', 'smvc_');
+		define('SESSION_PREFIX', 'ssc_elfec_');
 
 		//optionall create a constant for the name of the site
 		define('SITETITLE', 'SCC Elfec');
@@ -46,7 +46,7 @@ class Config {
 		//set_error_handler('core\logger::error_handler');
 
 		//set timezone
-		date_default_timezone_set('Europe/London');
+		date_default_timezone_set('America/La_Paz');
 
 		//start sessions
 		\helpers\session::init();

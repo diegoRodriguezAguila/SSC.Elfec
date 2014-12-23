@@ -90,4 +90,31 @@ class Language {
 		}
 	}
 
+    public static function staticShow($value, $name, $code = LANGUAGE_CODE) {
+
+        // lang file
+        $file = "app/language/$code/$name.php";
+
+        // check if is readable
+        if(is_readable($file)){
+
+            // require file
+            $_array = include($file);
+
+        } else {
+
+            // display error
+            echo \core\error::display("Could not load language file '$code/$name.php'");
+            die;
+
+        }
+
+        // If
+        if(!empty($_array[$value])){
+            return $_array[$value];
+        } else {
+            return $value;
+        }
+    }
+
 }
