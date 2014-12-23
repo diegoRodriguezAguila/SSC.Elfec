@@ -40,7 +40,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="16" selection-start="55" selection-end="55" vertical-scroll-proportion="0.05923345" vertical-offset="0" max-vertical-offset="861">
+            <state line="3" column="0" selection-start="38" selection-end="38" vertical-scroll-proportion="0.05923345" vertical-offset="0" max-vertical-offset="861">
               <folding />
             </state>
           </provider>
@@ -507,12 +507,16 @@
       <created>1419371482902</created>
       <updated>1419371482902</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="gitignore actualizado">
+      <created>1419372121414</created>
+      <updated>1419372121414</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="0" width="1932" height="1032" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295838" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -584,7 +588,8 @@
     <MESSAGE value="Capa de acceso a datos deifnida" />
     <MESSAGE value="Probando web service" />
     <MESSAGE value="Web service de registro de cuentas, y de usuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="Web service de registro de cuentas, y de usuario" />
+    <MESSAGE value="gitignore actualizado" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore actualizado" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -934,7 +939,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="16" selection-start="55" selection-end="55" vertical-scroll-proportion="0.05923345" vertical-offset="0" max-vertical-offset="861">
+        <state line="3" column="0" selection-start="38" selection-end="38" vertical-scroll-proportion="0.05923345" vertical-offset="0" max-vertical-offset="861">
           <folding />
         </state>
       </provider>
