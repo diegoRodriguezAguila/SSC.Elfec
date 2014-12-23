@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10adbb98-3b10-4e65-a79b-4f61ae5cfeb9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_services/auto_load.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/data_access/AbstractFactory.php" afterPath="$PROJECT_DIR$/app/data_access/AbstractFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Account.php" afterPath="$PROJECT_DIR$/app/models/Account.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/data_access/pgsql/AccountDAL.php" afterPath="$PROJECT_DIR$/app/data_access/pgsql/AccountDAL.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_services/AccountWS.php" afterPath="$PROJECT_DIR$/web_services/AccountWS.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/data_access/pgsql/ClientDAL.php" afterPath="$PROJECT_DIR$/app/data_access/pgsql/ClientDAL.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Device.php" afterPath="$PROJECT_DIR$/app/models/Device.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/data_access/IAccountDAL.php" afterPath="$PROJECT_DIR$/app/data_access/IAccountDAL.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/data_access/IClientDAL.php" afterPath="$PROJECT_DIR$/app/data_access/IClientDAL.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SSC.Elfec.iws" />
@@ -34,13 +26,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AccountWS.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AccountWS.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_services/AccountWS.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="108" selection-start="1016" selection-end="1055" vertical-scroll-proportion="0.49101797" vertical-offset="134" max-vertical-offset="969">
+            <state line="35" column="3" selection-start="946" selection-end="946" vertical-scroll-proportion="-15.115385" vertical-offset="134" max-vertical-offset="969">
               <folding>
                 <element signature="e#136#155#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="16" selection-start="55" selection-end="55" vertical-scroll-proportion="0.05923345" vertical-offset="0" max-vertical-offset="861">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,7 +117,6 @@
         <option value="$PROJECT_DIR$/app/models/Client.php" />
         <option value="$PROJECT_DIR$/app/data_access/UserDALFactory.php" />
         <option value="$PROJECT_DIR$/app/data_access/ClientDALFactory.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/controllers/welcome.php" />
         <option value="$PROJECT_DIR$/app/data_access/AbstractFactory.php" />
         <option value="$PROJECT_DIR$/web_services/auto_load.php" />
@@ -128,6 +128,7 @@
         <option value="$PROJECT_DIR$/app/data_access/IClientDAL.php" />
         <option value="$PROJECT_DIR$/app/data_access/pgsql/ClientDAL.php" />
         <option value="$PROJECT_DIR$/web_services/AccountWS.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -502,7 +503,11 @@
       <created>1419367103823</created>
       <updated>1419367103823</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Web service de registro de cuentas, y de usuario">
+      <created>1419371482902</created>
+      <updated>1419371482902</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -578,7 +583,8 @@
     <MESSAGE value="Capa de acceso a datos para cuentas estructurada y comienzo de capa de acceso a datos para usuarios" />
     <MESSAGE value="Capa de acceso a datos deifnida" />
     <MESSAGE value="Probando web service" />
-    <option name="LAST_COMMIT_MESSAGE" value="Probando web service" />
+    <MESSAGE value="Web service de registro de cuentas, y de usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Web service de registro de cuentas, y de usuario" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -706,13 +712,6 @@
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_8.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="401" column="9" selection-start="13061" selection-end="13061" vertical-scroll-proportion="0.34371257" vertical-offset="6530" max-vertical-offset="18734">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="7" selection-start="17" selection-end="17" vertical-scroll-proportion="0.019744484" vertical-offset="0" max-vertical-offset="861">
           <folding />
         </state>
       </provider>
@@ -926,10 +925,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web_services/AccountWS.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="108" selection-start="1016" selection-end="1055" vertical-scroll-proportion="0.49101797" vertical-offset="134" max-vertical-offset="969">
+        <state line="35" column="3" selection-start="946" selection-end="946" vertical-scroll-proportion="-15.115385" vertical-offset="134" max-vertical-offset="969">
           <folding>
             <element signature="e#136#155#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="16" selection-start="55" selection-end="55" vertical-scroll-proportion="0.05923345" vertical-offset="0" max-vertical-offset="861">
+          <folding />
         </state>
       </provider>
     </entry>
