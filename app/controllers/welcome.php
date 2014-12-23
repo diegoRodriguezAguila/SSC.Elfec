@@ -28,8 +28,10 @@ class Welcome extends \core\controller{
 		$data['title'] = $this->language->get('welcome_text');
 		$data['welcome_message'] = $this->language->get('welcome_message');
         $userDAL = ClientDALFactory::instance();
-        $newUser = $userDAL->RegisterUser(Client::create()->setGmail('diroag2@gmail.com'));
-        $data['welcome_message'] = 'usuario registrado con email: '.$newUser->getGmail().' y id: '.$newUser->getId();
+        /*$newUser = $userDAL->RegisterUser(Client::create()->setGmail('diroag2@gmail.com'));
+        $data['welcome_message'] = 'usuario registrado con email: '.$newUser->getGmail().' y id: '.$newUser->getId();*/
+        $clientId =  $userDAL->GetClientId('diroag2@gmail.com');
+        $data['welcome_message'] = 'CLIENT ID: '.$clientId;
 		View::rendertemplate('header', $data);
 		View::render('welcome/welcome', $data);
 		View::rendertemplate('footer', $data);

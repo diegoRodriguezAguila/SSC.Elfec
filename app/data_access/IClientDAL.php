@@ -16,9 +16,16 @@ use models\Client;
 interface IClientDAL
 {
     /**
-     * Registra un nuevo usuario y lo retorna con el Id que se le asignó
+     * Registra un nuevo cliente y retorna el Id que se le asignó
      * @param Client $newClient
-     * @return Client
+     * @return int
      */
-    public function RegisterUser(Client $newClient);
+    public function RegisterClient(Client $newClient);
+
+    /**
+     * Busca un cliente por su gmail
+     * @param $gmail
+     * @return int
+     */
+    public function GetClientId($gmail);
 } 

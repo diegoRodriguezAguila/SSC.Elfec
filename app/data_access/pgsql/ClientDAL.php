@@ -15,11 +15,11 @@ use models\Client;
 class ClientDAL implements IClientDAL {
 
     /**
-     * Registra un nuevo usuario y lo retorna con el Id que se le asignó
+     * Registra un nuevo usuario y retorna el Id que se le asignó
      * @param Client $newClient
-     * @return Client
+     * @return int
      */
-    public function RegisterUser(Client $newClient)
+    public function RegisterClient(Client $newClient)
     {
         $db = Database::get();
         $data = array(
@@ -28,7 +28,20 @@ class ClientDAL implements IClientDAL {
             'insertdate'  => 'now()'
         );
         $db->insert('client', $data);
-        $id = $db->lastInsertId('client_id_seq');
-        return $newClient->setId($id);
+        return $db->lastInsertId('client_id_seq');
     }
+
+    /**
+     * Busca un cliente por su gmail
+     * @param $gmail
+     * @return int
+     */
+    public function GetClientId($gmail)
+    {
+        $db = Database::get();
+        $result  = $db->select("SELECT * FROM client WHERE gmail = :gmail", array(':gmail' => $gmail));
+        $size = count($result);
+        return $size > 0? $result[0]->id : -1;
+    }
+
 }
