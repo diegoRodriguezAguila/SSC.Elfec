@@ -16,9 +16,9 @@ use models\Account;
 interface IAccountDAL
 {
     /**
-     * Registra una nueva cuenta y la retorna con el Id que se le asignó
+     * Registra una nueva cuenta y retorna el Id que se le asignó
      * @param Account $newAccount
-     * @return Account
+     * @return int
      */
     public function RegisterAccount(Account $newAccount);
 }

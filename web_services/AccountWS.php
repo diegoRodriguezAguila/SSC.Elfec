@@ -5,12 +5,16 @@
  * Time: 05:17 PM
  */
 
+
 include_once("lib/nusoap.php");
-require_once ("../app/data_access/AbstractFactory.php");
-require_once ("../app/data_access/ClientDALFactory.php");
+include_once("auto_load.php");
+
+use  models\Client;
+use  models\Account;
+use data_access\ClientDALFactory;
+use data_access\AccountDALFactory;
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
-
 
 
 $server->register('RegisterAccount',
@@ -33,12 +37,17 @@ $server->register('RegisterAccount',
 function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBrand, $DeviceModel, $DeviceIMEI)
 {
     $clientDAL = ClientDALFactory::instance();
-    /* $clientId =  $clientDAL->GetClientId($GMail);
-     if($clientId==-1)
-     {
-         $clientId = $clientDAL->RegisterClient(Client::create()->setGmail($GMail));
-     }*/
-    return 2;
+    $clientId =  $clientDAL->GetClientId($GMail);
+    if($clientId==-1)
+    {
+        $clientId = $clientDAL->RegisterClient(Client::create()->setGmail($GMail));
+    }
+    if(!$clientDAL->HasAccount($GMail, $NUS))
+    {
+        $accountDAL = AccountDALFactory::instance();
+        $accountDAL->RegisterAccount(Account::create()->setClientId($clientId)->setAccountNumber($AccountNumber)->setNUS($NUS));
+    }
+    return $clientId;
 }
 
 $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA)

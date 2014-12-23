@@ -21,7 +21,7 @@ namespace data_access;
     {
         if(!isset(self::$Instance))
         {
-            $classString = 'data_access\\'.DB_TYPE.'\\'.self::$Name;
+            $classString = 'data_access\\'.'pgsql'.'\\'.self::$Name;
             self::$Instance =  new $classString();
         }
         return self::$Instance;

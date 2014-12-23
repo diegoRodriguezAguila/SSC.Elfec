@@ -28,4 +28,12 @@ interface IClientDAL
      * @return int
      */
     public function GetClientId($gmail);
+
+    /**
+     * Verifica si es que un usuario ya tiene agregada una cuenta
+     * @param $gmail
+     * @param $NUS
+     * @return bool
+     */
+    public function HasAccount($gmail, $NUS);
 } 

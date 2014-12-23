@@ -16,7 +16,7 @@ use DateTime;
 class Account
 {
     private $Id;
-    private $UserId;
+    private $ClientId;
     private $AccountNumber;
     private $NUS;
     private $Status;
@@ -59,18 +59,18 @@ class Account
      * @param int $UserId
      * @return $this
      */
-    public function setUserId($UserId)
+    public function setClientId($UserId)
     {
-        $this->UserId = $UserId;
+        $this->ClientId = $UserId;
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getUserId()
+    public function getClientId()
     {
-        return $this->UserId;
+        return $this->ClientId;
     }
 
     /**

@@ -12,7 +12,7 @@ namespace models;
 class Device
 {
     public $Id;
-    public $UserId;
+    public $ClientId;
     public $GCMToken;
     public $Status;
     public $InsertDate;

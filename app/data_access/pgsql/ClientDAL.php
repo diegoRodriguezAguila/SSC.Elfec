@@ -44,4 +44,19 @@ class ClientDAL implements IClientDAL {
         return $size > 0? $result[0]->id : -1;
     }
 
+    /**
+     * Verifica si es que un usuario ya tiene agregada una cuenta
+     * @param $gmail
+     * @param $NUS
+     * @return bool
+     */
+    public function HasAccount($gmail, $NUS)
+    {
+        $db = Database::get();
+        $result  = $db->select("SELECT * FROM client c, account a WHERE a.clientid = c.id AND gmail = :gmail AND nus = :NUS", array(':gmail' => $gmail, ':NUS' => $NUS));
+        $size = count($result);
+        return $size > 0;
+    }
+
+
 }
