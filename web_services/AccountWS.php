@@ -9,14 +9,14 @@
 include_once("lib/nusoap.php");
 include_once("auto_load.php");
 
-use  models\Client, models\Account, data_access\ClientDALFactory, data_access\AccountDALFactory;
+use  models\Client, models\Account,models\MobilePhone, data_access\ClientDALFactory, data_access\AccountDALFactory, data_access\MobilePhoneDALFactory;
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 
 
 $server->register('RegisterAccount',
     array('AccountNumber' => 'xsd:string','NUS' => 'xsd:int', 'GMail' => 'xsd:string', 'PhoneNumber' => 'xsd:string', 'DeviceBrand' => 'xsd:string', 'DeviceModel' => 'xsd:string'
-    , 'DeviceIMEI' => 'xsd:string'),
+    , 'DeviceIMEI' => 'xsd:string','GCM' => 'xsd:string'),
     array('Response' => 'xsd:integer'),
     'xsd:ssc_elfec');
 
@@ -29,9 +29,10 @@ $server->register('RegisterAccount',
  * @param $DeviceBrand
  * @param $DeviceModel
  * @param $DeviceIMEI
+ * @param $GCM
  * @return int
  */
-function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBrand, $DeviceModel, $DeviceIMEI)
+function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
 {
     $clientDAL = ClientDALFactory::instance();
     $clientId =  $clientDAL->GetClientId($GMail);
@@ -44,6 +45,15 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
         $accountDAL = AccountDALFactory::instance();
         $accountDAL->RegisterAccount(Account::create()->setClientId($clientId)->setAccountNumber($AccountNumber)->setNUS($NUS));
     }
+    if(!$clientDAL->HasPhoneNumber($PhoneNumber))
+    {
+        $phoneDAL = MobilePhoneDALFactory::instance();
+        $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($PhoneNumber));
+    }
+    /*if(!$clientDAL->HasDevice($GCM, $DeviceIMEI))
+    {
+        Lo hago luego me dio flojera xD
+    }*/
     return $clientId;
 }
 

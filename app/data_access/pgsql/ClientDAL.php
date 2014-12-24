@@ -59,4 +59,16 @@ class ClientDAL implements IClientDAL {
     }
 
 
+    /**
+     * Verifica si es que un usuario ya tiene agregado un telefono
+     * @param $phoneNumber
+     * @return bool
+     */
+    public function HasPhoneNumber($phoneNumber)
+    {
+        $db = Database::get();
+        $result  = $db->select("SELECT * FROM clients c, mobile_phones m WHERE m.client_id = c.id AND number = :number", array(':number' => $phoneNumber));
+        $size = count($result);
+        return $size > 0;
+    }
 }

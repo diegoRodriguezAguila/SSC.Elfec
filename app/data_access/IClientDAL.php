@@ -36,4 +36,10 @@ interface IClientDAL
      * @return bool
      */
     public function HasAccount($gmail, $NUS);
+    /**
+     * Verifica si es que un usuario ya tiene agregado un telefono
+     * @param $phoneNumber
+     * @return bool
+     */
+    public function HasPhoneNumber($phoneNumber);
 } 
