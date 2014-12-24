@@ -4,127 +4,139 @@
 -- Project :      ModeloEntidadRelación.dm1
 -- Author :       Diego
 --
--- Date Created : Tuesday, December 23, 2014 15:00:42
+-- Date Created : Wednesday, December 24, 2014 11:51:23
 -- Target DBMS : PostgreSQL 8.0
 --
 
 -- 
--- TABLE: Account 
+-- TABLE: accounts 
 --
 
-CREATE TABLE Account(
-    Id             SERIAL UNIQUE    NOT NULL,
-    ClientId       integer    NOT NULL,
-    AccountNumber  varchar(12)       NOT NULL,
-    NUS            varchar(15)       NOT NULL,
-    Status         int4              NOT NULL,
-    InsertDate     timestamp         NOT NULL,
-    UpdateDate     timestamp,
-    CONSTRAINT PK1 PRIMARY KEY (Id, ClientId)
+CREATE TABLE accounts(
+    id                SERIAL UNIQUE        NOT NULL,
+    client_id         integer           NOT NULL,
+    account_number    varchar(12)    NOT NULL,
+    nus               varchar(15)    NOT NULL,
+    status            integer           NOT NULL,
+    insert_date       timestamp      NOT NULL,
+    update_date       timestamp,
+    CONSTRAINT "PK1" PRIMARY KEY (id, client_id)
 )
 ;
 
 
 
 -- 
--- TABLE: Client 
+-- TABLE: clients 
 --
 
-CREATE TABLE Client(
-    Id          SERIAL UNIQUE    NOT NULL,
-    Gmail       varchar(50)       NOT NULL,
-    Status      int4              NOT NULL,
-    InsertDate  timestamp         NOT NULL,
-    UpdateDate  timestamp,
-    CONSTRAINT PK1_2 PRIMARY KEY (Id),
-    CONSTRAINT Gmail_Index  UNIQUE (Gmail)
+CREATE TABLE clients(
+    id             SERIAL UNIQUE        NOT NULL,
+    gmail          varchar(50)    NOT NULL,
+    status         integer           NOT NULL,
+    insert_date    timestamp      NOT NULL,
+    update_date    timestamp,
+    CONSTRAINT "PK1_2" PRIMARY KEY (id),
+    CONSTRAINT gmail_index  UNIQUE (gmail)
 )
 ;
 
 
 
 -- 
--- TABLE: Device 
+-- TABLE: devices 
 --
 
-CREATE TABLE Device(
-    Id           SERIAL UNIQUE    NOT NULL,
-    ClientId    integer    NOT NULL,
-    GCMToken    varchar(4096)     NOT NULL,
-    IMEI        varchar(16)       NOT NULL,
-    Brand       varchar(25)       NOT NULL,
-    Model       varchar(50)       NOT NULL,
-    Status      int4              NOT NULL,
-    InsertDate  timestamp         NOT NULL,
-    UpdateDate  timestamp,
-    CONSTRAINT PK1_1 PRIMARY KEY (Id, ClientId)
+CREATE TABLE devices(
+    id             SERIAL UNIQUE          NOT NULL,
+    client_id      integer             NOT NULL,
+    gcm_token      varchar(4096)    NOT NULL,
+    imei           varchar(16)      NOT NULL,
+    brand          varchar(25)      NOT NULL,
+    model          varchar(50)      NOT NULL,
+    status         integer             NOT NULL,
+    insert_date    timestamp        NOT NULL,
+    update_date    timestamp,
+    CONSTRAINT "PK1_1" PRIMARY KEY (id, client_id)
 )
 ;
 
 
 
 -- 
--- TABLE: MobilePhone 
+-- TABLE: mobile_phones 
 --
 
-CREATE TABLE MobilePhone(
-    Id          SERIAL UNIQUE    NOT NULL,
-    ClientId    integer    NOT NULL,
-    Number      varchar(18)       NOT NULL,
-    Status      int4              NOT NULL,
-    InsertDate  timestamp         NOT NULL,
-    UpdateDate  timestamp,
-    CONSTRAINT PK1_1_1 PRIMARY KEY (Id, ClientId)
+CREATE TABLE mobile_phones(
+    id             SERIAL UNIQUE        NOT NULL,
+    client_id      integer           NOT NULL,
+    number         varchar(18)    NOT NULL,
+    status         integer           NOT NULL,
+    insert_date    timestamp      NOT NULL,
+    update_date    timestamp,
+    CONSTRAINT "PK1_1_1" PRIMARY KEY (id, client_id)
 )
 ;
 
 
 
 -- 
--- INDEX: NUS_Index 
+-- INDEX: account_number_index 
 --
 
-CREATE UNIQUE INDEX NUS_Index ON Account(NUS)
+CREATE INDEX account_number_index ON accounts(account_number)
 ;
 -- 
--- INDEX: IMEI_Index 
+-- INDEX: nus_index 
 --
 
-CREATE UNIQUE INDEX IMEI_Index ON Device(IMEI)
+CREATE INDEX nus_index ON accounts(nus)
 ;
 -- 
--- INDEX: Number_Index 
+-- INDEX: gcm_token_index 
 --
 
-CREATE UNIQUE INDEX Number_Index ON MobilePhone(Number)
+CREATE INDEX gcm_token_index ON devices(gcm_token)
 ;
 -- 
--- TABLE: Account 
+-- INDEX: imei_index 
 --
 
-ALTER TABLE Account ADD CONSTRAINT RefClient1 
-    FOREIGN KEY (ClientId)
-    REFERENCES Client(Id)
+CREATE INDEX imei_index ON devices(imei)
+;
+-- 
+-- INDEX: number_index 
+--
+
+CREATE INDEX number_index ON mobile_phones(number)
+;
+-- 
+-- TABLE: accounts 
+--
+
+ALTER TABLE accounts ADD CONSTRAINT "Refclients1" 
+    FOREIGN KEY (client_id)
+    REFERENCES clients(id)
 ;
 
 
 -- 
--- TABLE: Device 
+-- TABLE: devices 
 --
 
-ALTER TABLE Device ADD CONSTRAINT RefClient2 
-    FOREIGN KEY (ClientId)
-    REFERENCES Client(Id)
+ALTER TABLE devices ADD CONSTRAINT "Refclients2" 
+    FOREIGN KEY (client_id)
+    REFERENCES clients(id)
 ;
 
 
 -- 
--- TABLE: MobilePhone 
+-- TABLE: mobile_phones 
 --
 
-ALTER TABLE MobilePhone ADD CONSTRAINT RefClient5 
-    FOREIGN KEY (ClientId)
-    REFERENCES Client(Id)
+ALTER TABLE mobile_phones ADD CONSTRAINT "Refclients5" 
+    FOREIGN KEY (client_id)
+    REFERENCES clients(id)
 ;
 
 

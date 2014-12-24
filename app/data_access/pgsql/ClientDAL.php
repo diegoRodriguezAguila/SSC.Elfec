@@ -25,10 +25,10 @@ class ClientDAL implements IClientDAL {
         $data = array(
             'gmail' => $newClient->getGmail(),
             'status'  => 1,
-            'insertdate'  => 'now()'
+            'insert_date'  => 'now()'
         );
-        $db->insert('client', $data);
-        return $db->lastInsertId('client_id_seq');
+        $db->insert('clients', $data);
+        return $db->lastInsertId('clients_id_seq');
     }
 
     /**
@@ -39,7 +39,7 @@ class ClientDAL implements IClientDAL {
     public function GetClientId($gmail)
     {
         $db = Database::get();
-        $result  = $db->select("SELECT * FROM client WHERE gmail = :gmail", array(':gmail' => $gmail));
+        $result  = $db->select("SELECT * FROM clients WHERE gmail = :gmail", array(':gmail' => $gmail));
         $size = count($result);
         return $size > 0? $result[0]->id : -1;
     }
@@ -53,7 +53,7 @@ class ClientDAL implements IClientDAL {
     public function HasAccount($gmail, $NUS)
     {
         $db = Database::get();
-        $result  = $db->select("SELECT * FROM client c, account a WHERE a.clientid = c.id AND gmail = :gmail AND nus = :NUS", array(':gmail' => $gmail, ':NUS' => $NUS));
+        $result  = $db->select("SELECT * FROM clients c, accounts a WHERE a.client_id = c.id AND gmail = :gmail AND nus = :NUS", array(':gmail' => $gmail, ':NUS' => $NUS));
         $size = count($result);
         return $size > 0;
     }

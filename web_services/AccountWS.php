@@ -9,10 +9,7 @@
 include_once("lib/nusoap.php");
 include_once("auto_load.php");
 
-use  models\Client;
-use  models\Account;
-use data_access\ClientDALFactory;
-use data_access\AccountDALFactory;
+use  models\Client, models\Account, data_access\ClientDALFactory, data_access\AccountDALFactory;
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 
@@ -49,6 +46,8 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
     }
     return $clientId;
 }
+
+//RegisterAccount(12345,54321,'pedro@gmail.com',777777,'Sony','Xperia S','33333333321');
 
 $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA)
     ? $HTTP_RAW_POST_DATA : '';

@@ -27,13 +27,13 @@ class AccountDAL implements IAccountDAL
     {
         $db = Database::get();
         $data = array(
-            'clientid' => $newAccount->getClientId(),
-            'accountnumber' => $newAccount->getAccountNumber(),
+            'client_id' => $newAccount->getClientId(),
+            'account_number' => $newAccount->getAccountNumber(),
             'nus'  => $newAccount->getNUS(),
             'status'  => 1,
-            'insertdate'  => 'now()'
+            'insert_date'  => 'now()'
         );
-        $db->insert('account', $data);
-        return $db->lastInsertId('account_id_seq');
+        $db->insert('accounts', $data);
+        return $db->lastInsertId('accounts_id_seq');
     }
 }

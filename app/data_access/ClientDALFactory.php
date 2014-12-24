@@ -13,11 +13,16 @@ namespace data_access;
  * Class AccountDALFactory
  * @package data_access
  */
-class ClientDALFactory extends AbstractFactory {
+class ClientDALFactory {
 
+    private static $Instance;
     public static function instance()
     {
-        self::$Name = 'ClientDAL';
-        return parent::instance();
+        if(!isset(self::$Instance))
+        {
+            $classString = 'data_access\\'.DB_TYPE.'\\ClientDAL';
+            self::$Instance =  new $classString();
+        }
+        return self::$Instance;
     }
 }
