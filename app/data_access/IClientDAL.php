@@ -41,5 +41,11 @@ interface IClientDAL
      * @param $phoneNumber
      * @return bool
      */
-    public function HasPhoneNumber($phoneNumber);
+    public function HasPhoneNumber($phoneNumber,$ClientId);
+    /**
+     * Verifica si es que un usuario ya tiene agregado un dispositivo
+     * @param $IMEI
+     * @return bool
+     */
+    public function HasDevice($IMEI,$ClientID);
 } 

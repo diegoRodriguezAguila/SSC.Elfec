@@ -9,7 +9,7 @@
 include_once("lib/nusoap.php");
 include_once("auto_load.php");
 
-use  models\Client, models\Account,models\MobilePhone, data_access\ClientDALFactory, data_access\AccountDALFactory, data_access\MobilePhoneDALFactory;
+use  models\Client, models\Account,models\MobilePhone,models\Device, data_access\ClientDALFactory, data_access\AccountDALFactory, data_access\MobilePhoneDALFactory,data_access\deviceDALFactory;
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 
@@ -45,10 +45,15 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
         $accountDAL = AccountDALFactory::instance();
         $accountDAL->RegisterAccount(Account::create()->setClientId($clientId)->setAccountNumber($AccountNumber)->setNUS($NUS));
     }
-    if(!$clientDAL->HasPhoneNumber($PhoneNumber))
+    if(!$clientDAL->HasPhoneNumber($PhoneNumber,$clientId))
     {
         $phoneDAL = MobilePhoneDALFactory::instance();
         $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($PhoneNumber));
+    }
+    if(!$clientDAL->HasDevice($DeviceIMEI,$clientId))
+    {
+        $deviceDAL = DeviceDALFactory::instance();
+        $deviceDAL->RegisterDevice(Device::create()->setGCMToken($GCM)->setImei($DeviceIMEI)->setClientId($clientId)->setModel($DeviceModel)->setBrand($DeviceBrand));
     }
     /*if(!$clientDAL->HasDevice($GCM, $DeviceIMEI))
     {

@@ -32,6 +32,19 @@ class ClientDAL implements IClientDAL {
     }
 
     /**
+     * Verifica si es que un usuario ya tiene agregado un dispositivo
+     * @param $IMEI
+     * @return bool
+     */
+    public function HasDevice($IMEI,$ClientId)
+    {
+        $db = Database::get();
+        $result  = $db->select("SELECT * FROM clients c, devices d WHERE d.client_id = c.id AND imei = :imei AND d.client_id=:client_id", array(':imei' => $IMEI,':client_id'=>$ClientId));
+        $size = count($result);
+        return $size > 0;
+    }
+
+    /**
      * Busca un cliente por su gmail
      * @param $gmail
      * @return int
@@ -64,10 +77,10 @@ class ClientDAL implements IClientDAL {
      * @param $phoneNumber
      * @return bool
      */
-    public function HasPhoneNumber($phoneNumber)
+    public function HasPhoneNumber($phoneNumber,$ClientId)
     {
         $db = Database::get();
-        $result  = $db->select("SELECT * FROM clients c, mobile_phones m WHERE m.client_id = c.id AND number = :number", array(':number' => $phoneNumber));
+        $result  = $db->select("SELECT * FROM clients c, mobile_phones m WHERE m.client_id = c.id AND number = :number AND m.client_id=:client_id", array(':number' => $phoneNumber,':client_id'=>$ClientId));
         $size = count($result);
         return $size > 0;
     }
