@@ -9,6 +9,8 @@
 namespace models;
 
 
+use DateTime;
+
 class MobilePhone {
     public $Id;
     public $ClientId;
@@ -22,7 +24,8 @@ class MobilePhone {
     }
 
     /**
-     * @param mixed $ClientId
+     * @param int $ClientId
+     * @return $this
      */
     public function setClientId($ClientId)
     {
@@ -31,7 +34,7 @@ class MobilePhone {
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getClientId()
     {
@@ -39,7 +42,8 @@ class MobilePhone {
     }
 
     /**
-     * @param mixed $Id
+     * @param int $Id
+     * @return $this
      */
     public function setId($Id)
     {
@@ -48,7 +52,7 @@ class MobilePhone {
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -56,7 +60,8 @@ class MobilePhone {
     }
 
     /**
-     * @param mixed $InsertDate
+     * @param DateTime $InsertDate
+     * @return $this
      */
     public function setInsertDate($InsertDate)
     {
@@ -65,7 +70,7 @@ class MobilePhone {
     }
 
     /**
-     * @return mixed
+     * @return DateTime
      */
     public function getInsertDate()
     {
@@ -73,7 +78,8 @@ class MobilePhone {
     }
 
     /**
-     * @param mixed $Number
+     * @param string $Number
+     * @return $this
      */
     public function setNumber($Number)
     {
@@ -82,7 +88,7 @@ class MobilePhone {
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getNumber()
     {
@@ -90,7 +96,8 @@ class MobilePhone {
     }
 
     /**
-     * @param mixed $Status
+     * @param int $Status
+     * @return $this
      */
     public function setStatus($Status)
     {
@@ -99,7 +106,7 @@ class MobilePhone {
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getStatus()
     {
@@ -107,7 +114,8 @@ class MobilePhone {
     }
 
     /**
-     * @param mixed $UpdateDate
+     * @param DateTime $UpdateDate
+     * @return $this
      */
     public function setUpdateDate($UpdateDate)
     {
@@ -116,7 +124,7 @@ class MobilePhone {
     }
 
     /**
-     * @return mixed
+     * @return DateTime
      */
     public function getUpdateDate()
     {
