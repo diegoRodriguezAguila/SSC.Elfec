@@ -32,6 +32,20 @@ class ClientDAL implements IClientDAL {
     }
 
     /**
+     * Elimina una cuenta para un usuario determiando
+     * @param $NUS
+     * @param $ClientID
+     * @return bool
+     */
+    public function DeleteAccount($NUS, $ClientID)
+    {
+        $db = Database::get();
+        $data = array('status' => 0,'update_date'  => 'now()');
+        $where=array('client_id' => $ClientID,'nus'=>$NUS);
+        $db->update('accounts', $data,$where);
+    }
+
+    /**
      * Verifica si es que un usuario ya tiene agregado un dispositivo
      * @param $IMEI
      * @return bool
@@ -66,7 +80,7 @@ class ClientDAL implements IClientDAL {
     public function HasAccount($gmail, $NUS)
     {
         $db = Database::get();
-        $result  = $db->select("SELECT * FROM clients c, accounts a WHERE a.client_id = c.id AND gmail = :gmail AND nus = :NUS", array(':gmail' => $gmail, ':NUS' => $NUS));
+        $result  = $db->select("SELECT * FROM clients c, accounts a WHERE a.client_id = c.id AND gmail = :gmail AND nus = :NUS AND a.status = 1", array(':gmail' => $gmail, ':NUS' => $NUS));
         $size = count($result);
         return $size > 0;
     }

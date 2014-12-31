@@ -19,7 +19,6 @@ $server->register('RegisterAccount',
     , 'DeviceIMEI' => 'xsd:string','GCM' => 'xsd:string'),
     array('Response' => 'xsd:integer'),
     'xsd:ssc_elfec');
-
 /**
  *  Método de servicio web para el registro de una cuenta y su asociación con un usuario, un dispositivo y un numero de teléfono
  * @param $AccountNumber
@@ -61,7 +60,33 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
     }*/
     return $clientId;
 }
+$server->register('DeleteAccount',
+    array('IMEI' => 'xsd:string','NUS' => 'xsd:int', 'GMail' => 'xsd:string'),
+    array('Response' => 'xsd:integer'),
+    'xsd:ssc_elfec');
+function DeleteAccount($IMEI,$NUS,$GMail)
+{
+    $clientDAL = ClientDALFactory::instance();
+    $clientId =  $clientDAL->GetClientId($GMail);
+    if($clientId==-1)
+    {
+        //esta trucheando correo es un vivillo
+        return -1;
+    }
+    if(!$clientDAL->HasDevice($IMEI,$clientId))
+    {
+        //es un dispositivo x, no puede borrar
+        return -2;
+    }
+    if(!$clientDAL->HasAccount($GMail, $NUS))
+    {
+        //No es su cuenta
+        return -3;
+    }
 
+    $clientDAL->DeleteAccount($NUS,$clientId);
+    return 0;
+}
 //RegisterAccount(12345,54321,'pedro@gmail.com',777777,'Sony','Xperia S','33333333321');
 
 $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA)
