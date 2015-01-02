@@ -36,4 +36,19 @@ class AccountDAL implements IAccountDAL
         $db->insert('accounts', $data);
         return $db->lastInsertId('accounts_id_seq');
     }
+
+    /**
+     * Elimina una cuenta para un usuario determiando
+     * @param $NUS
+     * @param $ClientID
+     * @return bool
+     */
+    public function DeleteAccount($NUS, $ClientID)
+    {
+        $db = Database::get();
+        $data = array('status' => 0,'update_date'  => 'now()');
+        $where=array('client_id' => $ClientID,'nus'=>$NUS);
+        $db->update('accounts', $data,$where);
+    }
+
 }

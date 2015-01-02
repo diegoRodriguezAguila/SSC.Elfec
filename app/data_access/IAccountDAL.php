@@ -21,4 +21,12 @@ interface IAccountDAL
      * @return int
      */
     public function RegisterAccount(Account $newAccount);
+    /**
+     * Elimina una cuenta para un usuario determiando
+     * @param $NUS
+     * @param $ClientID
+     * @return bool
+     */
+    public function DeleteAccount($NUS,$ClientID);
+
 }

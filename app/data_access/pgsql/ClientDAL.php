@@ -31,19 +31,6 @@ class ClientDAL implements IClientDAL {
         return $db->lastInsertId('clients_id_seq');
     }
 
-    /**
-     * Elimina una cuenta para un usuario determiando
-     * @param $NUS
-     * @param $ClientID
-     * @return bool
-     */
-    public function DeleteAccount($NUS, $ClientID)
-    {
-        $db = Database::get();
-        $data = array('status' => 0,'update_date'  => 'now()');
-        $where=array('client_id' => $ClientID,'nus'=>$NUS);
-        $db->update('accounts', $data,$where);
-    }
 
     /**
      * Verifica si es que un usuario ya tiene agregado un dispositivo
@@ -56,6 +43,18 @@ class ClientDAL implements IClientDAL {
         $result  = $db->select("SELECT * FROM clients c, devices d WHERE d.client_id = c.id AND imei = :imei AND d.client_id=:client_id", array(':imei' => $IMEI,':client_id'=>$ClientId));
         $size = count($result);
         return $size > 0;
+    }
+
+    /**
+     * Obtiene todas las cuentas para un usuario
+     * @param $ClientID
+     * @return Array
+     */
+    public function GetAllAccounts($ClientID)
+    {
+        $db = Database::get();
+        $result  = $db->select("SELECT * FROM clients c, accounts a WHERE a.client_id = c.id AND  a.client_id=:client_id", array(':client_id'=>$ClientID));
+        return $result;
     }
 
     /**

@@ -22,13 +22,6 @@ interface IClientDAL
      */
     public function RegisterClient(Client $newClient);
     /**
-     * Elimina una cuenta para un usuario determiando
-     * @param $NUS
-     * @param $ClientID
-     * @return bool
-     */
-    public function DeleteAccount($NUS,$ClientID);
-    /**
      * Busca un cliente por su gmail
      * @param $gmail
      * @return int
@@ -54,4 +47,10 @@ interface IClientDAL
      * @return bool
      */
     public function HasDevice($IMEI,$ClientID);
+    /**
+     * Obtiene todas las cuentas para un usuario
+     * @param $ClientID
+     * @return Array
+     */
+    public function GetAllAccounts($ClientID);
 } 

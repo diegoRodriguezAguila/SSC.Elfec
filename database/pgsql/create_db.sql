@@ -78,6 +78,21 @@ CREATE TABLE mobile_phones(
 )
 ;
 
+--
+-- TABLE: pay_points
+--
+
+CREATE TABLE pay_points(
+    id                SERIAL UNIQUE      NOT NULL,
+    address            varchar(100)      NOT NULL,
+    phone              varchar(50)       NOT NULL,
+    start_attention    varchar(10),
+    longitude          decimal(20, 0),
+    end_attention      varchar(10),
+    latitude           decimal(20, 0),
+    CONSTRAINT "PK12" PRIMARY KEY (id)
+)
+;
 
 
 -- 
