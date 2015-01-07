@@ -9,7 +9,7 @@
 include_once("lib/nusoap.php");
 include_once("auto_load.php");
 
-use  models\Client, models\Account,models\MobilePhone,models\Device,models\PayPoint, data_access\ClientDALFactory, data_access\AccountDALFactory, data_access\MobilePhoneDALFactory,data_access\deviceDALFactory,data_access\PayPointDALFactory;
+use  models\Client, models\Account,models\MobilePhone,models\Device,models\PayPoint,models\web_services\WSResponse, data_access\ClientDALFactory, data_access\AccountDALFactory, data_access\MobilePhoneDALFactory,data_access\deviceDALFactory,data_access\PayPointDALFactory;
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 
@@ -56,10 +56,6 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
         $deviceDAL->RegisterDevice(Device::create()->setGCMToken($GCM)->setImei($DeviceIMEI)->setClientId($clientId)->setModel($DeviceModel)->setBrand($DeviceBrand));
     }
 
-    /*if(!$clientDAL->HasDevice($GCM, $DeviceIMEI))
-    {
-        Lo hago luego me dio flojera xD
-    }*/
     return $clientId;
 }
 $server->register('GetAllAccounts',
@@ -69,7 +65,9 @@ $server->register('GetAllAccounts',
 function GetAllAccounts($ClientId)
 {
     $clientDAL = ClientDALFactory::instance();
-    return json_encode($clientDAL->GetAllAccounts($ClientId));
+    $response=new WSResponse();
+    $response->setResponse($clientDAL->GetAllAccounts($ClientId));
+    return json_encode($response->JsonSerialize());
 
 }
 $server->register('GetAllPayPoints',
