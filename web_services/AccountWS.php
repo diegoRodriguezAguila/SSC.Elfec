@@ -45,7 +45,7 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
         $accountDAL = AccountDALFactory::instance();
         $accountDAL->RegisterAccount(Account::create()->setClientId($clientId)->setAccountNumber($AccountNumber)->setNUS($NUS));
     }
-    if(!$clientDAL->HasPhoneNumber($PhoneNumber,$clientId))
+    if(isset($PhoneNumber) && $PhoneNumber != '' && !$clientDAL->HasPhoneNumber($PhoneNumber,$clientId))
     {
         $phoneDAL = MobilePhoneDALFactory::instance();
         $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($PhoneNumber));
@@ -55,11 +55,6 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
         $deviceDAL = DeviceDALFactory::instance();
         $deviceDAL->RegisterDevice(Device::create()->setGCMToken($GCM)->setImei($DeviceIMEI)->setClientId($clientId)->setModel($DeviceModel)->setBrand($DeviceBrand));
     }
-
-    /*if(!$clientDAL->HasDevice($GCM, $DeviceIMEI))
-    {
-        Lo hago luego me dio flojera xD
-    }*/
     return $clientId;
 }
 $server->register('GetAllAccounts',

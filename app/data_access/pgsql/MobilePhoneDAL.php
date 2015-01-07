@@ -18,7 +18,7 @@ class MobilePhoneDAL implements IMobilePhoneDAL {
 
     /**
      * Registra un nuevo telefono relacionado a un cliente y retorna el Id que se le asignó
-     * @param Client $newClient
+     * @param MobilePhone $newClient
      * @return int
      */
     public function RegisterPhone(MobilePhone $phone)
