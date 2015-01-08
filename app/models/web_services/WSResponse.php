@@ -11,15 +11,15 @@ namespace models\web_services;
 
 class WSResponse {
     private $Response;
-    public $Errors;
+    private $Errors;
 
     function __construct()
     {
+        $this->Errors = array();
     }
     public function JsonSerialize()
     {
         $vars = get_object_vars($this);
-
         return $vars;
     }
     /**

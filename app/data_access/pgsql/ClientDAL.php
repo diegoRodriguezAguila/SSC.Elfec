@@ -47,13 +47,13 @@ class ClientDAL implements IClientDAL {
 
     /**
      * Obtiene todas las cuentas para un usuario
-     * @param $ClientID
+     * @param $Gmail
      * @return Array
      */
-    public function GetAllAccounts($ClientID)
+    public function GetAllAccounts($Gmail)
     {
         $db = Database::get();
-        $result  = $db->select("SELECT * FROM clients c, accounts a WHERE a.client_id = c.id AND  a.client_id=:client_id", array(':client_id'=>$ClientID));
+        $result  = $db->select("SELECT * FROM clients c, accounts a WHERE a.client_id = c.id AND  c.gmail=:gmail", array(':gmail'=>$Gmail));
         return $result;
     }
 

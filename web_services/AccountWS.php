@@ -17,8 +17,7 @@ $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 $server->register('RegisterAccount',
     array('AccountNumber' => 'xsd:string','NUS' => 'xsd:int', 'GMail' => 'xsd:string', 'PhoneNumber' => 'xsd:string', 'DeviceBrand' => 'xsd:string', 'DeviceModel' => 'xsd:string'
     , 'DeviceIMEI' => 'xsd:string','GCM' => 'xsd:string'),
-    array('Response' => 'xsd:integer'),
-    'xsd:ssc_elfec');
+    array('Response' => 'xsd:string'),'xsd:ssc_elfec');
 /**
  *  Método de servicio web para el registro de una cuenta y su asociación con un usuario, un dispositivo y un numero de teléfono
  * @param $AccountNumber
@@ -29,10 +28,12 @@ $server->register('RegisterAccount',
  * @param $DeviceModel
  * @param $DeviceIMEI
  * @param $GCM
- * @return int
+ * @return string
  */
 function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
 {
+    $response = new WSResponse();
+    $registerSuccess = true;
     $clientDAL = ClientDALFactory::instance();
     $clientId =  $clientDAL->GetClientId($GMail);
 
@@ -56,17 +57,18 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
         $deviceDAL->RegisterDevice(Device::create()->setGCMToken($GCM)->setImei($DeviceIMEI)->setClientId($clientId)->setModel($DeviceModel)->setBrand($DeviceBrand));
     }
 
-    return $clientId;
+    $response->setResponse($registerSuccess);
+    return json_encode($response->JsonSerialize());
 }
 $server->register('GetAllAccounts',
-    array('ClientId' => 'xsd:integer'),
+    array('GMail' => 'xsd:string'),
     array('Response' => 'xsd:string'),
     'xsd:ssc_elfec');
-function GetAllAccounts($ClientId)
+function GetAllAccounts($GMail)
 {
     $clientDAL = ClientDALFactory::instance();
-    $response=new WSResponse();
-    $response->setResponse($clientDAL->GetAllAccounts($ClientId));
+    $response = new WSResponse();
+    $response->setResponse($clientDAL->GetAllAccounts($GMail));
     return json_encode($response->JsonSerialize());
 
 }
