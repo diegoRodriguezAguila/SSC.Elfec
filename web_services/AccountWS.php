@@ -84,7 +84,7 @@ function GetAllPayPoints()
 }
 
 $server->register('DeleteAccount',
-    array('IMEI' => 'xsd:string','NUS' => 'xsd:int', 'GMail' => 'xsd:string'),
+    array('IMEI' => 'xsd:string','NUS' => 'xsd:string', 'GMail' => 'xsd:string'),
     array('Response' => 'xsd:integer'),
     'xsd:ssc_elfec');
 function DeleteAccount($IMEI,$NUS,$GMail)
@@ -108,7 +108,9 @@ function DeleteAccount($IMEI,$NUS,$GMail)
     }
     $accountDAL = AccountDALFactory::instance();
     $accountDAL->DeleteAccount($NUS,$clientId);
-    return 0;
+    $response = new WSResponse();
+    $response->setResponse(true);
+    return json_encode($response);
 }
 
 //RegisterAccount(12345,54321,'pedro@gmail.com',777777,'Sony','Xperia S','33333333321');
