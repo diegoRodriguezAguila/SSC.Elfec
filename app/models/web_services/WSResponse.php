@@ -25,9 +25,16 @@ class WSResponse {
     /**
      * @param mixed $Errors
      */
-    public function setErrors($Errors)
+    public function setErrors($errors)
     {
-        $this->Errors = $Errors;
+        $this->Errors = $errors;
+    }
+    /**
+     * @param mixed $Error
+     */
+    public function addError($error)
+    {
+        array_push($this->Errors,$error);
     }
     public function mySelf()
     {

@@ -9,7 +9,7 @@
 include_once("lib/nusoap.php");
 include_once("auto_load.php");
 
-use  models\Client, models\Account,models\MobilePhone,models\Device,models\PayPoint,models\web_services\WSResponse, data_access\ClientDALFactory, data_access\AccountDALFactory, data_access\MobilePhoneDALFactory,data_access\deviceDALFactory,data_access\PayPointDALFactory;
+use  models\Client, models\Account,models\MobilePhone,models\Device,models\PayPoint,models\web_services\WSResponse,models\web_services\WSValidationResult, data_access\ClientDALFactory, data_access\AccountDALFactory, data_access\MobilePhoneDALFactory,data_access\deviceDALFactory,data_access\PayPointDALFactory;
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 
@@ -89,28 +89,31 @@ $server->register('DeleteAccount',
     'xsd:ssc_elfec');
 function DeleteAccount($IMEI,$NUS,$GMail)
 {
+    $response = new WSResponse();
     $clientDAL = ClientDALFactory::instance();
     $clientId =  $clientDAL->GetClientId($GMail);
     if($clientId==-1)
     {
-        //esta trucheando correo es un vivillo
-        return -1;
+        $response->addError(new WSValidationResult("ClientPermissionDenied","Usted no tiene permisos necesarios para realizar esta accion"));
     }
     if(!$clientDAL->HasDevice($IMEI,$clientId))
     {
-        //es un dispositivo x, no puede borrar
-        return -2;
+        $response->addError(new WSValidationResult("DevicePermissionDenied","Este dispositivo no se encuentra registrado"));
     }
     if(!$clientDAL->HasAccount($GMail, $NUS))
     {
-        //No es su cuenta
-        return -3;
+        $response->addError(new WSValidationResult("AccountPermissionDenied","La cuenta que esta tratando de eliminar no le pertenece"));
     }
-    $accountDAL = AccountDALFactory::instance();
-    $accountDAL->DeleteAccount($NUS,$clientId);
-    $response = new WSResponse();
-    $response->setResponse(true);
-    return json_encode($response);
+    $errors=count($response->getErrors());
+    if($errors>0)
+        $response->setResponse(false);
+    else
+    {
+        $accountDAL = AccountDALFactory::instance();
+        $accountDAL->DeleteAccount($NUS,$clientId);
+        $response->setResponse(true);
+    }
+    return json_encode($response->JsonSerialize());
 }
 
 //RegisterAccount(12345,54321,'pedro@gmail.com',777777,'Sony','Xperia S','33333333321');
