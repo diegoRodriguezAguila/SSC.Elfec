@@ -87,9 +87,12 @@ CREATE TABLE pay_points(
     address            varchar(100)      NOT NULL,
     phone              varchar(50)       NOT NULL,
     start_attention    varchar(10),
-    longitude          decimal(20, 0),
     end_attention      varchar(10),
-    latitude           decimal(20, 0),
+    latitude           decimal(22, 20)   NOT NULL,
+    longitude          decimal(22, 20)   NOT NULL,
+    status         integer           NOT NULL,
+    insert_date    timestamp      NOT NULL,
+    update_date    timestamp,
     CONSTRAINT "PK12" PRIMARY KEY (id)
 )
 ;

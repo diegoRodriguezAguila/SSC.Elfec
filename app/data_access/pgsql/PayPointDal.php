@@ -8,19 +8,18 @@
 
 namespace data_access\pgsql;
 
-use data_access\Client;
 use data_access\IPayPointDAL;
 use helpers\Database;
-use models\PayPoint;
+
 class PayPointDal implements IPayPointDAL {
     /**
-     * Retorna las ubicaciones de todas las sucursales.
+     * Retorna las ubicaciones de todos los puntos de pago
      * @return string
      */
     public function GetAllLocations()
     {
         $db = Database::get();
-        $result  = $db->select("SELECT * FROM pay_points");
+        $result  = $db->select("SELECT * FROM pay_points WHERE status=1");
         return $result;
     }
 

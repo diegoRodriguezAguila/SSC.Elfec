@@ -9,7 +9,9 @@
 include_once("lib/nusoap.php");
 include_once("auto_load.php");
 
-use  models\Client, models\Account,models\MobilePhone,models\Device,models\PayPoint,models\web_services\WSResponse,models\web_services\WSValidationResult, data_access\ClientDALFactory, data_access\AccountDALFactory, data_access\MobilePhoneDALFactory,data_access\deviceDALFactory,data_access\PayPointDALFactory;
+use  models\Client, models\Account, models\MobilePhone,models\Device, models\web_services\WSResponse,
+    models\web_services\WSValidationResult, data_access\ClientDALFactory, data_access\AccountDALFactory,
+    data_access\MobilePhoneDALFactory, data_access\deviceDALFactory;
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 
@@ -56,7 +58,9 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
         $deviceDAL = DeviceDALFactory::instance();
         $deviceDAL->RegisterDevice(Device::create()->setGCMToken($GCM)->setImei($DeviceIMEI)->setClientId($clientId)->setModel($DeviceModel)->setBrand($DeviceBrand));
     }
-
+    $errors=count($response->getErrors());
+    if($errors>0)
+        $registerSuccess = false;
     $response->setResponse($registerSuccess);
     return json_encode($response->JsonSerialize());
 }
@@ -70,16 +74,6 @@ function GetAllAccounts($GMail)
     $response = new WSResponse();
     $response->setResponse($clientDAL->GetAllAccounts($GMail));
     return json_encode($response->JsonSerialize());
-
-}
-$server->register('GetAllPayPoints',
-    array(),
-    array('Response' => 'xsd:string'),
-    'xsd:ssc_elfec');
-function GetAllPayPoints()
-{
-    $pointDAL = PayPointDALFactory::instance();
-    return json_encode($pointDAL->GetAllLocations());
 
 }
 
@@ -115,8 +109,6 @@ function DeleteAccount($IMEI,$NUS,$GMail)
     }
     return json_encode($response->JsonSerialize());
 }
-
-//RegisterAccount(12345,54321,'pedro@gmail.com',777777,'Sony','Xperia S','33333333321');
 
 $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA)
     ? $HTTP_RAW_POST_DATA : '';
