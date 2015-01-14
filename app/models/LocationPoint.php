@@ -8,7 +8,7 @@
 namespace models;
 
 use DateTime;
-class PayPoint {
+class LocationPoint {
     private $Address;
     private $Phone;
     private $StartAttention;

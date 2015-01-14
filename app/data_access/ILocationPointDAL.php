@@ -8,8 +8,8 @@
 
 namespace data_access;
 
-use models\PayPoint;
-interface IPayPointDAL {
+use models\LocationPoint;
+interface ILocationPointDAL {
 
     /**
      * Retorna las ubicaciones de todas las sucursales.

@@ -8,10 +8,10 @@
 
 namespace data_access\pgsql;
 
-use data_access\IPayPointDAL;
+use data_access\ILocationPointDAL;
 use helpers\Database;
 
-class PayPointDal implements IPayPointDAL {
+class LocationPointDal implements ILocationPointDAL {
     /**
      * Retorna las ubicaciones de todos los puntos de pago
      * @return string
