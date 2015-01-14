@@ -79,10 +79,10 @@ CREATE TABLE mobile_phones(
 ;
 
 --
--- TABLE: pay_points
+-- TABLE: location_points
 --
 
-CREATE TABLE pay_points(
+CREATE TABLE location_points(
     id                SERIAL UNIQUE      NOT NULL,
     address            varchar(100)      NOT NULL,
     phone              varchar(50)       NOT NULL,
@@ -90,6 +90,7 @@ CREATE TABLE pay_points(
     end_attention      varchar(10),
     latitude           decimal(22, 20)   NOT NULL,
     longitude          decimal(22, 20)   NOT NULL,
+    type            integer               NOT NULL,
     status         integer           NOT NULL,
     insert_date    timestamp      NOT NULL,
     update_date    timestamp,

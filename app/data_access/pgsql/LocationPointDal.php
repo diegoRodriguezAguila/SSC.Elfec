@@ -19,7 +19,7 @@ class LocationPointDal implements ILocationPointDAL {
     public function GetAllLocations()
     {
         $db = Database::get();
-        $result  = $db->select("SELECT * FROM pay_points WHERE status=1");
+        $result  = $db->select("SELECT * FROM location_points WHERE status=1");
         return $result;
     }
 
