@@ -84,6 +84,7 @@ CREATE TABLE mobile_phones(
 
 CREATE TABLE location_points(
     id                SERIAL UNIQUE      NOT NULL,
+    institution_name   varchar(50)       NOT NULL,
     address            varchar(100)      NOT NULL,
     phone              varchar(50)       NOT NULL,
     start_attention    varchar(10),
