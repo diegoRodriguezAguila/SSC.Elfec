@@ -64,21 +64,33 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
     $response->setResponse($registerSuccess);
     return json_encode($response->JsonSerialize());
 }
+
 $server->register('GetAllAccounts',
-    array('GMail' => 'xsd:string'),
+    array('GMail' => 'xsd:string', 'DeviceBrand' => 'xsd:string', 'DeviceModel' => 'xsd:string'
+    , 'DeviceIMEI' => 'xsd:string','GCM' => 'xsd:string'),
     array('Response' => 'xsd:string'),
     'xsd:ssc_elfec');
-function GetAllAccounts($GMail)
+
+function GetAllAccounts($GMail, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
 {
     $clientDAL = ClientDALFactory::instance();
+    $clientId =  $clientDAL->GetClientId($GMail);
+
+    if($clientId==-1)
+    {
+        $clientId = $clientDAL->RegisterClient(Client::create()->setGmail($GMail));
+    }
+    if(!$clientDAL->HasDevice($DeviceIMEI,$clientId))
+    {
+        $deviceDAL = DeviceDALFactory::instance();
+        $deviceDAL->RegisterDevice(Device::create()->setGCMToken($GCM)->setImei($DeviceIMEI)->setClientId($clientId)->setModel($DeviceModel)->setBrand($DeviceBrand));
+    }
     $response = new WSResponse();
     $response->setResponse($clientDAL->GetAllAccounts($GMail));
     return json_encode($response->JsonSerialize());
-
 }
 
-$server->register('DeleteAccount',
-    array('IMEI' => 'xsd:string','NUS' => 'xsd:string', 'GMail' => 'xsd:string'),
+$server->register('DeleteAccount',   array('IMEI' => 'xsd:string','NUS' => 'xsd:string', 'GMail' => 'xsd:string'),
     array('Response' => 'xsd:integer'),
     'xsd:ssc_elfec');
 function DeleteAccount($IMEI,$NUS,$GMail)

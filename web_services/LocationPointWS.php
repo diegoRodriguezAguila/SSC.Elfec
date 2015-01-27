@@ -13,10 +13,10 @@ $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 
 
-$server->register('GetAllPayPoints',[],
+$server->register('GetAllLocationPoints',[],
     ['Response' => 'xsd:string'],
     'xsd:ssc_elfec');
-function GetAllPayPoints()
+function GetAllLocationPoints()
 {
     $response = new WSResponse();
     $pointDAL = LocationPointDALFactory::instance();

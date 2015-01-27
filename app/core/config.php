@@ -26,6 +26,9 @@ class Config {
 		//set a default language
 		define('LANGUAGE_CODE', 'en');
 
+        //set the api key from Google API
+        define( 'API_ACCESS_KEY', 'AIzaSyCX5gxMA73PIZVCXuwqZf7odatmcOMAXYk' );
+
 		//database details ONLY NEEDED IF USING A DATABASE
 		define('DB_TYPE', 'pgsql');
 		define('DB_HOST', 'localhost');
