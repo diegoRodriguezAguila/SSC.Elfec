@@ -11,7 +11,7 @@ include_once("auto_load.php");
 
 use  models\Client, models\Account, models\MobilePhone,models\Device, models\web_services\WSResponse,
     models\web_services\WSValidationResult, data_access\ClientDALFactory, data_access\AccountDALFactory,
-    data_access\MobilePhoneDALFactory, data_access\deviceDALFactory;
+    data_access\MobilePhoneDALFactory, data_access\DeviceDALFactory;
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 

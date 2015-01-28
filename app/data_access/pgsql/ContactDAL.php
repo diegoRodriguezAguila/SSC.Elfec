@@ -9,6 +9,8 @@
 namespace data_access\pgsql;
 
 use models\Contact;
+use data_access\IContactDAL;
+use helpers\Database;
 
 class ContactDAL implements IContactDAL{
 
