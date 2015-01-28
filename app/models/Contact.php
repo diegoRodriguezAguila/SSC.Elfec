@@ -11,19 +11,25 @@ use DateTime;
 
 class Contact {
 
-    public $Id;
-    public $Phone;
-    public $Address;
-    public $Email;
-    public $WebPage;
-    public $Facebook;
-    public $FacebookId;
-    public $Status;
-    public $InsertDate;
-    public $UpdateDate;
+    private $Id;
+    private $Phone;
+    private $Address;
+    private $Email;
+    private $WebPage;
+    private $Facebook;
+    private $FacebookId;
+    private $Status;
+    private $InsertDate;
+    private $UpdateDate;
 
     private function __construct()
     {
+    }
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 
     /**

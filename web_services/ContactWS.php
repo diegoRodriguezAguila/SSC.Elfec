@@ -24,7 +24,7 @@ function GetContactUpdate()
     $contactDAL = ContactDALFactory::instance();
 
     $response = new WSResponse();
-    $response->setResponse($contactDAL->GetCurrentActiveContact());
+    $response->setResponse($contactDAL->GetCurrentActiveContact()->jsonSerialize());
     return json_encode($response->JsonSerialize());
 }
 
