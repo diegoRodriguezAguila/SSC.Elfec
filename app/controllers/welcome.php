@@ -2,6 +2,7 @@
 use core\view;
 use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
+use business_logic\gcm_services\GCMAccountManager;
 use models\Client;
 /*
  * Welcome controller
@@ -30,8 +31,8 @@ class Welcome extends \core\controller{
         $userDAL = ClientDALFactory::instance();
         /*$newUser = $userDAL->RegisterUser(Client::create()->setGmail('diroag2@gmail.com'));
         $data['welcome_message'] = 'usuario registrado con email: '.$newUser->getGmail().' y id: '.$newUser->getId();*/
-        $clientId =  $userDAL->GetClientId('diroag2@gmail.com');
-        $data['welcome_message'] = 'CLIENT ID: '.$clientId;
+        $clientId =  $userDAL->GetClientId('ssc.elfec@gmail.com');
+        $data['welcome_message'] = 'CLIENT ID: '.serialize(GCMAccountManager::propagateNewAccountToDevices( $userDAL->GetClientId('ssc.elfec@gmail.com'),null,1));
 		View::rendertemplate('header', $data);
 		View::render('welcome/welcome', $data);
 		View::rendertemplate('footer', $data);

@@ -8,7 +8,7 @@
 
 include_once("lib/nusoap.php");
 include_once("auto_load.php");
-
+use business_logic\gcm_services\GCMAccountManager;
 use  models\Client, models\Account, models\MobilePhone,models\Device, models\web_services\WSResponse,
     models\web_services\WSValidationResult, data_access\ClientDALFactory, data_access\AccountDALFactory,
     data_access\MobilePhoneDALFactory, data_access\deviceDALFactory;
@@ -61,6 +61,11 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
     $errors=count($response->getErrors());
     if($errors>0)
         $registerSuccess = false;
+    else
+    {
+        $a=new Account();
+        GCMAccountManager::propagateNewAccountToDevices($GMail,$a->setAccountNumber($AccountNumber)->setNUS($NUS),1);
+    }
     $response->setResponse($registerSuccess);
     return json_encode($response->JsonSerialize());
 }

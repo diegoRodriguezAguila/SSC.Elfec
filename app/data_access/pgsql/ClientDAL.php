@@ -30,7 +30,12 @@ class ClientDAL implements IClientDAL {
         $db->insert('clients', $data);
         return $db->lastInsertId('clients_id_seq');
     }
-
+    public function getMyDevices($clientId)
+    {
+        $db = Database::get();
+        $result  = $db->select("SELECT gcm_token FROM clients c, devices d WHERE d.client_id = c.id AND d.client_id=:client_id", array(':client_id'=>$clientId));
+        return $result;
+    }
 
     /**
      * Verifica si es que un usuario ya tiene agregado un dispositivo
