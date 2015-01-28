@@ -41,6 +41,25 @@ CREATE TABLE clients(
 )
 ;
 
+--
+-- TABLE: contacts
+--
+
+CREATE TABLE contacts(
+    id             SERIAL UNIQUE         NOT NULL,
+    phone          varchar(15)     NOT NULL,
+    address        varchar(100)    NOT NULL,
+    email          varchar(100)    NOT NULL,
+    webpage        varchar(100)    NOT NULL,
+    facebook       varchar(100)    NOT NULL,
+    facebook_id    varchar(20)     NOT NULL,
+    status         integer            NOT NULL,
+    insert_date    timestamp       NOT NULL,
+    update_date    timestamp,
+    CONSTRAINT "PK1_2_2" PRIMARY KEY (id)
+)
+;
+
 
 
 -- 
