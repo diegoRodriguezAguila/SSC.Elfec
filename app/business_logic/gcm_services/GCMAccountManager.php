@@ -7,7 +7,6 @@
 
 namespace business_logic\gcm_services;
 use data_access\ClientDALFactory;
-use data_access\pgsql\ClientDAL;
 use helpers\GCMSender;
 use models\Account;
 
@@ -20,9 +19,9 @@ class GCMAccountManager {
 
     /**
      * Envía la nueva cuenta a todos los dispositivos del usuario, excepto al que hizo el registro
-     * @param $ownerClientGmail
-     * @param $newAccount
-     * @param $originDeviceImei
+     * @param string $ownerClientGmail
+     * @param Account $newAccount
+     * @param string $originDeviceImei
      */
     public static function propagateNewAccountToDevices($ownerClientGmail,Account $newAccount, $originDeviceImei)
     {
@@ -30,7 +29,7 @@ class GCMAccountManager {
         $devices=$clientDAL->getMyDevices( $clientDAL->GetClientId($ownerClientGmail));
         $msg = array
         (
-            'message'       => 'Se añadio una nueva cuenta',
+            'message'       => 'Se registró una nueva cuenta',
             'title'         => 'Nueva cuenta',
             'key'           => 'NewAccount',
             'nus'           => $newAccount->getNUS(),
@@ -38,9 +37,38 @@ class GCMAccountManager {
             'gmail'         => $ownerClientGmail
         );
         $d=array();
-        foreach($devices as $valor)
-            array_push($d,$valor->gcm_token);
+        foreach($devices as $dev)
+        {
+            if($dev->imei!=$originDeviceImei)
+                array_push($d,$dev->gcm_token);
+        }
         GCMSender::sendDataToDevices($d,$msg);
+    }
 
+    /**
+     * Propaga la eliminación de una cuenta a todos los dispositivos pertinentes, excepto al que realizó la acción
+     * @param string $ownerClientGmail
+     * @param string $NUS
+     * @param string $originDeviceImei
+     */
+    public static function propagateDeletedAccountToDevices($ownerClientGmail, $NUS, $originDeviceImei)
+    {
+        $clientDAL = ClientDALFactory::instance();
+        $devices=$clientDAL->getMyDevices( $clientDAL->GetClientId($ownerClientGmail));
+        $msg = array
+        (
+            'message'       => 'Se eliminó la cuenta con el nus '.$NUS,
+            'title'         => 'Cuenta eliminada',
+            'key'           => 'AccountDeleted',
+            'nus'           => $NUS,
+            'gmail'         => $ownerClientGmail
+        );
+        $d=array();
+        foreach($devices as $dev)
+        {
+            if($dev->imei!=$originDeviceImei)
+                array_push($d,$dev->gcm_token);
+        }
+        GCMSender::sendDataToDevices($d,$msg);
     }
 } 

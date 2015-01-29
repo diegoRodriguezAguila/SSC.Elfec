@@ -8,7 +8,7 @@
 namespace data_access;
 
 /**
- * Provee de un metodo para obtener una instancia de IUserDAL con la configuración de acceso
+ * Provee de un metodo para obtener una instancia de ClientDAL con la configuración de acceso
  * a base de datos determinado en config.php
  * Class AccountDALFactory
  * @package data_access
@@ -16,6 +16,11 @@ namespace data_access;
 class ClientDALFactory {
 
     private static $Instance;
+
+    /**
+     * Crea la instancia de ClientDAL segun la configuración
+     * @return IClientDAL
+     */
     public static function instance()
     {
         if(!isset(self::$Instance))

@@ -38,12 +38,14 @@ interface IClientDAL
     /**
      * Verifica si es que un usuario ya tiene agregado un telefono
      * @param $phoneNumber
+     * @param $ClientId
      * @return bool
      */
     public function HasPhoneNumber($phoneNumber,$ClientId);
     /**
      * Verifica si es que un usuario ya tiene agregado un dispositivo
      * @param $IMEI
+     * @param $ClientID
      * @return bool
      */
     public function HasDevice($IMEI,$ClientID);
@@ -53,4 +55,10 @@ interface IClientDAL
      * @return Array
      */
     public function GetAllAccounts($ClientID);
+    /**
+     * Obtiene los dispositivos que le pertenecen a un cliente
+     * @param $clientId
+     * @return array
+     */
+    public function getMyDevices($clientId);
 } 

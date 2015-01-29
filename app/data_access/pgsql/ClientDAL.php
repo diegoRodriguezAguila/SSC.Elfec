@@ -30,6 +30,12 @@ class ClientDAL implements IClientDAL {
         $db->insert('clients', $data);
         return $db->lastInsertId('clients_id_seq');
     }
+
+    /**
+     * Obtiene los dispositivos que le pertenecen a un cliente
+     * @param $clientId
+     * @return array
+     */
     public function getMyDevices($clientId)
     {
         $db = Database::get();
@@ -40,6 +46,7 @@ class ClientDAL implements IClientDAL {
     /**
      * Verifica si es que un usuario ya tiene agregado un dispositivo
      * @param $IMEI
+     * @param $ClientId
      * @return bool
      */
     public function HasDevice($IMEI,$ClientId)
@@ -93,6 +100,7 @@ class ClientDAL implements IClientDAL {
     /**
      * Verifica si es que un usuario ya tiene agregado un telefono
      * @param $phoneNumber
+     * @param $ClientId
      * @return bool
      */
     public function HasPhoneNumber($phoneNumber,$ClientId)

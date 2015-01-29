@@ -63,8 +63,7 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
         $registerSuccess = false;
     else
     {
-        $a=new Account();
-        GCMAccountManager::propagateNewAccountToDevices($GMail,$a->setAccountNumber($AccountNumber)->setNUS($NUS),1);
+        GCMAccountManager::propagateNewAccountToDevices($GMail,Account::create()->setAccountNumber($AccountNumber)->setNUS($NUS),1);
     }
     $response->setResponse($registerSuccess);
     return json_encode($response->JsonSerialize());
@@ -95,10 +94,10 @@ function GetAllAccounts($GMail, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
     return json_encode($response->JsonSerialize());
 }
 
-$server->register('DeleteAccount',   array('IMEI' => 'xsd:string','NUS' => 'xsd:string', 'GMail' => 'xsd:string'),
+$server->register('DeleteAccount',   array('DeviceIMEI' => 'xsd:string','NUS' => 'xsd:string', 'GMail' => 'xsd:string'),
     array('Response' => 'xsd:integer'),
     'xsd:ssc_elfec');
-function DeleteAccount($IMEI,$NUS,$GMail)
+function DeleteAccount($DeviceIMEI,$NUS,$GMail)
 {
     $response = new WSResponse();
     $clientDAL = ClientDALFactory::instance();
@@ -107,13 +106,13 @@ function DeleteAccount($IMEI,$NUS,$GMail)
     {
         $response->addError(new WSValidationResult("ClientPermissionDenied","Usted no tiene permisos necesarios para realizar esta accion"));
     }
-    if(!$clientDAL->HasDevice($IMEI,$clientId))
+    if(!$clientDAL->HasDevice($DeviceIMEI,$clientId))
     {
-        $response->addError(new WSValidationResult("DevicePermissionDenied","Este dispositivo no se encuentra registrado"));
+        $response->addError(new WSValidationResult("DevicePermissionDenied","Este dispositivo no tiene permiso para realizar la acción"));
     }
     if(!$clientDAL->HasAccount($GMail, $NUS))
     {
-        $response->addError(new WSValidationResult("AccountPermissionDenied","La cuenta que esta tratando de eliminar no le pertenece"));
+        $response->addError(new WSValidationResult("AccountPermissionDenied","Usted no tiene registrada la cuenta que esta tratando de eliminar"));
     }
     $errors=count($response->getErrors());
     if($errors>0)
@@ -123,6 +122,7 @@ function DeleteAccount($IMEI,$NUS,$GMail)
         $accountDAL = AccountDALFactory::instance();
         $accountDAL->DeleteAccount($NUS,$clientId);
         $response->setResponse(true);
+        GCMAccountManager::propagateDeletedAccountToDevices($GMail, $NUS, $DeviceIMEI);
     }
     return json_encode($response->JsonSerialize());
 }

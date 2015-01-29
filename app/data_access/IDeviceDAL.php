@@ -14,5 +14,6 @@ use models\Device;
  * @return int
  */
 interface IDeviceDAL {
-public function RegisterDevice(Device $device);
+    public function RegisterDevice(Device $device);
+    public function GetAllDevices();
 }

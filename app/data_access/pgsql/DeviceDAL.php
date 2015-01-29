@@ -29,4 +29,10 @@ class DeviceDAL implements IDeviceDAL{
         return $db->lastInsertId('devices_id_seq');
     }
 
+    public function GetAllDevices()
+    {
+        $db = Database::get();
+        return $db->select("SELECT * FROM devices WHERE status=1");
+    }
+
 } 

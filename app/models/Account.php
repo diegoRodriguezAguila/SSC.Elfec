@@ -23,7 +23,7 @@ class Account
     private $InsertDate;
     private $UpdateDate;
 
-    public function __construct()
+    private function __construct()
     {
     }
 
@@ -31,8 +31,7 @@ class Account
      * Static constructor / factory
      */
     public static function create() {
-        $instance = new self();
-        return $instance;
+        return new self();
     }
 
 
