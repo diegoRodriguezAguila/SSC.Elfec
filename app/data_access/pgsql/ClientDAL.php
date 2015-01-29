@@ -36,10 +36,10 @@ class ClientDAL implements IClientDAL {
      * @param $clientId
      * @return array
      */
-    public function getMyDevices($clientId)
+    public function getClientDevices($clientId)
     {
         $db = Database::get();
-        $result  = $db->select("SELECT gcm_token FROM clients c, devices d WHERE d.client_id = c.id AND d.client_id=:client_id", array(':client_id'=>$clientId));
+        $result  = $db->select("SELECT * FROM devices WHERE client_id=:client_id", array(':client_id'=>$clientId));
         return $result;
     }
 

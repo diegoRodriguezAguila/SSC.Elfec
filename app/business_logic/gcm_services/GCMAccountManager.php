@@ -26,7 +26,7 @@ class GCMAccountManager {
     public static function propagateNewAccountToDevices($ownerClientGmail,Account $newAccount, $originDeviceImei)
     {
         $clientDAL = ClientDALFactory::instance();
-        $devices=$clientDAL->getMyDevices( $clientDAL->GetClientId($ownerClientGmail));
+        $devices=$clientDAL->getClientDevices( $clientDAL->GetClientId($ownerClientGmail));
         $msg = array
         (
             'message'       => 'Se registró una nueva cuenta',
@@ -54,7 +54,7 @@ class GCMAccountManager {
     public static function propagateDeletedAccountToDevices($ownerClientGmail, $NUS, $originDeviceImei)
     {
         $clientDAL = ClientDALFactory::instance();
-        $devices=$clientDAL->getMyDevices( $clientDAL->GetClientId($ownerClientGmail));
+        $devices=$clientDAL->getClientDevices( $clientDAL->GetClientId($ownerClientGmail));
         $msg = array
         (
             'message'       => 'Se eliminó la cuenta con el nus '.$NUS,

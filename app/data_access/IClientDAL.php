@@ -60,5 +60,5 @@ interface IClientDAL
      * @param $clientId
      * @return array
      */
-    public function getMyDevices($clientId);
+    public function getClientDevices($clientId);
 } 
