@@ -63,7 +63,7 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
         $registerSuccess = false;
     else
     {
-        GCMAccountManager::propagateNewAccountToDevices($GMail,Account::create()->setAccountNumber($AccountNumber)->setNUS($NUS),1);
+        GCMAccountManager::propagateNewAccountToDevices($GMail,Account::create()->setAccountNumber($AccountNumber)->setNUS($NUS),$DeviceIMEI);
     }
     $response->setResponse($registerSuccess);
     return json_encode($response->JsonSerialize());
