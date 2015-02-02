@@ -25,7 +25,7 @@ class GCMLocationPointManager {
         foreach($points as $point)
         {
             $serializedPoint=json_encode($point->JsonSerialize());
-            array_push($result,(Object)(str_replace('"',"'",$serializedPoint)));
+            array_push($result,$point->JsonSerialize());
         }
         $serializedPoints=($result);
         $msg = array

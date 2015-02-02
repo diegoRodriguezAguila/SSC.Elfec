@@ -38,14 +38,15 @@ class Welcome extends \core\controller{
         $a=array();
         $b=new LocationPoint();
         $b->setAddress("asd");
-        $b->setInstitutionName("Elfec Sacaba");
-        $b->setLatitude( -17.4058059);
-        $b->setLongitude(-66.0444019);
+        $b->setInstitutionName("Elfec Laguna 2");
+
+        $b->setLatitude(-17.3940401);
+        $b->setLongitude(-66.1638756);
         $b->setEndAttention(1);
         $b->setInsertDate(1);
         $b->setPhone(1);
         $b->setStartAttention(1);
-
+        $b->setType(0);
         $b->setPhone(1);
         $b->setStatus(1);
         array_push($a,$b);

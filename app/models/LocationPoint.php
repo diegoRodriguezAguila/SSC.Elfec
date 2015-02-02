@@ -17,7 +17,23 @@ class LocationPoint {
     private $Latitude;
     private $Longitude;
     private $Status;
+    private $Type;
 
+    /**
+     * @param mixed $Type
+     */
+    public function setType($Type)
+    {
+        $this->Type = $Type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->Type;
+    }
     /**
      * @param mixed $InstitutionName
      */
