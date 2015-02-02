@@ -3,7 +3,10 @@ use core\view;
 use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
 use business_logic\gcm_services\GCMAccountManager;
+use business_logic\gcm_services\GCMLocationPointManager;
 use models\Client;
+use models\LocationPoint;
+
 /*
  * Welcome controller
  *
@@ -32,7 +35,22 @@ class Welcome extends \core\controller{
         /*$newUser = $userDAL->RegisterUser(Client::create()->setGmail('diroag2@gmail.com'));
         $data['welcome_message'] = 'usuario registrado con email: '.$newUser->getGmail().' y id: '.$newUser->getId();*/
         $clientId =  $userDAL->GetClientId('ssc.elfec@gmail.com');
-        $data['welcome_message'] = 'CLIENT ID: '.serialize(GCMAccountManager::propagateNewAccountToDevices( $userDAL->GetClientId('ssc.elfec@gmail.com'),null,1));
+        $a=array();
+        $b=new LocationPoint();
+        $b->setAddress("asd");
+        $b->setInstitutionName("Elfec Sacaba");
+        $b->setLatitude( -17.4058059);
+        $b->setLongitude(-66.0444019);
+        $b->setEndAttention(1);
+        $b->setInsertDate(1);
+        $b->setPhone(1);
+        $b->setStartAttention(1);
+
+        $b->setPhone(1);
+        $b->setStatus(1);
+        array_push($a,$b);
+
+        $data['welcome_message'] = 'CLIENT ID: '.GCMLocationPointManager::propagatePointsToAllDevices($a);
 		View::rendertemplate('header', $data);
 		View::render('welcome/welcome', $data);
 		View::rendertemplate('footer', $data);

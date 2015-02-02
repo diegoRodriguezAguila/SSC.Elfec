@@ -10,12 +10,29 @@ namespace models;
 use DateTime;
 class LocationPoint {
     private $Address;
+    private $InstitutionName;
     private $Phone;
     private $StartAttention;
     private $EndAttention;
     private $Latitude;
     private $Longitude;
     private $Status;
+
+    /**
+     * @param mixed $InstitutionName
+     */
+    public function setInstitutionName($InstitutionName)
+    {
+        $this->InstitutionName = $InstitutionName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInstitutionName()
+    {
+        return $this->InstitutionName;
+    }
     private $InsertDate;
     private $UpdateDate;
 
@@ -27,6 +44,11 @@ class LocationPoint {
         $this->Address = $Address;
     }
 
+    public function JsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
+    }
     /**
      * @return string
      */

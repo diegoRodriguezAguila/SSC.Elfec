@@ -41,7 +41,7 @@ class GCMContactManager {
         $deviceTokens = array();
         for ($i = 0; $i < $totalDevices; $i++)
         {
-            array_push($deviceTokens,$deviceTokens[$i]->gcm_token);
+            array_push($deviceTokens,$devices[$i]->gcm_token);
             $counter++;
             if($counter==self::$MAX_DEVICES_PER_GCM)
             {
