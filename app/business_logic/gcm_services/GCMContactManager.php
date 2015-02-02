@@ -31,6 +31,7 @@ class GCMContactManager {
             'message'       => 'Se actualizó la información de contacto de la empresa',
             'title'         => 'Información de contacto',
             'key'           => 'ContactsUpdate',
+            'type'          => 2,
             'phone'           => $newContact->getPhone(),
             'address'        => $newContact->getAddress(),
             'email'         => $newContact->getEmail(),

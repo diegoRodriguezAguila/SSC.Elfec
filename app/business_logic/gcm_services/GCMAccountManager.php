@@ -32,6 +32,7 @@ class GCMAccountManager {
             'message'       => 'Se registró una nueva cuenta',
             'title'         => 'Nueva cuenta',
             'key'           => 'NewAccount',
+            'type'          => 1,
             'nus'           => $newAccount->getNUS(),
             'number'        => $newAccount->getAccountNumber(),
             'gmail'         => $ownerClientGmail
@@ -60,6 +61,7 @@ class GCMAccountManager {
             'message'       => 'Se eliminó la cuenta con el nus '.$NUS,
             'title'         => 'Cuenta eliminada',
             'key'           => 'AccountDeleted',
+            'type'          =>  1,
             'nus'           => $NUS,
             'gmail'         => $ownerClientGmail
         );

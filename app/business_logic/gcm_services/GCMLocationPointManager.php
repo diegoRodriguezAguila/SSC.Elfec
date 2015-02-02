@@ -33,6 +33,7 @@ class GCMLocationPointManager {
             'message'       => 'Se actualizó la información de contacto de la empresa',
             'title'         => 'Información de contacto',
             'key'           => 'UpdatePoints',
+            'type'          =>  2,
             'points'        => ($serializedPoints) ,
         );
         $deviceTokens = array();
