@@ -29,7 +29,7 @@ class GCMAccountManager {
         $devices=$clientDAL->getClientDevices( $clientDAL->GetClientId($ownerClientGmail));
         $msg = array
         (
-            'message'       => 'Se registró una nueva cuenta',
+            'message'       => 'Se registró la cuenta: '.$newAccount->getAccountNumber().' con el nus:'.$newAccount->getNUS(),
             'title'         => 'Nueva cuenta',
             'key'           => 'NewAccount',
             'type'          => 1,
