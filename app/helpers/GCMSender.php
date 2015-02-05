@@ -31,6 +31,8 @@ class GCMSender {
 
         $ch = curl_init();
         curl_setopt( $ch,CURLOPT_URL, 'https://android.googleapis.com/gcm/send' );
+        if(defined (PROXY_SERVER))
+            curl_setopt($ch, CURLOPT_PROXY, PROXY_SERVER);
         curl_setopt( $ch,CURLOPT_POST, true );
         curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
         curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );

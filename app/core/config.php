@@ -29,6 +29,9 @@ class Config {
         //set the api key from Google API
         define( 'API_ACCESS_KEY', 'AIzaSyCX5gxMA73PIZVCXuwqZf7odatmcOMAXYk' );
 
+        //sets the proxy if necesary
+        define('PROXY_SERVER', 'proxy:8080');
+
 		//database details ONLY NEEDED IF USING A DATABASE
 		define('DB_TYPE', 'pgsql');
 		define('DB_HOST', 'localhost');
