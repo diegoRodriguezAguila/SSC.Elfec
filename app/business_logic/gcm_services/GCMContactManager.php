@@ -7,6 +7,8 @@
 
 namespace business_logic\gcm_services;
 use data_access\DeviceDALFactory, models\Contact;
+use models\enums\NotificationKey;
+use models\enums\NotificationType;
 
 /**
  * Class GCMContactManager provee de metodos necesarios para distintos tipos de envios de información de contactos a los dispositivos
@@ -30,8 +32,8 @@ class GCMContactManager {
         (
             'message'       => 'Se actualizó la información de contacto de la empresa',
             'title'         => 'Información de contacto',
-            'key'           => 'ContactsUpdate',
-            'type'          => 2,
+            'key'           => NotificationKey::CONTACTS_UPDATE,
+            'type'          => NotificationType::OTHERS,
             'phone'           => $newContact->getPhone(),
             'address'        => $newContact->getAddress(),
             'email'         => $newContact->getEmail(),

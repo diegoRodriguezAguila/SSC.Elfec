@@ -9,6 +9,8 @@
 namespace business_logic\gcm_services;
 use data_access\DeviceDALFactory;
 use helpers\GCMSender;
+use models\enums\NotificationKey;
+use models\enums\NotificationType;
 use models\LocationPoint;
 use models\web_services\WSResponse;
 class GCMLocationPointManager {
@@ -30,10 +32,10 @@ class GCMLocationPointManager {
         $serializedPoints=($result);
         $msg = array
         (
-            'message'       => 'Se actualizó la información de contacto de la empresa',
-            'title'         => 'Información de contacto',
-            'key'           => 'UpdatePoints',
-            'type'          =>  2,
+            'message'       => 'Se actualizaron los puntos de ubicación de la empresa',
+            'title'         => 'Actualización puntos de ubicación',
+            'key'           => NotificationKey::POINTS_UPDATE,
+            'type'          =>  NotificationType::OTHERS,
             'points'        => ($serializedPoints) ,
         );
         $deviceTokens = array();

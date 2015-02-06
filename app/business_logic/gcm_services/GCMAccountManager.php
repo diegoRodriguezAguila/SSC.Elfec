@@ -9,6 +9,8 @@ namespace business_logic\gcm_services;
 use data_access\ClientDALFactory;
 use helpers\GCMSender;
 use models\Account;
+use models\enums\NotificationKey;
+use models\enums\NotificationType;
 
 /**
  * Class GCMAccountManager provee de metodos necesarios para distintos tipos de envios
@@ -31,8 +33,8 @@ class GCMAccountManager {
         (
             'message'       => 'Se registró la cuenta: '.$newAccount->getAccountNumber().', con el nus: '.$newAccount->getNUS(),
             'title'         => 'Nueva cuenta',
-            'key'           => 'NewAccount',
-            'type'          => 1,
+            'key'           => NotificationKey::NEW_ACCOUNT,
+            'type'          => NotificationType::ACCOUNT,
             'nus'           => $newAccount->getNUS(),
             'number'        => $newAccount->getAccountNumber(),
             'gmail'         => $ownerClientGmail
@@ -56,12 +58,11 @@ class GCMAccountManager {
     {
         $clientDAL = ClientDALFactory::instance();
         $devices=$clientDAL->getClientDevices( $clientDAL->GetClientId($ownerClientGmail));
-        $msg = array
-        (
+        $msg = array(
             'message'       => 'Se eliminó la cuenta con el nus '.$NUS,
             'title'         => 'Cuenta eliminada',
-            'key'           => 'AccountDeleted',
-            'type'          =>  1,
+            'key'           => NotificationKey::ACCOUNT_DELETED,
+            'type'          =>  NotificationType::ACCOUNT,
             'nus'           => $NUS,
             'gmail'         => $ownerClientGmail
         );
