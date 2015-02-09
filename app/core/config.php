@@ -17,7 +17,7 @@ class Config {
 		ob_start();
 
 		//site address
-		define('DIR', 'http://localhost/SSC.Elfec/');
+		define('DIR', 'http://192.168.30.102/SSC.Elfec/');
 
 		//set default controller and method for legacy calls
 		define('DEFAULT_CONTROLLER', 'welcome');
@@ -34,12 +34,27 @@ class Config {
 
 		//database details ONLY NEEDED IF USING A DATABASE
 		define('DB_TYPE', 'pgsql');
-		define('DB_HOST', 'localhost');
+        define('DB_HOST', 'localhost');
         define('DB_PORT', '5432');
-		define('DB_NAME', 'SSC.Elfec');
-		define('DB_USER', 'SSC.Elfec');
-		define('DB_PASS', 'sscelfec2014');
-		define('PREFIX', 'SSC.Elfec');
+        define('DB_NAME', 'SSC.Elfec');
+        define('DB_USER', 'SSC.Elfec');
+        define('DB_PASS', 'sscelfec2014');
+        define('PREFIX', 'SSC.Elfec');
+
+        //Oracle DB
+        define('ODB_TYPE', 'oci');
+        define('ODB_HOST', 'oracle_preprod');
+        define('ODB_PORT', '1531');
+        define('ODB_NAME', '(DESCRIPTION =
+                                (ADDRESS_LIST =
+                                  (ADDRESS = (PROTOCOL = TCP)(HOST = oracle_preprod)(PORT = 1531))
+                                )
+                                (CONNECT_DATA =
+                                  (SERVICE_NAME = SIDPROD)
+                                )
+                              )');
+        define('ODB_USER', 'USR_SCC');
+        define('ODB_PASS', 'elfec2015');
 
 		//set prefix for sessions
 		define('SESSION_PREFIX', 'ssc_elfec_');

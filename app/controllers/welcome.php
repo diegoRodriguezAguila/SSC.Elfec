@@ -3,6 +3,7 @@ use core\view;
 use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
 use business_logic\gcm_services\GCMAccountManager;
+use helpers\database;
 use business_logic\gcm_services\GCMLocationPointManager;
 use models\Client;
 use models\LocationPoint;
@@ -31,27 +32,14 @@ class Welcome extends \core\controller{
 	public function index() {
 		$data['title'] = $this->language->get('welcome_text');
 		$data['welcome_message'] = $this->language->get('welcome_message');
-        $userDAL = ClientDALFactory::instance();
-        /*$newUser = $userDAL->RegisterUser(Client::create()->setGmail('diroag2@gmail.com'));
-        $data['welcome_message'] = 'usuario registrado con email: '.$newUser->getGmail().' y id: '.$newUser->getId();*/
-        $clientId =  $userDAL->GetClientId('ssc.elfec@gmail.com');
-        $a=array();
-        $b=new LocationPoint();
-        $b->setAddress("asd");
-        $b->setInstitutionName("Elfec Laguna 2");
-
-        $b->setLatitude(-17.3940401);
-        $b->setLongitude(-66.1638756);
-        $b->setEndAttention(1);
-        $b->setInsertDate(1);
-        $b->setPhone(1);
-        $b->setStartAttention(1);
-        $b->setType(0);
-        $b->setPhone(1);
-        $b->setStatus(1);
-        array_push($a,$b);
-
-        $data['welcome_message'] = 'CLIENT ID: '.GCMLocationPointManager::propagatePointsToAllDevices($a);
+        $db = database::get(['type' => ODB_TYPE,
+            'host' => ODB_HOST,
+            'port' => ODB_PORT,
+            'name' => ODB_NAME,
+            'user' => ODB_USER,
+            'pass' => ODB_PASS]);
+        $result  = $db->select("SELECT * FROM ELFEC_SSC.V_INFO_CUENTA WHERE ROWNUM<=100");
+        $data['welcome_message'] = '<B>RESULT</B>: '.json_encode($result);
 		View::rendertemplate('header', $data);
 		View::render('welcome/welcome', $data);
 		View::rendertemplate('footer', $data);
