@@ -59,7 +59,7 @@ class GCMAccountManager {
         $clientDAL = ClientDALFactory::instance();
         $devices=$clientDAL->getClientDevices( $clientDAL->GetClientId($ownerClientGmail));
         $msg = array(
-            'message'       => 'Se eliminó la cuenta con el nus '.$NUS,
+            'message'       => 'Se eliminó la cuenta con el nus: '.$NUS,
             'title'         => 'Cuenta eliminada',
             'key'           => NotificationKey::ACCOUNT_DELETED,
             'type'          =>  NotificationType::ACCOUNT,
