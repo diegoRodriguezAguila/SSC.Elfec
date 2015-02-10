@@ -24,7 +24,7 @@ class AccountManager {
      */
     public static function isAValidAccount($NUS, $AccountNumber)
     {
-        $result = AccountDataReader::findAccountCoincidence($NUS, $AccountNumber);
+        $result = AccountDataReader::findAccountCoincidence($NUS, $AccountNumber, AccountDataReader::V_INFO_CUENTA);
         return count($result)>=1;
     }
 } 

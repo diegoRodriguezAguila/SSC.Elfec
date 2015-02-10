@@ -16,16 +16,19 @@ use models\enums\DataBaseType;
  */
 class AccountDataReader {
 
+    const V_VALIDACION_CUENTA = "V_VALIDACION_CUENTA";
+    CONST V_INFO_CUENTA = "V_INFO_CUENTA";
     /**
      * Obtiene la información de una cuenta que coincida con el nus y el número de cuenta indicado
      * @param $NUS
      * @param $accountNumber
+     * @param $tableToFind
      * @return array
      */
-    public static function findAccountCoincidence($NUS, $accountNumber)
+    public static function findAccountData($NUS, $accountNumber, $tableToFind)
     {
         $db = database::get(DataBaseType::$ORACLE_DATABASE);
-        $result  = $db->select("SELECT * FROM ELFEC_SSC.V_VALIDACION_CUENTA WHERE ROWNUM=1 AND IDSUMINISTRO=:nus AND NROSUM=:accountNumber",
+        $result  = $db->select("SELECT * FROM ELFEC_SSC.".$tableToFind." WHERE ROWNUM=1 AND IDSUMINISTRO=:nus AND NROSUM=:accountNumber",
         [":nus"=>$NUS, ":accountNumber"=>$accountNumber]);
         return $result;
     }
