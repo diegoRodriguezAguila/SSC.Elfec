@@ -56,6 +56,14 @@ class Config {
         define('ODB_USER', 'USR_SSC');
         define('ODB_PASS', 'elfec2015');
 
+        //Centrality DB
+        define('CENTRALITY_DB_TYPE', 'pgsql');
+        define('CENTRALITY_DB_HOST', 'elfbdp01');
+        define('CENTRALITY_DB_PORT', '5432');
+        define('CENTRALITY_DB_NAME', 'SSC.Elfec');
+        define('CENTRALITY_DB_USER', 'drodriguezd');
+        define('CENTRALITY_DB_PASS', 'elfec2015');
+
 		//set prefix for sessions
 		define('SESSION_PREFIX', 'ssc_elfec_');
 

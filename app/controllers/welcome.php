@@ -4,6 +4,7 @@ use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
 use business_logic\gcm_services\GCMAccountManager;
 use helpers\database;
+use models\enums\DataBaseType;
 use business_logic\gcm_services\GCMLocationPointManager;
 use models\Client;
 use models\LocationPoint;
@@ -32,12 +33,7 @@ class Welcome extends \core\controller{
 	public function index() {
         $data['title'] = $this->language->get('welcome_text');
         $data['welcome_message'] = $this->language->get('welcome_message');
-        $db = database::get(['type' => ODB_TYPE,
-            'host' => ODB_HOST,
-            'port' => ODB_PORT,
-            'name' => ODB_NAME,
-            'user' => ODB_USER,
-            'pass' => ODB_PASS]);
+        $db = database::get(DataBaseType::$ORACLE_DATABASE);
         $result  = $db->select("SELECT * FROM ELFEC_SSC.V_INFO_CUENTA WHERE ROWNUM <=100");
         //$db = database::get();
        // $result  = $db->select("SELECT * FROM contacts");
