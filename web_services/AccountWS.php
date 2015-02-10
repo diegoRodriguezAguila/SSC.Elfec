@@ -9,9 +9,15 @@
 include_once("lib/nusoap.php");
 include_once("auto_load.php");
 use business_logic\gcm_services\GCMAccountManager;
-use  models\Client, models\Account, models\MobilePhone,models\Device, models\web_services\WSResponse,
-    models\web_services\WSValidationResult, data_access\ClientDALFactory, data_access\AccountDALFactory,
-    data_access\MobilePhoneDALFactory, data_access\DeviceDALFactory;
+use  models\Client, models\Account,
+    models\MobilePhone,models\Device,
+    models\web_services\WSResponse,
+    models\web_services\WSValidationResult,
+    data_access\ClientDALFactory,
+    data_access\AccountDALFactory,
+    data_access\MobilePhoneDALFactory,
+    data_access\DeviceDALFactory,
+    business_logic\AccountManager;
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 
@@ -43,20 +49,27 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
     {
         $clientId = $clientDAL->RegisterClient(Client::create()->setGmail($GMail));
     }
-    if(!$clientDAL->HasAccount($GMail, $NUS))
+    if(!AccountManager::isAValidAccount($NUS, $AccountNumber))
     {
-        $accountDAL = AccountDALFactory::instance();
-        $accountDAL->RegisterAccount(Account::create()->setClientId($clientId)->setAccountNumber($AccountNumber)->setNUS($NUS));
+        if(!$clientDAL->HasAccount($GMail, $NUS))
+        {
+            $accountDAL = AccountDALFactory::instance();
+            $accountDAL->RegisterAccount(Account::create()->setClientId($clientId)->setAccountNumber($AccountNumber)->setNUS($NUS));
+        }
+        if(!$clientDAL->HasPhoneNumber($PhoneNumber,$clientId))
+        {
+            $phoneDAL = MobilePhoneDALFactory::instance();
+            $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($PhoneNumber));
+        }
+        if(!$clientDAL->HasDevice($DeviceIMEI,$clientId))
+        {
+            $deviceDAL = DeviceDALFactory::instance();
+            $deviceDAL->RegisterDevice(Device::create()->setGCMToken($GCM)->setImei($DeviceIMEI)->setClientId($clientId)->setModel($DeviceModel)->setBrand($DeviceBrand));
+        }
     }
-    if(!$clientDAL->HasPhoneNumber($PhoneNumber,$clientId))
+    else
     {
-        $phoneDAL = MobilePhoneDALFactory::instance();
-        $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($PhoneNumber));
-    }
-    if(!$clientDAL->HasDevice($DeviceIMEI,$clientId))
-    {
-        $deviceDAL = DeviceDALFactory::instance();
-        $deviceDAL->RegisterDevice(Device::create()->setGCMToken($GCM)->setImei($DeviceIMEI)->setClientId($clientId)->setModel($DeviceModel)->setBrand($DeviceBrand));
+        $response->addError(new WSValidationResult("InvalidAccountException","El NUS y el número de cuenta proporcionados no coinciden con ninguna cuenta válida, revise los datos y vuelva a intentarlo"));
     }
     $errors=count($response->getErrors());
     if($errors>0)

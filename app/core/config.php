@@ -17,7 +17,7 @@ class Config {
 		ob_start();
 
 		//site address
-		define('DIR', 'http://192.168.30.102/SSC.Elfec/');
+		define('DIR', 'http://192.168.50.56/SSC.Elfec/');
 
 		//set default controller and method for legacy calls
 		define('DEFAULT_CONTROLLER', 'welcome');
