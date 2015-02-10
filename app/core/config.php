@@ -34,10 +34,10 @@ class Config {
 
 		//database details ONLY NEEDED IF USING A DATABASE
 		define('DB_TYPE', 'pgsql');
-        define('DB_HOST', 'elfdbp01');
+        define('DB_HOST', 'elfbdp01');
         define('DB_PORT', '5432');
         define('DB_NAME', 'SSC.Elfec');
-        define('DB_USER', 'usr_ssc');
+        define('DB_USER', 'drodriguezd');
         define('DB_PASS', 'elfec2015');
         define('PREFIX', 'SSC.Elfec');
 
@@ -53,7 +53,7 @@ class Config {
                                   (SERVICE_NAME = SIDPROD)
                                 )
                               )');
-        define('ODB_USER', 'USR_SCC');
+        define('ODB_USER', 'USR_SSC');
         define('ODB_PASS', 'elfec2015');
 
 		//set prefix for sessions

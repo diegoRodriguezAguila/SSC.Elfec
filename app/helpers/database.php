@@ -15,13 +15,12 @@ class Database extends PDO{
 	 * @var array Array of saved databases for reusing
 	 */
 	protected static $instances = array();
-	
-	/**
-	 * Static method get 
-	 * 
-	 * @param  array $group
-	 * @return \helpers\database
-	 */
+
+    /**
+     * Static method get
+     * @param array|bool $group
+     * @return \helpers\database
+     */
 	public static function get ($group = false) {
 		// Determining if exists or it's not empty, then use default group defined in config
 		$group = !$group ? array (

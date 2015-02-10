@@ -30,16 +30,18 @@ class Welcome extends \core\controller{
 	 * Define Index page title and load template files
 	 */
 	public function index() {
-		$data['title'] = $this->language->get('welcome_text');
-		$data['welcome_message'] = $this->language->get('welcome_message');
+        $data['title'] = $this->language->get('welcome_text');
+        $data['welcome_message'] = $this->language->get('welcome_message');
         $db = database::get(['type' => ODB_TYPE,
             'host' => ODB_HOST,
             'port' => ODB_PORT,
             'name' => ODB_NAME,
             'user' => ODB_USER,
             'pass' => ODB_PASS]);
-        $result  = $db->select("SELECT * FROM ELFEC_SSC.V_INFO_CUENTA WHERE ROWNUM<=100");
-        $data['welcome_message'] = '<B>RESULT</B>: '.json_encode($result);
+        $result  = $db->select("SELECT * FROM ELFEC_SSC.V_INFO_CUENTA WHERE ROWNUM <=100");
+        //$db = database::get();
+       // $result  = $db->select("SELECT * FROM contacts");
+        $data['welcome_message'] = '<B>RESULT</B>: '.count($result).json_encode($result);
 		View::rendertemplate('header', $data);
 		View::render('welcome/welcome', $data);
 		View::rendertemplate('footer', $data);
