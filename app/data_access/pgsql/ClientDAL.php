@@ -17,14 +17,14 @@ class ClientDAL implements IClientDAL {
 
     /**
      * Registra un nuevo usuario y retorna el Id que se le asignó
-     * @param Client $newClient
+     * @param string $gmail
      * @return int
      */
-    public function RegisterClient(Client $newClient)
+    public function RegisterClient($gmail)
     {
         $db = Database::get();
         $data = array(
-            'gmail' => $newClient->getGmail(),
+            'gmail' => $gmail,
             'status'  => 1,
             'insert_date'  => 'now()'
         );

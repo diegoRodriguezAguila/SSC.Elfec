@@ -7,7 +7,6 @@
 
 namespace data_access;
 
-use models\Client;
 /**
  * Provee de una interfáz para la abstracción de la capa de acceso a datos de usuarios
  * Interface IAccountDAL
@@ -17,10 +16,10 @@ interface IClientDAL
 {
     /**
      * Registra un nuevo cliente y retorna el Id que se le asignó
-     * @param Client $newClient
+     * @param string $gmail
      * @return int
      */
-    public function RegisterClient(Client $newClient);
+    public function RegisterClient($gmail);
     /**
      * Busca un cliente por su gmail
      * @param $gmail
@@ -29,12 +28,11 @@ interface IClientDAL
     public function GetClientId($gmail);
 
     /**
-     * Verifica si es que un usuario ya tiene agregada una cuenta
-     * @param $gmail
      * @param $NUS
+     * @param $clientId
      * @return bool
      */
-    public function HasAccount($gmail, $NUS);
+    public function findAccount($NUS, $clientId);
     /**
      * Verifica si es que un usuario ya tiene agregado un telefono
      * @param $phoneNumber
