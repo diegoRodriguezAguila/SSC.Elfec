@@ -19,6 +19,13 @@ class Account
     private $ClientId;
     private $AccountNumber;
     private $NUS;
+    private $AccountOwner;
+    private $Address;
+    /**
+     * Deudas de la cuenta
+     * @var array
+     */
+    public $Debts = [];
     private $Status;
     private $InsertDate;
     private $UpdateDate;
@@ -36,6 +43,7 @@ class Account
 
 
     //region  Getters y Setters
+
     /**
      * @param int $Id
      * @return $this
@@ -106,6 +114,42 @@ class Account
     public function getNUS()
     {
         return $this->NUS;
+    }
+
+    /**
+     * @param string $AccountOwner
+     * @return $this
+     */
+    public function setAccountOwner($AccountOwner)
+    {
+        $this->AccountOwner = $AccountOwner;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccountOwner()
+    {
+        return $this->AccountOwner;
+    }
+
+    /**
+     * @param string $Address
+     * @return $this
+     */
+    public function setAddress($Address)
+    {
+        $this->Address = $Address;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->Address;
     }
 
     /**
