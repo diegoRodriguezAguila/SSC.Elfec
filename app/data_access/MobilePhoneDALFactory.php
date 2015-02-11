@@ -10,6 +10,10 @@ namespace data_access;
 class MobilePhoneDALFactory {
 
     private static $Instance;
+
+    /**
+     * @return IMobilePhoneDAL
+     */
     public static function instance()
     {
         if(!isset(self::$Instance))

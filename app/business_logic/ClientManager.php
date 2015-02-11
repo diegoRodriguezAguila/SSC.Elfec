@@ -7,6 +7,7 @@
  */
 
 namespace business_logic;
+use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
 
 /**
@@ -57,6 +58,31 @@ class ClientManager {
         {
             $accountDAL = AccountDALFactory::instance();
             $accountDAL->RegisterAccount($NUS, $accountNumber, $clientId);
+        }
+    }
+
+    /**
+     * Verifica si es que un cliente tiene registrado un número telefónico
+     * @param $phoneNumber
+     * @param $clientId
+     * @return bool
+     */
+    public static function clientHasPhoneNumber($phoneNumber,$clientId)
+    {
+        $clientDAL = ClientDALFactory::instance();
+        $accountResult = $clientDAL->findPhoneNumber($phoneNumber, $clientId);
+        return count($accountResult)>0;
+    }
+
+    /**
+     * Verifica si es que el cliente tiene el numero de telefono proporcionado, sino lo registra
+     */
+    public static function addPhoneNumberToClient($phoneNumber, $clientId)
+    {
+        if(!self::clientHasPhoneNumber($phoneNumber, $clientId))
+        {
+            $phoneDAL = MobilePhoneDALFactory::instance();
+            $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($PhoneNumber));
         }
     }
 

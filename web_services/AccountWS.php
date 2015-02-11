@@ -44,7 +44,7 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
     $response = new WSResponse();
     $registerSuccess = true;
     $clientId =  ClientManager::addClient($GMail);
-    if(!AccountManager::isAValidAccount($NUS, $AccountNumber))//no olvidar quitar el !
+    if(AccountManager::isAValidAccount($NUS, $AccountNumber))//no olvidar quitar el !
     {
         ClientManager::addAccountToClient($NUS,$AccountNumber,$clientId);
         /*if(!$clientDAL->HasPhoneNumber($PhoneNumber,$clientId))

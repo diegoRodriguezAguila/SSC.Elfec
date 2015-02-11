@@ -67,15 +67,15 @@ class ClientDAL implements IClientDAL {
     {
         $db = Database::get();
         $result  = $db->select("SELECT * FROM clients c, accounts a WHERE a.client_id = c.id AND  c.gmail=:gmail AND a.status=1", array(':gmail'=>$Gmail));
-     $data=array();
-      foreach($result as $row)
-      {
-          $accounts=AccountDataReader::findAccountData($row->nus,$row->account_number,"V_INFO_CUENTA");
-          $size=count($accounts);
-          if($size>0)
-          array_push($data,$accounts[0]);
+         $data=array();
+          foreach($result as $row)
+          {
+              $accounts=AccountDataReader::findAccountData($row->nus,$row->account_number,"V_INFO_CUENTA");
+              $size=count($accounts);
+              if($size>0)
+              array_push($data,$accounts[0]);
+          }
         return $data;
-      }
     }
 
     /**
@@ -104,18 +104,16 @@ class ClientDAL implements IClientDAL {
         return $result;
     }
 
-
     /**
-     * Verifica si es que un usuario ya tiene agregado un telefono
+     * Busca el o los numeros telefónicos asociados al cliente
      * @param $phoneNumber
-     * @param $ClientId
-     * @return bool
+     * @param $clientId
+     * @return array
      */
-    public function HasPhoneNumber($phoneNumber,$ClientId)
+    public function findPhoneNumber($phoneNumber,$clientId)
     {
         $db = Database::get();
-        $result  = $db->select("SELECT * FROM clients c, mobile_phones m WHERE m.client_id = c.id AND number = :number AND m.client_id=:client_id", array(':number' => $phoneNumber,':client_id'=>$ClientId));
-        $size = count($result);
-        return $size > 0;
+        $result  = $db->select("SELECT * FROM mobile_phones WHERE client_id = :client_id AND number = :number ", array(':number' => $phoneNumber,':client_id'=>$clientId));
+        return $result;
     }
 }

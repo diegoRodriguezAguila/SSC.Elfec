@@ -34,13 +34,14 @@ interface IClientDAL
      * @return array
      */
     public function findAccount($NUS, $clientId);
+
     /**
-     * Verifica si es que un usuario ya tiene agregado un telefono
+     * Busca el o los numeros telefónicos asociados al cliente
      * @param $phoneNumber
-     * @param $ClientId
-     * @return bool
+     * @param $clientId
+     * @return array
      */
-    public function HasPhoneNumber($phoneNumber,$ClientId);
+    public function findPhoneNumber($phoneNumber,$clientId);
     /**
      * Verifica si es que un usuario ya tiene agregado un dispositivo
      * @param $IMEI

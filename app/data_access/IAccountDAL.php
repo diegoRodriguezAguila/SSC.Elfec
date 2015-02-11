@@ -21,13 +21,13 @@ interface IAccountDAL
      * @param $clientId
      * @return int
      */
-    public function RegisterAccount($NUS, $accountNumber, $clientId);
+    public function registerAccount($NUS, $accountNumber, $clientId);
     /**
      * Elimina una cuenta para un usuario determiando
      * @param $NUS
      * @param $ClientID
      * @return bool
      */
-    public function DeleteAccount($NUS,$ClientID);
+    public function deleteAccount($NUS,$ClientID);
 
 }

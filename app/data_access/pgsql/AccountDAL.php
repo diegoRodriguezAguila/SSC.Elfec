@@ -20,10 +20,12 @@ class AccountDAL implements IAccountDAL
 {
     /**
      * Registra una nueva cuenta y retorna el Id que se le asignó
-     * @param Account $newAccount
+     * @param $NUS
+     * @param $accountNumber
+     * @param $clientId
      * @return int
      */
-    public function RegisterAccount($NUS, $accountNumber, $clientId)
+    public function registerAccount($NUS, $accountNumber, $clientId)
     {
         $db = Database::get();
         $data = array(
@@ -43,7 +45,7 @@ class AccountDAL implements IAccountDAL
      * @param $ClientID
      * @return bool
      */
-    public function DeleteAccount($NUS, $ClientID)
+    public function deleteAccount($NUS, $ClientID)
     {
         $db = Database::get();
         $data = array('status' => 0,'update_date'  => 'now()');
