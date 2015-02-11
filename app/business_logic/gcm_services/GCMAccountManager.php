@@ -31,7 +31,7 @@ class GCMAccountManager {
         $devices=$clientDAL->getClientDevices( $clientDAL->GetClientId($ownerClientGmail));
         $msg = array
         (
-            'message'       => 'Se registró la cuenta: '.$newAccount->getAccountNumber().', con el nus: '.$newAccount->getNUS(),
+            'message'       => 'Se registró la cuenta: '.$newAccount->getAccountNumber().', con el NUS: '.$newAccount->getNUS(),
             'title'         => 'Nueva cuenta',
             'key'           => NotificationKey::NEW_ACCOUNT,
             'type'          => NotificationType::ACCOUNT,
@@ -59,7 +59,7 @@ class GCMAccountManager {
         $clientDAL = ClientDALFactory::instance();
         $devices=$clientDAL->getClientDevices( $clientDAL->GetClientId($ownerClientGmail));
         $msg = array(
-            'message'       => 'Se eliminó la cuenta con el nus: '.$NUS,
+            'message'       => 'Se eliminó la cuenta con el NUS: '.$NUS,
             'title'         => 'Cuenta eliminada',
             'key'           => NotificationKey::ACCOUNT_DELETED,
             'type'          =>  NotificationType::ACCOUNT,

@@ -9,6 +9,8 @@
 namespace models;
 
 
+use DateTime;
+
 class Debt {
     private $Amount;
     private $Year;
@@ -17,15 +19,17 @@ class Debt {
     private $ExpirationDate;
 
     /**
-     * @param mixed $Amount
+     * @param double $Amount
+     * @return $this
      */
     public function setAmount($Amount)
     {
         $this->Amount = $Amount;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return double
      */
     public function getAmount()
     {
@@ -33,15 +37,17 @@ class Debt {
     }
 
     /**
-     * @param mixed $ExpirationDate
+     * @param DateTime $ExpirationDate
+     * @return $this
      */
     public function setExpirationDate($ExpirationDate)
     {
         $this->ExpirationDate = $ExpirationDate;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return DateTime
      */
     public function getExpirationDate()
     {
@@ -49,15 +55,17 @@ class Debt {
     }
 
     /**
-     * @param mixed $Month
+     * @param int $Month
+     * @return $this
      */
     public function setMonth($Month)
     {
         $this->Month = $Month;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getMonth()
     {
@@ -65,15 +73,17 @@ class Debt {
     }
 
     /**
-     * @param mixed $ReceiptNumber
+     * @param int $ReceiptNumber
+     * @return $this
      */
     public function setReceiptNumber($ReceiptNumber)
     {
         $this->ReceiptNumber = $ReceiptNumber;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getReceiptNumber()
     {
@@ -81,15 +91,17 @@ class Debt {
     }
 
     /**
-     * @param mixed $Year
+     * @param int $Year
+     * @return $this
      */
     public function setYear($Year)
     {
         $this->Year = $Year;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getYear()
     {
