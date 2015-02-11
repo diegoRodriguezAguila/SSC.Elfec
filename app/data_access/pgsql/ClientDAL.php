@@ -66,17 +66,18 @@ class ClientDAL implements IClientDAL {
     {
         $db = Database::get();
         $result  = $db->select("SELECT * FROM clients c, accounts a WHERE a.client_id = c.id AND  c.gmail=:gmail AND a.status=1", array(':gmail'=>$Gmail));
-         $data=array();
-          foreach($result as $row)
-          {
-              $accounts=AccountDataReader::findAccountData($row->nus,$row->account_number,"V_INFO_CUENTA");
-              $size=count($accounts);
-              if($size>0)
-              array_push($data,$accounts[0]);
-          }
-        return $data;
+        return $result;
     }
+    /**
+     * obtiene todos los datos de una cuenta
+     */
+    public function getAllAccountData($nus,$account)
+    {
+            $accounts=AccountDataReader::findAccountData($nus,$account,"V_INFO_CUENTA");
 
+        return count($accounts)>0?$accounts[0]:null;
+
+    }
     /**
      * Busca un cliente por su gmail
      * @param $gmail

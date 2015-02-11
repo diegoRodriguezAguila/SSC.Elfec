@@ -75,7 +75,7 @@ function GetAllAccounts($GMail, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
     $clientId =  ClientManager::addClient($GMail);
     ClientManager::addDeviceToClient($DeviceIMEI, $GCM, $DeviceBrand, $DeviceModel, $clientId);
     $response = new WSResponse();
-    $response->setResponse($clientDAL->GetAllAccounts($GMail));
+    $response->setResponse(ClientManager::GetAllAccounts($GMail));
     return json_encode($response->JsonSerialize());
 }
 

@@ -1,4 +1,5 @@
 <?php namespace controllers;
+use business_logic\ClientManager;
 use core\view;
 use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
@@ -33,11 +34,7 @@ class Welcome extends \core\controller{
 	public function index() {
         $data['title'] = $this->language->get('welcome_text');
         $data['welcome_message'] = $this->language->get('welcome_message');
-        $db = database::get(DataBaseType::$ORACLE_DATABASE);
-        $result  = $db->select("SELECT * FROM ELFEC_SSC.V_INFO_CUENTA WHERE ROWNUM <=100");
-        //$db = database::get();
-       // $result  = $db->select("SELECT * FROM contacts");
-        $data['welcome_message'] = '<B>RESULT</B>: '.count($result).json_encode($result);
+        $data['welcome_message'] = '<B>RESULT</B>: '.ClientManager::getAllAccounts("ssc.elfec@gmail.com");
 		View::rendertemplate('header', $data);
 		View::render('welcome/welcome', $data);
 		View::rendertemplate('footer', $data);

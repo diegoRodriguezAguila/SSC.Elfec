@@ -110,5 +110,21 @@ class ClientManager {
             $deviceDAL->registerDevice($IMEI, $GCM, $brand, $model, $clientId);
         }
     }
+    /**
+     * Obtiene todas las cuentas de un cliente
+     */
+    public static function getAllAccounts($gmail)
+    {
+        $clientDAL=ClientDALFactory::instance();
+        $result=$clientDAL->GetAllAccounts($gmail);
+        $data=array();
+        foreach($result as $row)
+        {
+            $account=$clientDAL->getAllAccountData($row->nus,$row->account_number);
+            if($account!=null)
+                array_push($data,$account);
+        }
+        return $data;
+    }
 
 } 
