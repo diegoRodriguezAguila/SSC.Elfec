@@ -19,13 +19,13 @@ interface IClientDAL
      * @param string $gmail
      * @return int
      */
-    public function RegisterClient($gmail);
+    public function registerClient($gmail);
     /**
      * Busca un cliente por su gmail
      * @param $gmail
      * @return int
      */
-    public function GetClientId($gmail);
+    public function getClientId($gmail);
 
     /**
      * Busca si la cuenta con el NUS indicado asociada al cliente
@@ -36,19 +36,20 @@ interface IClientDAL
     public function findAccount($NUS, $clientId);
 
     /**
-     * Busca el o los numeros telefónicos asociados al cliente
+     * Busca el numeros telefónicos asociados al cliente que coincida con el número telefónico
      * @param $phoneNumber
      * @param $clientId
      * @return array
      */
     public function findPhoneNumber($phoneNumber,$clientId);
+
     /**
-     * Verifica si es que un usuario ya tiene agregado un dispositivo
+     * Busca el  dispositivos asociado al cliente que coincida con el IMEI proporcionado
      * @param $IMEI
-     * @param $ClientID
-     * @return bool
+     * @param $clientId
+     * @return array
      */
-    public function HasDevice($IMEI,$ClientID);
+    public function findDevice($IMEI,$clientId);
     /**
      * Obtiene todas las cuentas para un usuario
      * @param $ClientID

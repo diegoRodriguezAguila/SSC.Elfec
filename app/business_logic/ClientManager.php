@@ -70,8 +70,8 @@ class ClientManager {
     public static function clientHasPhoneNumber($phoneNumber,$clientId)
     {
         $clientDAL = ClientDALFactory::instance();
-        $accountResult = $clientDAL->findPhoneNumber($phoneNumber, $clientId);
-        return count($accountResult)>0;
+        $phoneResult = $clientDAL->findPhoneNumber($phoneNumber, $clientId);
+        return count($phoneResult)>0;
     }
 
     /**
@@ -82,7 +82,32 @@ class ClientManager {
         if(!self::clientHasPhoneNumber($phoneNumber, $clientId))
         {
             $phoneDAL = MobilePhoneDALFactory::instance();
-            $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($PhoneNumber));
+            $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($phoneNumber));
+        }
+    }
+
+    /**
+     * Verifica si es que un cliente tiene registrado un dispositivo
+     * @param $IMEI
+     * @param $clientId
+     * @return bool
+     */
+    public static function clientHasDevice($IMEI,$clientId)
+    {
+        $clientDAL = ClientDALFactory::instance();
+        $deviceResult = $clientDAL->findDevice($IMEI, $clientId);
+        return count($deviceResult)>0;
+    }
+
+    /**
+     * Verifica si es que el cliente tiene el dispositivo con el IMEI proporcionado, sino lo registra
+     */
+    public static function addDeviceToClient($IMEI, $GCM, $brand, $model, $clientId)
+    {
+        if(!self::clientHasDevice($IMEI, $clientId))
+        {
+            $deviceDAL = DeviceDALFactory::instance();
+            $deviceDAL->registerDevice($IMEI, $GCM, $brand, $model, $clientId);
         }
     }
 

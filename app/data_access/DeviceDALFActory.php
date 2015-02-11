@@ -16,6 +16,10 @@ namespace data_access;
 class DeviceDALFactory {
 
     private static $Instance;
+
+    /**
+     * @return IDeviceDAL
+     */
     public static function instance()
     {
         if(!isset(self::$Instance))

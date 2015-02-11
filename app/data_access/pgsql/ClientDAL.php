@@ -20,7 +20,7 @@ class ClientDAL implements IClientDAL {
      * @param string $gmail
      * @return int
      */
-    public function RegisterClient($gmail)
+    public function registerClient($gmail)
     {
         $db = Database::get();
         $data = array(
@@ -45,17 +45,16 @@ class ClientDAL implements IClientDAL {
     }
 
     /**
-     * Verifica si es que un usuario ya tiene agregado un dispositivo
+     * Busca el  dispositivos asociado al cliente que coincida con el IMEI proporcionado
      * @param $IMEI
-     * @param $ClientId
-     * @return bool
+     * @param $clientId
+     * @return array
      */
-    public function HasDevice($IMEI,$ClientId)
+    public function findDevice($IMEI,$clientId)
     {
         $db = Database::get();
-        $result  = $db->select("SELECT * FROM clients c, devices d WHERE d.client_id = c.id AND imei = :imei AND d.client_id=:client_id", array(':imei' => $IMEI,':client_id'=>$ClientId));
-        $size = count($result);
-        return $size > 0;
+        $result  = $db->select("SELECT * FROM devices WHERE imei = :imei AND client_id=:client_id", array(':imei' => $IMEI,':client_id'=>$clientId));
+        return $result;
     }
 
     /**
@@ -83,7 +82,7 @@ class ClientDAL implements IClientDAL {
      * @param $gmail
      * @return int
      */
-    public function GetClientId($gmail)
+    public function getClientId($gmail)
     {
         $db = Database::get();
         $result  = $db->select("SELECT * FROM clients WHERE gmail = :gmail", array(':gmail' => $gmail));

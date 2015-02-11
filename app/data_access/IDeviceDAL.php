@@ -10,10 +10,9 @@ use models\Client;
 use models\Device;
 /**
  * Registra un nuevo Dispositivo y retorna el Id que se le asignó
- * @param Device $device
  * @return int
  */
 interface IDeviceDAL {
-    public function RegisterDevice(Device $device);
-    public function GetAllDevices();
+    public function registerDevice($IMEI, $GCM, $brand, $model, $clientId);
+    public function getAllDevices();
 }

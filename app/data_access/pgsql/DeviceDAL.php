@@ -13,15 +13,15 @@ use helpers\Database;
 use models\Device;
 
 class DeviceDAL implements IDeviceDAL{
-    public function RegisterDevice(Device $device)
+    public function registerDevice($IMEI, $GCM, $brand, $model, $clientId)
     {
         $db = Database::get();
         $data = array(
-            'imei' => $device->Imei,
-            'client_id' => $device->ClientId,
-            'gcm_token' => $device->GCMToken,
-            'brand' => $device->getBrand(),
-            'model' => $device->getModel(),
+            'imei' => $IMEI,
+            'client_id' => $clientId,
+            'gcm_token' => $GCM,
+            'brand' => $brand,
+            'model' => $model,
             'status'  => 1,
             'insert_date'  => 'now()'
         );
@@ -29,7 +29,7 @@ class DeviceDAL implements IDeviceDAL{
         return $db->lastInsertId('devices_id_seq');
     }
 
-    public function GetAllDevices()
+    public function getAllDevices()
     {
         $db = Database::get();
         return $db->select("SELECT * FROM devices WHERE status=1");

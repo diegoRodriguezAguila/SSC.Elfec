@@ -14,9 +14,10 @@ interface IMobilePhoneDAL {
 
     /**
      * Registra un nuevo telefono relacionado a un cliente y retorna el Id que se le asignó
-     * @param Client $newClient
+     * @param $phoneNumber
+     * @param $clientId
      * @return int
      */
-    public function RegisterPhone(MobilePhone $phone);
+    public function registerPhone($phoneNumber, $clientId);
 
 } 

@@ -11,14 +11,12 @@ include_once("auto_load.php");
 use business_logic\ClientManager;
 use business_logic\gcm_services\GCMAccountManager;
 use  models\Client, models\Account,
-    models\MobilePhone,models\Device,
     models\web_services\WSResponse,
     models\web_services\WSValidationResult,
     data_access\ClientDALFactory,
     data_access\AccountDALFactory,
-    data_access\MobilePhoneDALFactory,
-    data_access\DeviceDALFactory,
     business_logic\AccountManager;
+
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 
@@ -46,17 +44,9 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
     $clientId =  ClientManager::addClient($GMail);
     if(AccountManager::isAValidAccount($NUS, $AccountNumber))//no olvidar quitar el !
     {
-        ClientManager::addAccountToClient($NUS,$AccountNumber,$clientId);
-        /*if(!$clientDAL->HasPhoneNumber($PhoneNumber,$clientId))
-        {
-            $phoneDAL = MobilePhoneDALFactory::instance();
-            $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($PhoneNumber));
-        }
-        if(!$clientDAL->HasDevice($DeviceIMEI,$clientId))
-        {
-            $deviceDAL = DeviceDALFactory::instance();
-            $deviceDAL->RegisterDevice(Device::create()->setGCMToken($GCM)->setImei($DeviceIMEI)->setClientId($clientId)->setModel($DeviceModel)->setBrand($DeviceBrand));
-        }*/
+        ClientManager::addAccountToClient($NUS,$AccountNumber, $clientId);
+        ClientManager::addPhoneNumberToClient($PhoneNumber, $clientId);
+        ClientManager::addDeviceToClient($DeviceIMEI, $GCM, $DeviceBrand, $DeviceModel, $clientId);
     }
     else
     {
@@ -82,16 +72,12 @@ $server->register('GetAllAccounts',
 function GetAllAccounts($GMail, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
 {
     $clientDAL = ClientDALFactory::instance();
-    $clientId =  $clientDAL->GetClientId($GMail);
+    $clientId =  $clientDAL->getClientId($GMail);
     if($clientId==-1)
     {
         $clientId = $clientDAL->RegisterClient(Client::create()->setGmail($GMail));
     }
-    if(!$clientDAL->HasDevice($DeviceIMEI,$clientId))
-    {
-        $deviceDAL = DeviceDALFactory::instance();
-        $deviceDAL->RegisterDevice(Device::create()->setGCMToken($GCM)->setImei($DeviceIMEI)->setClientId($clientId)->setModel($DeviceModel)->setBrand($DeviceBrand));
-    }
+    ClientManager::addDeviceToClient($DeviceIMEI, $GCM, $DeviceBrand, $DeviceModel, $clientId);
     $response = new WSResponse();
     $response->setResponse($clientDAL->GetAllAccounts($GMail));
     return json_encode($response->JsonSerialize());
@@ -109,7 +95,7 @@ function DeleteAccount($DeviceIMEI,$NUS,$GMail)
     {
         $response->addError(new WSValidationResult("ClientPermissionDenied","Usted no tiene permisos necesarios para realizar esta accion"));
     }
-    if(!$clientDAL->HasDevice($DeviceIMEI,$clientId))
+    if(!ClientManager::clientHasDevice($DeviceIMEI,$clientId))
     {
         $response->addError(new WSValidationResult("DevicePermissionDenied","Este dispositivo no tiene permiso para realizar la acción"));
     }
