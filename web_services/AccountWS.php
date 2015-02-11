@@ -49,7 +49,7 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
     {
         $clientId = $clientDAL->RegisterClient(Client::create()->setGmail($GMail));
     }
-    if(!AccountManager::isAValidAccount($NUS, $AccountNumber))
+    if(!AccountManager::isAValidAccount($NUS, $AccountNumber))//no olvidar quitar el !
     {
         if(!$clientDAL->HasAccount($GMail, $NUS))
         {

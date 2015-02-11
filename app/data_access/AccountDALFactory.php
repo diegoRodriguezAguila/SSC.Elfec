@@ -15,6 +15,10 @@ namespace data_access;
  */
 class AccountDALFactory {
     private static $Instance;
+
+    /**
+     * @return IAccountDAL
+     */
     public static function instance()
     {
         if(!isset(self::$Instance))
