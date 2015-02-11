@@ -10,7 +10,7 @@ include_once("lib/nusoap.php");
 include_once("auto_load.php");
 use business_logic\ClientManager;
 use business_logic\gcm_services\GCMAccountManager;
-use  models\Client, models\Account,
+use  models\Account,
     models\web_services\WSResponse,
     models\web_services\WSValidationResult,
     data_access\ClientDALFactory,
@@ -40,26 +40,21 @@ $server->register('RegisterAccount',
 function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
 {
     $response = new WSResponse();
-    $registerSuccess = true;
+    $registeredAccount = null;
     $clientId =  ClientManager::addClient($GMail);
-    if(AccountManager::isAValidAccount($NUS, $AccountNumber))//no olvidar quitar el !
+    if(AccountManager::isAValidAccount($NUS, $AccountNumber))
     {
-        ClientManager::addAccountToClient($NUS,$AccountNumber, $clientId);
+        $accountId = ClientManager::addAccountToClient($NUS,$AccountNumber, $clientId);
         ClientManager::addPhoneNumberToClient($PhoneNumber, $clientId);
         ClientManager::addDeviceToClient($DeviceIMEI, $GCM, $DeviceBrand, $DeviceModel, $clientId);
+        $registeredAccount = AccountManager::getFullAccountData($accountId);
+        GCMAccountManager::propagateNewAccountToDevices($GMail,$registeredAccount,$DeviceIMEI);
     }
     else
     {
         $response->addError(new WSValidationResult("InvalidAccountException","El NUS y el número de cuenta proporcionados no coinciden con ninguna cuenta válida, revise los datos y vuelva a intentarlo"));
     }
-    $errors=count($response->getErrors());
-    if($errors>0)
-        $registerSuccess = false;
-    else
-    {
-        GCMAccountManager::propagateNewAccountToDevices($GMail,Account::create()->setAccountNumber($AccountNumber)->setNUS($NUS),$DeviceIMEI);
-    }
-    $response->setResponse($registerSuccess);
+    $response->setResponse(isset($registeredAccount)?$registeredAccount->jsonSerialize():null);
     return json_encode($response->JsonSerialize());
 }
 

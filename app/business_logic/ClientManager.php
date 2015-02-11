@@ -9,6 +9,7 @@
 namespace business_logic;
 use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
+use data_access\DeviceDALFactory;
 
 /**
  * Class ClientManager Maneja la logica de negocio de clientes
@@ -51,14 +52,18 @@ class ClientManager {
      * @param $NUS
      * @param $accountNumber
      * @param $clientId
+     * @return int
      */
     public static function addAccountToClient($NUS, $accountNumber, $clientId)
     {
-        if(!self::clientHasAccount($NUS, $clientId))
+        $clientDAL = ClientDALFactory::instance();
+        $accountResult = $clientDAL->findAccount($NUS, $clientId);
+        if(!count($accountResult)>0)
         {
             $accountDAL = AccountDALFactory::instance();
-            $accountDAL->RegisterAccount($NUS, $accountNumber, $clientId);
+            return $accountDAL->registerAccount($NUS, $accountNumber, $clientId);
         }
+        return $accountResult[0]->id;
     }
 
     /**
@@ -82,7 +87,7 @@ class ClientManager {
         if(!self::clientHasPhoneNumber($phoneNumber, $clientId))
         {
             $phoneDAL = MobilePhoneDALFactory::instance();
-            $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($phoneNumber));
+            $phoneDAL->registerPhone(MobilePhone::create()->setClientId($clientId)->setNumber($phoneNumber));
         }
     }
 

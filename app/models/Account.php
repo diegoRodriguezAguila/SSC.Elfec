@@ -30,6 +30,12 @@ class Account
     private $InsertDate;
     private $UpdateDate;
 
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
+    }
+
     private function __construct()
     {
     }

@@ -30,4 +30,11 @@ interface IAccountDAL
      */
     public function deleteAccount($NUS,$ClientID);
 
+    /**
+     * Busca la cuenta con el id respectivo
+     * @param $accountId
+     * @return Array
+     */
+    public function findAccount($accountId);
+
 }

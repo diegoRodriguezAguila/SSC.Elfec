@@ -18,6 +18,22 @@ class Debt {
     private $ReceiptNumber;
     private $ExpirationDate;
 
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
+    }
+
+    private function __construct()
+    {
+    }
+
+    /**
+     * Static constructor / factory
+     */
+    public static function create() {
+        return new self();
+    }
     /**
      * @param double $Amount
      * @return $this
