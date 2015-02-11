@@ -9,6 +9,7 @@ namespace data_access\pgsql;
 
 
 use data_access\IClientDAL;
+use external_data_access\oracle\AccountDataReader;
 use helpers\Database;
 use models\Client;
 
@@ -66,7 +67,10 @@ class ClientDAL implements IClientDAL {
     {
         $db = Database::get();
         $result  = $db->select("SELECT * FROM clients c, accounts a WHERE a.client_id = c.id AND  c.gmail=:gmail AND a.status=1", array(':gmail'=>$Gmail));
-        return $result;
+     $data=array();
+      foreach($result as $row)
+       array_push($data,AccountDataReader::findAccountData($row->nus,$row->account_number,"V_INFO_CUENTA"));
+        return $data;
     }
 
     /**

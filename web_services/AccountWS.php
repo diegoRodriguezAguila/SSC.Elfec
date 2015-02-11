@@ -92,7 +92,6 @@ function GetAllAccounts($GMail, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
 {
     $clientDAL = ClientDALFactory::instance();
     $clientId =  $clientDAL->GetClientId($GMail);
-
     if($clientId==-1)
     {
         $clientId = $clientDAL->RegisterClient(Client::create()->setGmail($GMail));
