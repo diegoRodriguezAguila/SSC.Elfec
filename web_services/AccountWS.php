@@ -8,6 +8,7 @@
 
 include_once("lib/nusoap.php");
 include_once("auto_load.php");
+use business_logic\ClientManager;
 use business_logic\gcm_services\GCMAccountManager;
 use  models\Client, models\Account,
     models\MobilePhone,models\Device,
@@ -42,13 +43,7 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
 {
     $response = new WSResponse();
     $registerSuccess = true;
-    $clientDAL = ClientDALFactory::instance();
-    $clientId =  $clientDAL->GetClientId($GMail);
-
-    if($clientId==-1)
-    {
-        $clientId = $clientDAL->RegisterClient(Client::create()->setGmail($GMail));
-    }
+    $clientId =  ClientManager::addClient($GMail);
     if(!AccountManager::isAValidAccount($NUS, $AccountNumber))//no olvidar quitar el !
     {
         if(!$clientDAL->HasAccount($GMail, $NUS))
