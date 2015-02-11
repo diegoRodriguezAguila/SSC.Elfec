@@ -35,12 +35,29 @@ class ClientManager {
     /**
      * Verifica si es que un cliente tiene registrada una cuenta
      * @param $NUS
-     * @param $clientID
+     * @param $clientId
      * @return bool
      */
-    public static function hasAccount($NUS, $clientID)
+    public static function clientHasAccount($NUS, $clientId)
     {
+        $clientDAL = ClientDALFactory::instance();
+        $accountResult = $clientDAL->findAccount($NUS, $clientId);
+        return count($accountResult)>0;
+    }
 
+    /**
+     * Verifica si es que el cliente tiene la cuenta con el nus proporcionado, sino la registra
+     * @param $NUS
+     * @param $accountNumber
+     * @param $clientId
+     */
+    public static function addAccountToClient($NUS, $accountNumber, $clientId)
+    {
+        if(!self::clientHasAccount($NUS, $clientId))
+        {
+            $accountDAL = AccountDALFactory::instance();
+            $accountDAL->RegisterAccount($NUS, $accountNumber, $clientId);
+        }
     }
 
 } 

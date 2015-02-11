@@ -7,7 +7,6 @@
 
 namespace data_access;
 
-use models\Account;
 /**
  * Provee de una interfáz para la abstracción de la capa de acceso a datos de cuentas
  * Interface IAccountDAL
@@ -17,10 +16,12 @@ interface IAccountDAL
 {
     /**
      * Registra una nueva cuenta y retorna el Id que se le asignó
-     * @param Account $newAccount
+     * @param $NUS
+     * @param $accountNumber
+     * @param $clientId
      * @return int
      */
-    public function RegisterAccount(Account $newAccount);
+    public function RegisterAccount($NUS, $accountNumber, $clientId);
     /**
      * Elimina una cuenta para un usuario determiando
      * @param $NUS

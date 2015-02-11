@@ -28,9 +28,10 @@ interface IClientDAL
     public function GetClientId($gmail);
 
     /**
+     * Busca si la cuenta con el NUS indicado asociada al cliente
      * @param $NUS
      * @param $clientId
-     * @return bool
+     * @return array
      */
     public function findAccount($NUS, $clientId);
     /**

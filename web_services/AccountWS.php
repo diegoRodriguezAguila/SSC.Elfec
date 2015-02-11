@@ -46,12 +46,8 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
     $clientId =  ClientManager::addClient($GMail);
     if(!AccountManager::isAValidAccount($NUS, $AccountNumber))//no olvidar quitar el !
     {
-        if(!$clientDAL->HasAccount($GMail, $NUS))
-        {
-            $accountDAL = AccountDALFactory::instance();
-            $accountDAL->RegisterAccount(Account::create()->setClientId($clientId)->setAccountNumber($AccountNumber)->setNUS($NUS));
-        }
-        if(!$clientDAL->HasPhoneNumber($PhoneNumber,$clientId))
+        ClientManager::addAccountToClient($NUS,$AccountNumber,$clientId);
+        /*if(!$clientDAL->HasPhoneNumber($PhoneNumber,$clientId))
         {
             $phoneDAL = MobilePhoneDALFactory::instance();
             $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($PhoneNumber));
@@ -60,7 +56,7 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
         {
             $deviceDAL = DeviceDALFactory::instance();
             $deviceDAL->RegisterDevice(Device::create()->setGCMToken($GCM)->setImei($DeviceIMEI)->setClientId($clientId)->setModel($DeviceModel)->setBrand($DeviceBrand));
-        }
+        }*/
     }
     else
     {
@@ -117,7 +113,7 @@ function DeleteAccount($DeviceIMEI,$NUS,$GMail)
     {
         $response->addError(new WSValidationResult("DevicePermissionDenied","Este dispositivo no tiene permiso para realizar la acción"));
     }
-    if(!$clientDAL->HasAccount($GMail, $NUS))
+    if(!ClientManager::clientHasAccount($NUS, $clientId))
     {
         $response->addError(new WSValidationResult("AccountPermissionDenied","Usted no tiene registrada la cuenta que esta tratando de eliminar"));
     }

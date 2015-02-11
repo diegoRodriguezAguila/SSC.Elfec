@@ -23,30 +23,18 @@ class AccountDAL implements IAccountDAL
      * @param Account $newAccount
      * @return int
      */
-    public function RegisterAccount(Account $newAccount)
+    public function RegisterAccount($NUS, $accountNumber, $clientId)
     {
         $db = Database::get();
-        $result  = $db->select("SELECT * FROM accounts WHERE client_id = :client_id AND  nus = :nus AND account_number = :account_number",
-            [':client_id' => $newAccount->getClientId(), ':nus' => $newAccount->getNUS(), ':account_number' => $newAccount->getAccountNumber()]);
-        if(count($result)>0)
-        {
-            $updateData = array('status' => 1,'update_date'  => 'now()');
-            $where=array('client_id' => $newAccount->getClientId(),'nus'=>$newAccount->getNUS());
-            $db->update('accounts', $updateData,$where);
-            return $result[0]['id'];
-        }
-        else // es nueva cuenta
-        {
-            $data = array(
-                'client_id' => $newAccount->getClientId(),
-                'account_number' => $newAccount->getAccountNumber(),
-                'nus'  => $newAccount->getNUS(),
-                'status'  => 1,
-                'insert_date'  => 'now()'
-            );
-            $db->insert('accounts', $data);
-            return $db->lastInsertId('accounts_id_seq');
-        }
+        $data = array(
+            'client_id' => $clientId,
+            'account_number' => $accountNumber,
+            'nus'  => $NUS,
+            'status'  => 1,
+            'insert_date'  => 'now()'
+        );
+        $db->insert('accounts', $data);
+        return $db->lastInsertId('accounts_id_seq');
     }
 
     /**
