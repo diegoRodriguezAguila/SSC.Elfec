@@ -10,6 +10,7 @@ namespace business_logic;
 use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
 use data_access\DeviceDALFactory;
+use data_access\MobilePhoneDALFactory;
 
 /**
  * Class ClientManager Maneja la logica de negocio de clientes
@@ -84,10 +85,10 @@ class ClientManager {
      */
     public static function addPhoneNumberToClient($phoneNumber, $clientId)
     {
-        if(!self::clientHasPhoneNumber($phoneNumber, $clientId))
+        if($phoneNumber!="" && !self::clientHasPhoneNumber($phoneNumber, $clientId))
         {
             $phoneDAL = MobilePhoneDALFactory::instance();
-            $phoneDAL->registerPhone(MobilePhone::create()->setClientId($clientId)->setNumber($phoneNumber));
+            $phoneDAL->registerPhone($phoneNumber, $clientId);
         }
     }
 

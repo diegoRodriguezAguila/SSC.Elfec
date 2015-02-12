@@ -27,7 +27,7 @@ class AccountManager {
      */
     public static function isAValidAccount($NUS, $AccountNumber)
     {
-        $result = AccountDataReader::findAccountData($NUS, $AccountNumber, AccountDataReader::V_INFO_CUENTA);
+        $result = AccountDataReader::findAccountData($NUS, $AccountNumber, AccountDataReader::V_ACCOUNT_INFO);
         return count($result)>=1;
     }
 
@@ -45,9 +45,10 @@ class AccountManager {
             $foundAccount = $accResult[0];
             $fullAccount = Account::create()->setAccountNumber($foundAccount->account_number)
                 ->setNUS($foundAccount->nus);
-            $extraDataResult = AccountDataReader::findAccountData($foundAccount->nus, $foundAccount->account_number,AccountDataReader::V_INFO_CUENTA );
+            $extraDataResult = AccountDataReader::findAccountData($foundAccount->nus, $foundAccount->account_number,AccountDataReader::V_ACCOUNT_INFO );
             $fullAccount->setAccountOwner($extraDataResult[0]->NOMBRE)
-                ->setAddress($extraDataResult[0]->DIRECCION);
+                ->setAddress($extraDataResult[0]->DIRECCION)
+                ->setEnergySupplyStatus($extraDataResult[0]->ESTADO);
             foreach($extraDataResult as $extraData)
             {
                 array_push($fullAccount->Debts,
@@ -55,8 +56,7 @@ class AccountManager {
                               ->setExpirationDate($extraData->FECHA_VTO)
                               ->setMonth($extraData->MES)
                               ->setYear($extraData->ANIO)
-                              ->setReceiptNumber($extraData->NROCBTE)
-                ->jsonSerialize());
+                              ->setReceiptNumber($extraData->NROCBTE));
             }
             return $fullAccount;
         }

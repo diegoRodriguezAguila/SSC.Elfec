@@ -26,6 +26,7 @@ class Account
      * @var array
      */
     public $Debts = [];
+    private $EnergySupplyStatus;
     private $Status;
     private $InsertDate;
     private $UpdateDate;
@@ -33,6 +34,12 @@ class Account
     public function jsonSerialize()
     {
         $vars = get_object_vars($this);
+        $debtsArrayJson = [];
+        foreach($this->Debts as $debt)
+        {
+            array_push($debtsArrayJson, $debt->jsonSerialize());
+        }
+        $vars["Debts"] = $debtsArrayJson;
         return $vars;
     }
 
@@ -85,6 +92,26 @@ class Account
     {
         return $this->ClientId;
     }
+
+    /**
+     * @param int $EnergySupplyStatus
+     * @return $this
+     */
+    public function setEnergySupplyStatus($EnergySupplyStatus)
+    {
+        $this->EnergySupplyStatus = $EnergySupplyStatus;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEnergySupplyStatus()
+    {
+        return $this->EnergySupplyStatus;
+    }
+
+
 
     /**
      * @param int $AccountNumber
