@@ -14,7 +14,6 @@ namespace data_access\pgsql;
  */
 use data_access\IAccountDAL;
 use helpers\Database;
-use models\Account;
 
 class AccountDAL implements IAccountDAL
 {
@@ -28,13 +27,13 @@ class AccountDAL implements IAccountDAL
     public function registerAccount($NUS, $accountNumber, $clientId)
     {
         $db = Database::get();
-        $data = array(
+        $data = [
             'client_id' => $clientId,
             'account_number' => $accountNumber,
             'nus'  => $NUS,
             'status'  => 1,
             'insert_date'  => 'now()'
-        );
+        ];
         $db->insert('accounts', $data);
         return $db->lastInsertId('accounts_id_seq');
     }
@@ -52,5 +51,17 @@ class AccountDAL implements IAccountDAL
         $where=array('client_id' => $ClientID,'nus'=>$NUS);
         $db->update('accounts', $data,$where);
     }
+    /**
+     * Busca la cuenta con el id respectivo
+     * @param $accountId
+     * @return Array
+     */
+    public function findAccount($accountId)
+    {
+        $db = Database::get();
+        $result  = $db->select("SELECT * FROM accounts WHERE status=1 AND id=:account_id", array(':account_id'=>$accountId));
+        return $result;
+    }
+
 
 }

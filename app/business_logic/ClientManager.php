@@ -9,7 +9,11 @@
 namespace business_logic;
 use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
+
 use external_data_access\oracle\AccountDataReader;
+use data_access\DeviceDALFactory;
+use data_access\MobilePhoneDALFactory;
+
 /**
  * Class ClientManager Maneja la logica de negocio de clientes
  * @package business_logic
@@ -51,14 +55,18 @@ class ClientManager {
      * @param $NUS
      * @param $accountNumber
      * @param $clientId
+     * @return int
      */
     public static function addAccountToClient($NUS, $accountNumber, $clientId)
     {
-        if(!self::clientHasAccount($NUS, $clientId))
+        $clientDAL = ClientDALFactory::instance();
+        $accountResult = $clientDAL->findAccount($NUS, $clientId);
+        if(!count($accountResult)>0)
         {
             $accountDAL = AccountDALFactory::instance();
-            $accountDAL->RegisterAccount($NUS, $accountNumber, $clientId);
+            return $accountDAL->registerAccount($NUS, $accountNumber, $clientId);
         }
+        return $accountResult[0]->id;
     }
 
     /**
@@ -79,10 +87,10 @@ class ClientManager {
      */
     public static function addPhoneNumberToClient($phoneNumber, $clientId)
     {
-        if(!self::clientHasPhoneNumber($phoneNumber, $clientId))
+        if($phoneNumber!="" && !self::clientHasPhoneNumber($phoneNumber, $clientId))
         {
             $phoneDAL = MobilePhoneDALFactory::instance();
-            $phoneDAL->RegisterPhone(MobilePhone::create()->setClientId($clientId)->setNumber($phoneNumber));
+            $phoneDAL->registerPhone($phoneNumber, $clientId);
         }
     }
 

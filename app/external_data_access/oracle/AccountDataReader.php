@@ -16,8 +16,8 @@ use models\enums\DataBaseType;
  */
 class AccountDataReader {
 
-    const V_VALIDACION_CUENTA = "V_VALIDACION_CUENTA";
-    CONST V_INFO_CUENTA = "V_INFO_CUENTA";
+    const V_ACCOUNT_VALIDATION = "V_VALIDACION_CUENTA";
+    CONST V_ACCOUNT_INFO = "V_INFO_CUENTA";
     /**
      * Obtiene la información de una cuenta que coincida con el nus y el número de cuenta indicado
      * @param $NUS
