@@ -66,7 +66,6 @@ $server->register('GetAllAccounts',
 
 function GetAllAccounts($GMail, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
 {
-    $clientDAL = ClientDALFactory::instance();
     $clientId =  ClientManager::addClient($GMail);
     ClientManager::addDeviceToClient($DeviceIMEI, $GCM, $DeviceBrand, $DeviceModel, $clientId);
     $response = new WSResponse();
