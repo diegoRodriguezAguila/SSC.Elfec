@@ -9,7 +9,7 @@
 namespace business_logic;
 use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
-
+use external_data_access\oracle\AccountDataReader;
 /**
  * Class ClientManager Maneja la logica de negocio de clientes
  * @package business_logic
@@ -120,9 +120,8 @@ class ClientManager {
         $data=array();
         foreach($result as $row)
         {
-            $account=$clientDAL->getAllAccountData($row->nus,$row->account_number);
-            if($account!=null)
-                array_push($data,$account);
+            $account=AccountDataReader::findAccountData($row->nus,$row->account_number,AccountDataReader::V_INFO_CUENTA);
+
         }
         return $data;
     }

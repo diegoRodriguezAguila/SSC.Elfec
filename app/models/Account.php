@@ -40,7 +40,15 @@ class Account
     public static function create() {
         return new self();
     }
-
+    public function toAccount($accounts)
+    {
+        foreach($accounts as $account)
+        {
+            $this->AccountOwner=$account[0]->NOMBRE;
+            $this->NUS=$account[0]->IDSUMINISTRO;
+            $this->AccountNumber=$account[0]->NROSUM;
+        }
+    }
 
     //region  Getters y Setters
 
