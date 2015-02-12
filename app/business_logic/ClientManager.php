@@ -128,7 +128,8 @@ class ClientManager {
         $accounts=array();
         foreach($result as $row)
         {
-          array_push($accounts, AccountManager::getFullAccountData($row->id));
+          $account=  AccountManager::getFullAccountData($row->id);
+          array_push($accounts, $account->jsonSerialize());
         }
         return $accounts;
     }

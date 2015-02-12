@@ -34,7 +34,7 @@ class Welcome extends \core\controller{
 	public function index() {
         $data['title'] = $this->language->get('welcome_text');
         $data['welcome_message'] = $this->language->get('welcome_message');
-        $data['welcome_message'] = '<B>RESULT</B>: '.ClientManager::getAllAccounts("ssc.elfec@gmail.com");
+        $data['welcome_message'] = '<B>RESULT</B>: '.json_encode(ClientManager::getAllAccounts("ssc.elfec@gmail.com"));
 		View::rendertemplate('header', $data);
 		View::render('welcome/welcome', $data);
 		View::rendertemplate('footer', $data);
