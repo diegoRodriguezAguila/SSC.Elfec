@@ -35,8 +35,7 @@ class GCMAccountManager {
             'title'         => 'Nueva cuenta',
             'key'           => NotificationKey::NEW_ACCOUNT,
             'type'          => NotificationType::ACCOUNT,
-            'nus'           => $newAccount->getNUS(),
-            'number'        => $newAccount->getAccountNumber(),
+            'account'       => $newAccount->jsonSerialize(),
             'gmail'         => $ownerClientGmail
         );
         $d=array();
