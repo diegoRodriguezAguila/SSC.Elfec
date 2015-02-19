@@ -70,10 +70,8 @@ function GetAllAccounts($GMail, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
     ClientManager::addDeviceToClient($DeviceIMEI, $GCM, $DeviceBrand, $DeviceModel, $clientId);
     $response = new WSResponse();
     $accounts=ClientManager::GetAllAccounts($GMail);
-    $accountsJson=array();
-    foreach($accounts as $acc)
-        array_push($accountsJson,$acc->jsonSerialize());
-    $response->setResponse($accountsJson);
+
+    $response->setResponse($accounts);
 
     return json_encode($response->JsonSerialize());
 }

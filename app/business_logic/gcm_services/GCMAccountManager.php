@@ -7,6 +7,7 @@
 
 namespace business_logic\gcm_services;
 use data_access\ClientDALFactory;
+use helpers\AccountFormatter;
 use helpers\GCMSender;
 use models\Account;
 use models\enums\NotificationKey;
@@ -31,7 +32,9 @@ class GCMAccountManager {
         $devices=$clientDAL->getClientDevices( $clientDAL->GetClientId($ownerClientGmail));
         $msg = array
         (
-            'message'       => 'Se registró la cuenta: '.$newAccount->getAccountNumber().', con el NUS: '.$newAccount->getNUS(),
+            'message'       => 'Se registró la cuenta: '.
+                AccountFormatter::format($newAccount->getAccountNumber())
+                .', con el NUS: '.$newAccount->getNUS(),
             'title'         => 'Nueva cuenta',
             'key'           => NotificationKey::NEW_ACCOUNT,
             'type'          => NotificationType::ACCOUNT,
