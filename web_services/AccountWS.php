@@ -77,14 +77,14 @@ function GetAllAccounts($GMail, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
 }
 
 
-$server->register('GetUSage',
+$server->register('GetUsage',
     array('NUS' => 'xsd:string'),
     array('Response' => 'xsd:string'),
     'xsd:ssc_elfec');
 
 function GetUsage($NUS)
 {
-   return AccountManager::getUsageFromAccount($NUS);
+   return json_encode(AccountManager::getUsageFromAccount($NUS));
 }
 
 

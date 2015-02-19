@@ -36,7 +36,7 @@ class AccountDataReader {
     public static function getUsageFromAccount($NUS)
     {
         $db = database::get(DataBaseType::$ORACLE_DATABASE);
-        $result  = $db->select("SELECT * from table (select ELFEC_SSC.F_CONSUMOS (:nus) FROM DUAL);",
+        $result  = $db->select("SELECT GESTION, CONSUMO from table(select ELFEC_SSC.F_CONSUMOS (:nus) FROM DUAL)",
             [":nus"=>$NUS]);
         return $result;
     }
