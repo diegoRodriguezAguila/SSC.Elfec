@@ -11,6 +11,7 @@ use data_access\AccountDALFactory;
 use external_data_access\oracle\AccountDataReader;
 use models\Account;
 use models\Debt;
+use models\Usage;
 
 /**
  * Class AccountManager Maneja la información de las cuentas y su lógica de negocio
@@ -33,7 +34,13 @@ class AccountManager {
 
     public static function getUsageFromAccount($NUS)
     {
-       return AccountDataReader::getUsageFromAccount($NUS);
+        $result=array();
+       $usage=AccountDataReader::getUsageFromAccount($NUS);
+        foreach($usage as $item)
+        {
+            array_push($result,Usage::create()->setEnergyUsage($item->CONSUMO)->setTerm($item->GESTION)->jsonSerialize());
+        }
+        return $result;
     }
 
     /**
