@@ -31,6 +31,11 @@ class AccountManager {
         return count($result)>=1;
     }
 
+    public static function getUsageFromAccount($NUS)
+    {
+       return AccountDataReader::getUsageFromAccount($NUS);
+    }
+
     /**
      * Devuelve una cuenta con su información completa de deudas, direción y nombre
      * @param $accountId

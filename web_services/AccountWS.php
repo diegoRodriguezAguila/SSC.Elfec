@@ -76,6 +76,18 @@ function GetAllAccounts($GMail, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
     return json_encode($response->JsonSerialize());
 }
 
+
+$server->register('GetUSage',
+    array('NUS' => 'xsd:string'),
+    array('Response' => 'xsd:string'),
+    'xsd:ssc_elfec');
+
+function GetUsage($NUS)
+{
+   return AccountManager::getUsageFromAccount($NUS);
+}
+
+
 $server->register('DeleteAccount',   array('DeviceIMEI' => 'xsd:string','NUS' => 'xsd:string', 'GMail' => 'xsd:string'),
     array('Response' => 'xsd:integer'),
     'xsd:ssc_elfec');
