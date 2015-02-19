@@ -84,7 +84,9 @@ $server->register('GetUsage',
 
 function GetUsage($NUS)
 {
-   return json_encode(AccountManager::getUsageFromAccount($NUS));
+    $response = new WSResponse();
+    $response->setResponse(json_encode(AccountManager::getUsageFromAccount($NUS)));
+   return json_encode($response->JsonSerialize());
 }
 
 
