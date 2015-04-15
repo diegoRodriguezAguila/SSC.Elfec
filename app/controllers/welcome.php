@@ -9,7 +9,7 @@ use models\enums\DataBaseType;
 use business_logic\gcm_services\GCMLocationPointManager;
 use models\Client;
 use models\LocationPoint;
-
+use business_logic\SessionManager;
 /*
  * Welcome controller
  *
@@ -32,12 +32,16 @@ class Welcome extends \core\controller{
 	 * Define Index page title and load template files
 	 */
 	public function index() {
-        $data['title'] = $this->language->get('welcome_text');
-        $data['welcome_message'] = $this->language->get('welcome_message');
-        $data['welcome_message'] = '<B>RESULT</B>: '.json_encode(ClientManager::getAllAccounts("ssc.elfec@gmail.com"));
-		View::rendertemplate('header', $data);
+        if(SessionManager::isLoggedIn())
+        {
+        $data['title'] = "Bienvenido";
+        $data['welcome_message'] = "Ingreso al sistema satisfactorio!";
+      	View::rendertemplate('header', $data);
 		View::render('welcome/welcome', $data);
 		View::rendertemplate('footer', $data);
+        }
+        else
+            \helpers\url::redirect('');
 	}
 
 	/**

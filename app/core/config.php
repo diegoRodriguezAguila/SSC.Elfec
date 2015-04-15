@@ -17,11 +17,11 @@ class Config {
 		ob_start();
 
 		//site address
-		define('DIR', 'http://192.168.50.56/SSC.Elfec/');
+		define('DIR', 'http://localhost/SSC.Elfec/');
 
 		//set default controller and method for legacy calls
-		define('DEFAULT_CONTROLLER', 'welcome');
-		define('DEFAULT_METHOD' , 'index');
+		define('DEFAULT_CONTROLLER', 'session');
+		define('DEFAULT_METHOD' , 'login');
 
 		//set a default language
 		define('LANGUAGE_CODE', 'en');
@@ -34,11 +34,11 @@ class Config {
 
 		//database details ONLY NEEDED IF USING A DATABASE
 		define('DB_TYPE', 'pgsql');
-        define('DB_HOST', 'elfbdp01');
+        define('DB_HOST', 'localhost');
         define('DB_PORT', '5432');
         define('DB_NAME', 'SSC.Elfec');
-        define('DB_USER', 'drodriguezd');
-        define('DB_PASS', 'elfec2015');
+        define('DB_USER', 'postgres');
+        define('DB_PASS', 'Aurora');
         define('PREFIX', 'SSC.Elfec');
 
         //Oracle DB
@@ -64,7 +64,7 @@ class Config {
         define('CENTRALITY_DB_USER', 'drodriguezd');
         define('CENTRALITY_DB_PASS', 'elfec2015');
 
-		//set prefix for sessions
+		//set prefix for session
 		define('SESSION_PREFIX', 'ssc_elfec_');
 
 		//optionall create a constant for the name of the site
@@ -77,7 +77,7 @@ class Config {
 		//set timezone
 		date_default_timezone_set('America/La_Paz');
 
-		//start sessions
+		//start session
 		\helpers\session::init();
 
 		//set the default template

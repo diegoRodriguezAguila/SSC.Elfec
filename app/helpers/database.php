@@ -31,7 +31,7 @@ class Database extends PDO{
 			'user' => DB_USER,
 			'pass' => DB_PASS
 		) : $group;
-		
+
 		// Group information
 		$type = $group['type'];
 		$host = $group['host'];
@@ -52,17 +52,17 @@ class Database extends PDO{
 			// I've run into problem where
 			// SET NAMES "UTF8" not working on some hostings.
 			// Specifiying charset in DSN fixes the charset problem perfectly!
-			$instance = new Database("$type:dbname=$name;host=$host;port=$port;", $user, $pass);
-			$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          	$instance = new Database("$type:dbname=$name;host=$host;port=$port;", $user, $pass);
+
 			
 			// Setting Database into $instances to avoid duplication
 			self::$instances[$id] = $instance;
 			
 			return $instance;
-		} catch(PDOException $e){
+		} catch(\PDOException $e){
 			//in the event of an error record the error to errorlog.html
-			Logger::newMessage($e);
-			logger::customErrorMsg();
+			throw $e;
+
 		}
 	}
 

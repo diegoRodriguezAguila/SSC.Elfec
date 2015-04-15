@@ -1,7 +1,7 @@
 <?php namespace helpers;
 
 /*
- * Session Class - prefix sessions with useful methods
+ * Session Class - prefix session with useful methods
  *
  * @author David Carr - dave@daveismyname.com - http://www.daveismyname.com
  * @version 2.0
@@ -16,7 +16,7 @@ class Session {
 	private static $_sessionStarted = false;
 
 	/**
-	 * if session has not started, start sessions 
+	 * if session has not started, start session
 	 */
 	public static function init(){
 
