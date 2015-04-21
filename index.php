@@ -66,8 +66,10 @@ use \core\router,
 //define routes
 Router::any('', '\controllers\session@login');
 Router::post('/session/logout', '\controllers\session@logout');
+Router::post('/welcome/notification', '\controllers\welcome@notification');
 Router::any('/logout', '\controllers\session@destroy');
 Router::any('/subpage', '\controllers\welcome@subpage');
+Router::any('/notification', '\controllers\welcome@programmed_notification');
 Router::any('/welcome', '\controllers\welcome@index');
 
 //if no route found

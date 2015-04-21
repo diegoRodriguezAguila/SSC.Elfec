@@ -1,5 +1,6 @@
 <?php namespace controllers;
 use business_logic\ClientManager;
+use business_logic\gcm_services\GCMOutageManager;
 use core\view;
 use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
@@ -10,6 +11,7 @@ use business_logic\gcm_services\GCMLocationPointManager;
 use models\Client;
 use models\LocationPoint;
 use business_logic\SessionManager;
+use business_logic\LocationManager;
 /*
  * Welcome controller
  *
@@ -27,7 +29,21 @@ class Welcome extends \core\controller{
 
 		$this->language->load('welcome');
 	}
-
+    public function notification()
+    {
+        $location=$_POST['location'];
+        $messagge=$_POST['messagge'];
+        GCMOutageManager::sendIncidentalOutageNotification($location,$messagge);
+        \helpers\url::redirect('welcome?right=true');
+    }
+    public function programmed_notification()
+    {
+        //get $notifications
+        for($i=0;$i<1/*$notifications*/;$i++)
+            //$notifications[i].location $notification[i].message
+        GCMOutageManager::sendOutageNotification(1,"random");
+        echo "Mensaje enviado!";
+    }
 	/**
 	 * Define Index page title and load template files
 	 */
@@ -36,6 +52,7 @@ class Welcome extends \core\controller{
         {
         $data['title'] = "Bienvenido";
         $data['welcome_message'] = "Ingreso al sistema satisfactorio!";
+        $data['locations']=LocationManager::getLocations();
       	View::rendertemplate('header', $data);
 		View::render('welcome/welcome', $data);
 		View::rendertemplate('footer', $data);

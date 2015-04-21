@@ -27,7 +27,7 @@ class Config {
 		define('LANGUAGE_CODE', 'en');
 
         //set the api key from Google API
-        define( 'API_ACCESS_KEY', 'AIzaSyCX5gxMA73PIZVCXuwqZf7odatmcOMAXYk' );
+        define( 'API_ACCESS_KEY', 'AIzaSyBkPwWSWhNaWVVwPkWX-HZKa7FCXCZjX9I' );
 
         //sets the proxy if necesary
         define('PROXY_SERVER', 'proxy:8080');

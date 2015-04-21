@@ -21,11 +21,6 @@
                         <br><input type="password" style="height: 50px" name="password" class="form-control" placeholder="Password" required>
                        <br> <button class="btn btn-lg btn-primary btn-block" type="submit">
                             Ingresar</button>
-                        <label class="checkbox pull-left">
-                            <input type="checkbox" value="remember-me">
-                            Recordarme
-                        </label>
-                        <a href="#" class="pull-right need-help">Ayuda? </a><span class="clearfix"></span>
                     </form>
                 </div>
             </div>
