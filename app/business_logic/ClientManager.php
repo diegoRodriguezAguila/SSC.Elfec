@@ -50,6 +50,11 @@ class ClientManager {
         return count($accountResult)>0;
     }
 
+    public static function getOwners($accounts)
+    {
+        $accountDAL = ClientDALFactory::instance();
+        return $accountDAL->getOwners($accounts);
+    }
     /**
      * Verifica si es que el cliente tiene la cuenta con el nus proporcionado, sino la registra
      * @param $NUS

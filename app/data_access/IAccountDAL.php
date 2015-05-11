@@ -14,6 +14,7 @@ namespace data_access;
  */
 interface IAccountDAL
 {
+    public function getAll();
     /**
      * Registra una nueva cuenta y retorna el Id que se le asignó
      * @param $NUS

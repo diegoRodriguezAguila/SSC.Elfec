@@ -1,4 +1,5 @@
 <?php namespace controllers;
+use business_logic\AccountManager;
 use business_logic\ClientManager;
 use business_logic\gcm_services\GCMOutageManager;
 use core\view;
@@ -32,9 +33,16 @@ class Welcome extends \core\controller{
     public function notification()
     {
         $location=$_POST['location'];
-        $messagge=$_POST['messagge'];
-        GCMOutageManager::sendIncidentalOutageNotification($location,$messagge);
-        \helpers\url::redirect('welcome?right=true');
+        $message=$_POST['messagge'];
+        $accounts=AccountDALFactory::instance();
+        $affected_accounts=$accounts->getAll();
+        $owners=ClientManager::getOwners($affected_accounts);
+        foreach($owners as $owner)
+        {
+            $o=(json_encode($owner));
+            GCMOutageManager::sendIncidentalOutageNotification($o[0],$message);
+        }
+        //\helpers\url::redirect('welcome?right=true');
     }
     public function programmed_notification()
     {

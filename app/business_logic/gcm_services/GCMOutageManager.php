@@ -10,6 +10,8 @@ namespace business_logic\gcm_services;
 use models\enums\NotificationKey;
 use models\enums\NotificationType;
 use data_access\DeviceDALFactory;
+use data_access\ClientDALFactory;
+use data_access\pgsql\ClientDAL;
 use helpers\GCMSender;
 /**
  * Class GCMOutageManager provee de metodos necesarios para distintos tipos de envios
@@ -20,10 +22,10 @@ class GCMOutageManager {
 
     private static $MAX_DEVICES_PER_GCM = 1000;
 
-    public static function sendIncidentalOutageNotification($location, $message)
+    public static function sendIncidentalOutageNotification($owner, $message)
     {
-        $deviceDAL = DeviceDALFactory::instance();
-        $devices  = $deviceDAL->GetAllDevices();
+        $clientDAL = ClientDALFactory::instance();
+        $devices  = $clientDAL->getClientDevicesByOwner($owner);
         $totalDevices = count($devices);
         $counter = 1;
         $msg = array
@@ -32,11 +34,11 @@ class GCMOutageManager {
             'title'         => 'Corte fortuito',
             'key'           => NotificationKey::INCIDENTAL_OUTAGE,
             'type'          => NotificationType::OUTAGE,
+            'owner'         => $owner
         );
         $deviceTokens = array();
         for ($i = 0; $i < $totalDevices; $i++)
         {
-            echo $devices[$i]->gcm_token;
             array_push($deviceTokens,$devices[$i]->gcm_token);
             $counter++;
             if($counter==self::$MAX_DEVICES_PER_GCM)
@@ -48,7 +50,6 @@ class GCMOutageManager {
         }
         if($counter>1)
         {
-            echo "segundo: ".$deviceTokens[0]." valor: ".(count($deviceTokens));
             GCMSender::sendDataToDevices($deviceTokens,$msg);
         }
     }
