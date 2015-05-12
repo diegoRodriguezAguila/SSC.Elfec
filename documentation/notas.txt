@@ -1,1 +1,3 @@
 -Habilitar el modulo rewrite_module en Apache
+correo: ssc.elfec@gmail.com
+pass: ssc.elfec.2015
