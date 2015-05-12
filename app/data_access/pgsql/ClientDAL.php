@@ -30,6 +30,41 @@ class ClientDAL implements IClientDAL {
         );
         $db->insert('clients', $data);
         return $db->lastInsertId('clients_id_seq');
+
+    }
+
+    public function getAll()
+    {
+        $db = Database::get();
+        $result  = $db->select("SELECT * FROM accounts");
+        return $result;
+
+    }
+
+
+    /**
+     * Obtiene los dispositivos que le pertenecen a un cliente por su gmail
+     * @param $owner
+     * @return array
+     */
+    public function getClientDevicesByOwner($owner)
+    {
+        $db = Database::get();
+        $result  = $db->select("SELECT * FROM devices d,clients c WHERE d.client_id=c.id and c.gmail=:owner", array(':owner'=>$owner));
+        return $result;
+    }
+
+    /**
+     * Obtiene las cuentas de gmail
+     * @param $owner
+     * @return array
+     */
+    public function getOwners($accounts)
+    {
+        $db = Database::get();
+        $result  = $db->select("SELECT c.gmail FROM clients c WHERE c.id in (SELECT c2.id FROM clients c2,accounts a WHERE  c2.id=a.client_id and a.nus in (Select nus from accounts))");
+
+        return $result;
     }
 
     /**

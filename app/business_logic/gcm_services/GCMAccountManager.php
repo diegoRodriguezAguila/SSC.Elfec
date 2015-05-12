@@ -50,6 +50,7 @@ class GCMAccountManager {
         GCMSender::sendDataToDevices($d,$msg);
     }
 
+
     /**
      * Propaga la eliminación de una cuenta a todos los dispositivos pertinentes, excepto al que realizó la acción
      * @param string $ownerClientGmail

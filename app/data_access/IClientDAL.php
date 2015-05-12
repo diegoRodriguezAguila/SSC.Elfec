@@ -26,13 +26,25 @@ interface IClientDAL
      * @return int
      */
     public function getClientId($gmail);
-
+    /**
+     * Obtiene las cuentas de gmail
+     * @param $owner
+     * @return array
+     */
+    public function getOwners($accounts);
+    /**
+     * Obtiene los dispositivos que le pertenecen a un cliente por su gmail
+     * @param $clientId
+     * @return array
+     */
+    public function getClientDevicesByOwner($owner);
     /**
      * Busca si la cuenta con el NUS indicado asociada al cliente
      * @param $NUS
      * @param $clientId
      * @return array
      */
+
     public function findAccount($NUS, $clientId);
 
     /**

@@ -19,6 +19,7 @@ use models\Usage;
  */
 class AccountManager {
 
+
     /**
      * Valida si es que una cuenta corresponde a un nus y su número, conectando a la base
      * de datos oracle
@@ -42,7 +43,6 @@ class AccountManager {
         }
         return $result;
     }
-
     /**
      * Devuelve una cuenta con su información completa de deudas, direción y nombre
      * @param $accountId
