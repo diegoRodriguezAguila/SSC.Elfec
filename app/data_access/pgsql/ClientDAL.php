@@ -56,13 +56,15 @@ class ClientDAL implements IClientDAL {
 
     /**
      * Obtiene las cuentas de gmail
-     * @param $owner
+     * @param $accounts
      * @return array
      */
     public function getOwners($accounts)
     {
         $db = Database::get();
-        $result  = $db->select("SELECT c.gmail FROM clients c WHERE c.id in (SELECT c2.id FROM clients c2,accounts a WHERE  c2.id=a.client_id and a.nus in (Select nus from accounts))");
+        $result  = $db->select("SELECT c.gmail FROM clients c WHERE c.id in
+        (SELECT c2.id FROM clients c2,accounts a WHERE  c2.id=a.client_id and a.nus in
+        (Select nus from accounts))");
 
         return $result;
     }

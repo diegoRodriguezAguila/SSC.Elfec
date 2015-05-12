@@ -39,10 +39,9 @@ class Welcome extends \core\controller{
         $owners=ClientManager::getOwners($affected_accounts);
         foreach($owners as $owner)
         {
-            $o=(json_encode($owner));
-            GCMOutageManager::sendIncidentalOutageNotification($o[0],$message);
+            GCMOutageManager::sendIncidentalOutageNotification($owner->gmail,$message);
         }
-        //\helpers\url::redirect('welcome?right=true');
+        \helpers\url::redirect('welcome?right=true');
     }
     public function programmed_notification()
     {
