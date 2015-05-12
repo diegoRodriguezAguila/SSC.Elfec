@@ -27,18 +27,18 @@ class Config {
 		define('LANGUAGE_CODE', 'en');
 
         //set the api key from Google API
-        define( 'API_ACCESS_KEY', 'AIzaSyBkPwWSWhNaWVVwPkWX-HZKa7FCXCZjX9I' );
+        define( 'API_ACCESS_KEY', 'AIzaSyCX5gxMA73PIZVCXuwqZf7odatmcOMAXYk' );
 
         //sets the proxy if necesary
         define('PROXY_SERVER', 'proxy:8080');
 
 		//database details ONLY NEEDED IF USING A DATABASE
 		define('DB_TYPE', 'pgsql');
-        define('DB_HOST', 'localhost');
+        define('DB_HOST', 'elfbdp01');
         define('DB_PORT', '5432');
         define('DB_NAME', 'SSC.Elfec');
-        define('DB_USER', 'postgres');
-        define('DB_PASS', 'Aurora');
+        define('DB_USER', 'drodriguezd');
+        define('DB_PASS', 'elfec2015');
         define('PREFIX', 'SSC.Elfec');
 
         //Oracle DB
@@ -58,7 +58,7 @@ class Config {
 
         //Centrality DB
         define('CENTRALITY_DB_TYPE', 'pgsql');
-        define('CENTRALITY_DB_HOST', 'elfbdp01');
+        define('CENTRALITY_DB_HOST', 'centrality_desa');
         define('CENTRALITY_DB_PORT', '5432');
         define('CENTRALITY_DB_NAME', 'SSC.Elfec');
         define('CENTRALITY_DB_USER', 'drodriguezd');
