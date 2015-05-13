@@ -34,7 +34,7 @@ class GCMOutageManager {
             'title'         => 'Corte fortuito',
             'key'           => NotificationKey::INCIDENTAL_OUTAGE,
             'type'          => NotificationType::OUTAGE,
-            'owner'         => $owner
+            'gmail'         => $owner
         );
         $deviceTokens = array();
         for ($i = 0; $i < $totalDevices; $i++)
