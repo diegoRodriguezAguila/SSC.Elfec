@@ -10,7 +10,7 @@
 	<?php
 		helpers\assets::css(array(
 			'//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css',
-			helpers\url::template_path() . 'css/style.css',
+			helpers\url::template_path() . 'css/style.css',helpers\url::template_path().'css/dropdown.css',
 		));
     helpers\assets::js(array(helpers\Url::template_path().'js/jquery.min.js',helpers\Url::template_path().'js/bootstrap.min.js',helpers\Url::template_path().'js/bootstrap.dropdown.js'));
 	?>

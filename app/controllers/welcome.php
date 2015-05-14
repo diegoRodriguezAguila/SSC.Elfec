@@ -13,6 +13,7 @@ use models\Client;
 use models\LocationPoint;
 use business_logic\SessionManager;
 use business_logic\LocationManager;
+use helpers\OracleToString;
 /*
  * Welcome controller
  *
@@ -36,7 +37,8 @@ class Welcome extends \core\controller{
         $message=$_POST['messagge'];
         $accounts=AccountDALFactory::instance();
         $affected_accounts=$accounts->getAll();
-        $owners=ClientManager::getOwners($affected_accounts);
+        $formated_accounts=OracleToString::convertToSQL(($affected_accounts),"nus");
+        $owners=ClientManager::getOwners($formated_accounts);
         foreach($owners as $owner)
         {
             GCMOutageManager::sendIncidentalOutageNotification($owner->gmail,$message);
