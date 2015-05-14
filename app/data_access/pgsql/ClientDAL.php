@@ -9,7 +9,7 @@ namespace data_access\pgsql;
 
 
 use data_access\IClientDAL;
-use external_data_access\oracle\AccountDataReader;
+use external_data_access\oracle\AccountEDAL;
 use helpers\Database;
 use models\Client;
 

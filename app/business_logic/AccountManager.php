@@ -8,7 +8,7 @@
 
 namespace business_logic;
 use data_access\AccountDALFactory;
-use external_data_access\oracle\AccountDataReader;
+use external_data_access\oracle\AccountEDAL;
 use models\Account;
 use models\Debt;
 use models\Usage;
@@ -29,14 +29,14 @@ class AccountManager {
      */
     public static function isAValidAccount($NUS, $AccountNumber)
     {
-        $result = AccountDataReader::findAccountData($NUS, $AccountNumber, AccountDataReader::V_ACCOUNT_INFO);
+        $result = AccountEDAL::findAccountData($NUS, $AccountNumber, AccountEDAL::V_ACCOUNT_INFO);
         return count($result)>=1;
     }
 
     public static function getUsageFromAccount($NUS)
     {
         $result=array();
-       $usage=AccountDataReader::getUsageFromAccount($NUS);
+       $usage=AccountEDAL::getUsageFromAccount($NUS);
         foreach($usage as $item)
         {
             array_push($result,Usage::create()->setEnergyUsage($item->CONSUMO)->setTerm($item->GESTION)->jsonSerialize());
@@ -57,7 +57,7 @@ class AccountManager {
             $foundAccount = $accResult[0];
             $fullAccount = Account::create()->setAccountNumber($foundAccount->account_number)
                 ->setNUS($foundAccount->nus);
-            $extraDataResult = AccountDataReader::findAccountData($foundAccount->nus, $foundAccount->account_number,AccountDataReader::V_ACCOUNT_INFO );
+            $extraDataResult = AccountEDAL::findAccountData($foundAccount->nus, $foundAccount->account_number,AccountEDAL::V_ACCOUNT_INFO );
             $fullAccount->setAccountOwner($extraDataResult[0]->NOMBRE)
                 ->setAddress($extraDataResult[0]->DIRECCION)
                 ->setEnergySupplyStatus($extraDataResult[0]->ESTADO);
@@ -74,4 +74,10 @@ class AccountManager {
         }
         return null;
     }
+
+    public static function getNonPaymentOutageAccounts()
+    {
+
+    }
+
 } 

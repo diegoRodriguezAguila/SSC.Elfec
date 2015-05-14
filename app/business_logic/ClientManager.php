@@ -10,7 +10,7 @@ namespace business_logic;
 use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
 
-use external_data_access\oracle\AccountDataReader;
+use external_data_access\oracle\AccountEDAL;
 use data_access\DeviceDALFactory;
 use data_access\MobilePhoneDALFactory;
 
