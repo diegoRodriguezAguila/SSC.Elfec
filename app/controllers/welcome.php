@@ -50,7 +50,7 @@ class Welcome extends \core\controller{
         //get $notifications
         for($i=0;$i<1/*$notifications*/;$i++)
             //$notifications[i].location $notification[i].message
-        GCMOutageManager::sendOutageNotification(1,"random");
+        GCMOutageManager::sendScheduledOutageNotification(1,"random");
         echo "Mensaje enviado!";
     }
 	/**

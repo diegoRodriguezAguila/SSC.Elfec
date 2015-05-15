@@ -77,31 +77,4 @@ class GCMAccountManager {
         }
         GCMSender::sendDataToDevices($d,$msg);
     }
-
-    /**
-     * Propaga la eliminación de una cuenta a todos los dispositivos pertinentes, excepto al que realizó la acción
-     * @param string $ownerClientGmail
-     * @param string $NUS
-     * @param string $originDeviceImei
-     */
-    public static function notifyIncidentalOutage($ownerClientGmail, $NUS, $originDeviceImei)
-    {
-        $clientDAL = ClientDALFactory::instance();
-        $devices=$clientDAL->getClientDevices( $clientDAL->GetClientId($ownerClientGmail));
-        $msg = array(
-            'message'       => 'Se eliminó la cuenta con el NUS: '.$NUS,
-            'title'         => 'Cuenta eliminada',
-            'key'           => NotificationKey::ACCOUNT_DELETED,
-            'type'          =>  NotificationType::ACCOUNT,
-            'nus'           => $NUS,
-            'gmail'         => $ownerClientGmail
-        );
-        $d=array();
-        foreach($devices as $dev)
-        {
-            if($dev->imei!=$originDeviceImei)
-                array_push($d,$dev->gcm_token);
-        }
-        GCMSender::sendDataToDevices($d,$msg);
-    }
 } 

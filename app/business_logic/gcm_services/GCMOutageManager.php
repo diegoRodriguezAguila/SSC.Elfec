@@ -53,7 +53,9 @@ class GCMOutageManager {
             GCMSender::sendDataToDevices($deviceTokens,$msg);
         }
     }
-    public static function sendOutageNotification($location,$message)
+
+
+    public static function sendScheduledOutageNotification($location,$message)
     {
         $deviceDAL = DeviceDALFactory::instance();
         //get devices by location
