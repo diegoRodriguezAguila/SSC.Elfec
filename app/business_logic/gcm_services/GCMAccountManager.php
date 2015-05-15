@@ -84,7 +84,7 @@ class GCMAccountManager {
      * @param string $NUS
      * @param string $originDeviceImei
      */
-    public static function fortuitAccountOuttage($ownerClientGmail, $NUS, $originDeviceImei)
+    public static function notifyIncidentalOutage($ownerClientGmail, $NUS, $originDeviceImei)
     {
         $clientDAL = ClientDALFactory::instance();
         $devices=$clientDAL->getClientDevices( $clientDAL->GetClientId($ownerClientGmail));

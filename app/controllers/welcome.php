@@ -45,7 +45,7 @@ class Welcome extends \core\controller{
         }
         \helpers\url::redirect('welcome?right=true');
     }
-    public function programmed_notification()
+    public function scheduled_notification()
     {
         //get $notifications
         for($i=0;$i<1/*$notifications*/;$i++)

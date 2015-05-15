@@ -75,9 +75,23 @@ class AccountManager {
         return null;
     }
 
+    /**
+     * Obtiene todas las cuentas a las que hay que enviarles notificación
+     * de corte por mora el día de hoy
+     * @return array
+     */
     public static function getNonPaymentOutageAccounts()
     {
-
+        $accounts = AccountDALFactory::instance()->getAll();
+        $nonPaymentOutageAccounts = [];
+        foreach($accounts as $acc)
+        {
+            if(AccountEDAL::isNonPaymentOutageAccount($acc->nus))
+            {
+                array_push($nonPaymentOutageAccounts, $acc->nus);
+            }
+        }
+        return $nonPaymentOutageAccounts;
     }
 
 } 

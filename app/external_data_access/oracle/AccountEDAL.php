@@ -33,6 +33,11 @@ class AccountEDAL {
         return $result;
     }
 
+    /**
+     * Obtiene la evolucion de los consumos dado un NUS
+     * @param $NUS
+     * @return array
+     */
     public static function getUsageFromAccount($NUS)
     {
         $db = database::get(DataBaseType::$ORACLE_DATABASE);
@@ -41,11 +46,20 @@ class AccountEDAL {
         return $result;
     }
 
-    public static function getNonPaymentOutageAccounts()
+    /**
+     * Verifica si es que a una cuenta se le debe enviar una notificación
+     * por falta de pago
+     * @param $NUS
+     * @return bool
+     */
+    public static function isNonPaymentOutageAccount($NUS)
     {
         $db = database::get(DataBaseType::$ORACLE_DATABASE);
-        $result  = $db->select("SELECT /*+CHOOSE*/ GESTION, CONSUMO from table(select ELFEC_SSC.F_CONSUMOS FROM DUAL)");
-        return $result;
+        $result  = $db->select("SELECT count(1) HAS_TO_SEND_NOTIFICATION FROM dual
+                                WHERE CORTES.VALIDA_VENCIDAS(:nus)>1
+                                AND ELFEC_SSC.TIENE_VENCIDA_EN_FECHA(:nus, SYSDATE)>0 ",
+                            [":nus"=>$NUS]);
+        return $result[0]->HAS_TO_SEND_NOTIFICATION>0;
     }
 
 } 
