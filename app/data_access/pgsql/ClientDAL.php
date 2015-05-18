@@ -62,7 +62,6 @@ class ClientDAL implements IClientDAL {
     public function getOwners($accounts)
     {
         $db = Database::get();
-        $test="('1','2','3','4','5','6')";
         $result  = $db->select("SELECT c.gmail FROM clients c WHERE c.id in
         (SELECT c2.id FROM clients c2,accounts a WHERE  c2.id=a.client_id and a.nus
         ".$accounts.")");

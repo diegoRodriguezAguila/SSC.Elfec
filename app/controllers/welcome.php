@@ -4,13 +4,6 @@ use business_logic\ClientManager;
 use business_logic\gcm_services\GCMOutageManager;
 use core\view;
 use data_access\AccountDALFactory;
-use data_access\ClientDALFactory;
-use business_logic\gcm_services\GCMAccountManager;
-use helpers\database;
-use models\enums\DataBaseType;
-use business_logic\gcm_services\GCMLocationPointManager;
-use models\Client;
-use models\LocationPoint;
 use business_logic\SessionManager;
 use business_logic\LocationManager;
 use helpers\OracleToString;
@@ -53,6 +46,7 @@ class Welcome extends \core\controller{
         GCMOutageManager::sendScheduledOutageNotification(1,"random");
         echo "Mensaje enviado!";
     }
+
 	/**
 	 * Define Index page title and load template files
 	 */

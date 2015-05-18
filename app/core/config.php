@@ -53,7 +53,7 @@ class Config {
                                   (SERVICE_NAME = SIDPROD)
                                 )
                               )');
-        define('ODB_USER', 'USR_SSC');
+        define('ODB_USER', 'DRODRIGUEZD');
         define('ODB_PASS', 'elfec2015');
 
         //Centrality DB

@@ -67,6 +67,7 @@ use \core\router,
 Router::any('', '\controllers\session@login');
 Router::post('/session/logout', '\controllers\session@logout');
 Router::post('/welcome/notification', '\controllers\welcome@notification');
+Router::any('/notifications/nonpayment_outage', '\controllers\notifications@nonpayment_outage');
 Router::any('/logout', '\controllers\session@destroy');
 Router::any('/subpage', '\controllers\welcome@subpage');
 Router::any('/notification', '\controllers\welcome@programmed_notification');

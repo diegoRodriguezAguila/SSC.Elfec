@@ -88,7 +88,7 @@ class AccountManager {
         {
             if(AccountEDAL::isNonPaymentOutageAccount($acc->nus))
             {
-                array_push($nonPaymentOutageAccounts, $acc->nus);
+                array_push($nonPaymentOutageAccounts, $acc);
             }
         }
         return $nonPaymentOutageAccounts;
