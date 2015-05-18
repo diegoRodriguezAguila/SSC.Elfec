@@ -15,13 +15,10 @@ class Notifications extends \core\controller{
     public function nonpayment_outage()
     {
         $nonpayment_accounts= AccountManager::getNonPaymentOutageAccounts();
-        var_dump($nonpayment_accounts);
-        $formatted_accounts=OracleToString::convertToSQL(($nonpayment_accounts), "nus");
-        $owners=ClientManager::getOwners($formatted_accounts);
-        foreach($owners as $owner)
+        foreach($nonpayment_accounts as $account)
         {
-            GCMOutageManager::sendNonPaymentOutageNotification($owner->gmail);
+            GCMOutageManager::sendNonPaymentOutageNotification($account);
         }
-        //\helpers\url::redirect('welcome?right=true');
+        \helpers\url::redirect('welcome?right=true');
     }
 } 

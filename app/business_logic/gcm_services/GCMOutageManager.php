@@ -88,24 +88,25 @@ class GCMOutageManager {
     }
 
     /**
-     * Envia el mensaje de corte por mora a todos los dispositivos de un cliente
-     * @param $owner cliente
+     * Envia el mensaje de corte por mora a todos los dispositivos que hayan registrado la cuenta
+     * @param $account cuenta
      */
-    public static function sendNonPaymentOutageNotification($owner)
+    public static function sendNonPaymentOutageNotification($account)
     {
         $clientDAL = ClientDALFactory::instance();
-        $devices  = $clientDAL->getClientDevicesByOwner($owner);
+        $owner = $clientDAL->getClientById($account->client_id);
+        $devices  = $clientDAL->getClientDevicesByOwner($owner->gmail);
         $totalDevices = count($devices);
         $counter = 1;
         $msg = array
         (
-            'message'       => 'Estimado cliente, se le informa que la cuenta con NUS: '.
-                ' es pasible a corte a partir de la fecha de hoy: '.date('d/m/Y').
-                '. Le recomendamos pagar todas sus deudas pendientes, para evitar quedarse sin suministro de energía.',
+            'message'       => 'Estimado cliente, se le informa que la cuenta con NUS: <b>'.$account->nus.
+                '</b> es pasible a corte a partir de la fecha de hoy: <b>'.date('d/m/Y').
+                '</b>. Le recomendamos pagar todas sus deudas pendientes, para evitar quedarse sin suministro de energía.',
             'title'         => 'Corte por mora',
             'key'           => NotificationKey::NONPAYMENT_OUTAGE,
             'type'          => NotificationType::OUTAGE,
-            'gmail'         => $owner
+            'gmail'         => $owner->gmail
         );
         $deviceTokens = array();
         for ($i = 0; $i < $totalDevices; $i++)

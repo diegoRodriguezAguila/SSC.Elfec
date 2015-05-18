@@ -67,7 +67,7 @@ class AccountDAL implements IAccountDAL
     public function getAll()
     {
         $db = Database::get();
-        $result  = $db->select("SELECT nus FROM accounts WHERE status=1");
+        $result  = $db->select("SELECT * FROM accounts WHERE status=1");
         return $result;
 
     }

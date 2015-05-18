@@ -74,4 +74,11 @@ interface IClientDAL
      * @return array
      */
     public function getClientDevices($clientId);
+
+    /**
+     * Obtiene el cliente con el Id respectiva
+     * @param $clientId
+     * @return array
+     */
+    public function getClientById($clientId);
 } 

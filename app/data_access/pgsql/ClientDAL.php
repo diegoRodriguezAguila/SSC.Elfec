@@ -44,13 +44,13 @@ class ClientDAL implements IClientDAL {
 
     /**
      * Obtiene los dispositivos que le pertenecen a un cliente por su gmail
-     * @param $owner
+     * @param $gmail
      * @return array
      */
-    public function getClientDevicesByOwner($owner)
+    public function getClientDevicesByOwner($gmail)
     {
         $db = Database::get();
-        $result  = $db->select("SELECT * FROM devices d,clients c WHERE d.client_id=c.id and c.gmail=:owner", array(':owner'=>$owner));
+        $result  = $db->select("SELECT * FROM devices d,clients c WHERE d.client_id=c.id and c.gmail=:gmail", array(':gmail'=>$gmail));
         return $result;
     }
 
@@ -145,5 +145,17 @@ class ClientDAL implements IClientDAL {
         $db = Database::get();
         $result  = $db->select("SELECT * FROM mobile_phones WHERE client_id = :client_id AND number = :number ", array(':number' => $phoneNumber,':client_id'=>$clientId));
         return $result;
+    }
+
+    /**
+     * Obtiene el cliente con el Id respectiva
+     * @param $clientId
+     * @return array
+     */
+    public function getClientById($clientId)
+    {
+        $result  = Database::get()
+            ->select("SELECT * FROM clients WHERE id = :client_id", [':client_id'=>$clientId]);
+        return $result[0];
     }
 }
