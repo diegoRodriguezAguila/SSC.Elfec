@@ -21,6 +21,7 @@ use helpers\GCMSender;
 class GCMOutageManager {
 
     private static $MAX_DEVICES_PER_GCM = 1000;
+    private static $NON_PAYMENT_MESSAGE ='Estimado cliente, se le informa que la cuenta con NUS: <b>%s</b> es pasible a corte a partir de la fecha de mañana: <b>%s</b>. Le recomendamos pagar todas sus deudas pendientes, para evitar quedarse sin suministro de energía.';
 
     public static function sendIncidentalOutageNotification($owner, $message)
     {
@@ -100,9 +101,7 @@ class GCMOutageManager {
         $counter = 1;
         $msg = array
         (
-            'message'       => 'Estimado cliente, se le informa que la cuenta con NUS: <b>'.$account->nus.
-                '</b> es pasible a corte a partir de la fecha de hoy: <b>'.date('d/m/Y').
-                '</b>. Le recomendamos pagar todas sus deudas pendientes, para evitar quedarse sin suministro de energía.',
+            'message'       => sprintf(self::$NON_PAYMENT_MESSAGE, $account->nus, (new \DateTime('tomorrow'))->format('d/m/Y')),
             'title'         => 'Corte por mora',
             'key'           => NotificationKey::NONPAYMENT_OUTAGE,
             'type'          => NotificationType::OUTAGE,
