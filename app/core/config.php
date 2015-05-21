@@ -34,11 +34,11 @@ class Config {
 
 		//database details ONLY NEEDED IF USING A DATABASE
 		define('DB_TYPE', 'pgsql');
-        define('DB_HOST', 'elfbdp01');
+        define('DB_HOST', 'localhost');
         define('DB_PORT', '5432');
         define('DB_NAME', 'SSC.Elfec');
-        define('DB_USER', 'drodriguezd');
-        define('DB_PASS', 'elfec2015');
+        define('DB_USER', 'postgres');
+        define('DB_PASS', 'Aurora');
         define('PREFIX', 'SSC.Elfec');
 
         //Oracle DB

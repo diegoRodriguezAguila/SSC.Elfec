@@ -18,7 +18,9 @@
         $(document).ready(function () {
             $('.dropdown-toggle').dropdown();
         });
-    </script
+    </script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 </head>
 <body style='background-image:url(/SSC.Elfec/app/templates/default/images/fondo.jpg); background-size: 100%;' >
 <nav class="navbar navbar-default">
@@ -36,7 +38,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <?php use helpers\Session; if(Session::get('username')!=null){?>
-                <li><a href="/SSC.Elfec/logout">Salir</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo Session::get('username') ?><span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/SSC.Elfec/logout">Salir</a></li>
+                        </ul>
+                    </li>
+
                 <?php } ?>
             </ul>
         </div>

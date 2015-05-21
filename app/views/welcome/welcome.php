@@ -14,7 +14,7 @@
 <textarea class="form-control" name="messagge">
 </textarea>
     <b>Ubicacion:</b>
-<select name="location" class="col-lg-6 form-control">
+<select name="location" class="col-lg-6 form-control js-example-basic-single">
     <?php for($i=0;$i<count($data['locations']);$i++){ ?>
     <option value="<?php echo $data['locations'][$i]['id']?>"><?php echo $data['locations'][$i]['name']?></option>
 
