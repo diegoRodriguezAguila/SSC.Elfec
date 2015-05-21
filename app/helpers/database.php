@@ -141,11 +141,15 @@ class Database extends PDO{
 		$stmt = $this->prepare("UPDATE $table SET $fieldDetails WHERE $whereDetails");
 
 		foreach($data as $key => $value){
-			$stmt->bindValue(":$key", $value);
+            if(is_string($value))
+			    $stmt->bindValue(":$key", $value, Database::PARAM_STR);
+            else $stmt->bindValue(":$key", $value);
 		}
 
 		foreach($where as $key => $value){
-			$stmt->bindValue(":$key", $value);
+            if(is_string($value))
+                $stmt->bindValue(":$key", $value, Database::PARAM_STR);
+            else $stmt->bindValue(":$key", $value);
 		}
 
 		$stmt->execute();

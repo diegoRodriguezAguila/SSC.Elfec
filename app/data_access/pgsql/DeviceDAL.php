@@ -55,9 +55,12 @@ class DeviceDAL implements IDeviceDAL{
     public function updateDevicesGCMToken($lastToken, $IMEI, $newToken)
     {
         $db = Database::get();
-        $data = ['gcm_token' => $newToken];
-        $where = ['imei' => $IMEI,'gcm_token'=>$lastToken];
-        $db->update('devices', $data, $where);
+        $sql = "UPDATE devices SET gcm_token = :newToken WHERE imei = :IMEI AND gcm_token = :lastToken";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':newToken', $newToken, Database::PARAM_STR);
+        $stmt->bindParam(':IMEI', $IMEI, Database::PARAM_STR);
+        $stmt->bindParam(':lastToken', $lastToken, Database::PARAM_STR);
+        $stmt->execute();
     }
 
 } 

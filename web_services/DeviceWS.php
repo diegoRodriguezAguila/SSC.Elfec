@@ -17,19 +17,19 @@ $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
 
 
 $server->register('UpdateDeviceGCMToken',
-    ['lastToken' => 'xsd:string','IMEI' => 'xsd:string', 'newToken' => 'xsd:string'],
+    ['LastToken' => 'xsd:string','IMEI' => 'xsd:string', 'NewToken' => 'xsd:string'],
     ['Response' => 'xsd:string'],'xsd:ssc_elfec');
 /**
  * WebService para realizar el update del token de los dispositivos que coincidan los criterios
- * @param string $lastToken
+ * @param string $LastToken
  * @param string $IMEI
- * @param string $newToken
+ * @param string $NewToken
  * @return string
  */
-function UpdateDeviceGCMToken($lastToken, $IMEI, $newToken)
+function UpdateDeviceGCMToken($LastToken, $IMEI, $NewToken)
 {
     $response = new WSResponse();
-    $successResult = DeviceManager::updateDeviceGCMToken($lastToken, $IMEI, $newToken);
+    $successResult = DeviceManager::updateDeviceGCMToken($LastToken, $IMEI, $NewToken);
     if(!$successResult)
     {
         $response->addError(new WSValidationResult("InvalidDeviceException","El token anterior y el IMEI no coinciden con ningun dispositivo registrado!"));
