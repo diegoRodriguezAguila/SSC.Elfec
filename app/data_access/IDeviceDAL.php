@@ -14,5 +14,19 @@ use models\Device;
  */
 interface IDeviceDAL {
     public function registerDevice($IMEI, $GCM, $brand, $model, $clientId);
+
+    /**
+     * Busca aquellos dispositivos que coincidan con el token e IMEI provistos
+     * @param string $GCMToken
+     * @param string $IMEI
+     * @return array
+     */
+    public function findByTokenAndIMEI($GCMToken, $IMEI);
+    /**
+     * @param string $lastToken
+     * @param string $IMEI
+     * @param string $newToken
+     */
+    public function updateDevicesGCMToken($lastToken, $IMEI, $newToken);
     public function getAllDevices();
 }

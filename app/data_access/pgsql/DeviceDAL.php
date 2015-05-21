@@ -35,4 +35,29 @@ class DeviceDAL implements IDeviceDAL{
         return $db->select("SELECT * FROM devices WHERE status=1");
     }
 
+    /**
+     * Busca aquellos dispositivos que coincidan con el token e IMEI provistos
+     * @param string $GCMToken
+     * @param string $IMEI
+     * @return array
+     */
+    public function findByTokenAndIMEI($GCMToken, $IMEI)
+    {
+        $db = Database::get();
+        return $db->select("SELECT * FROM devices WHERE imei=:imei and gcm_token=:gcm_token",
+            [':imei'=>$IMEI, ':gcm_token'=>$GCMToken]);
+    }
+    /**
+     * @param string $lastToken
+     * @param string $IMEI
+     * @param string $newToken
+     */
+    public function updateDevicesGCMToken($lastToken, $IMEI, $newToken)
+    {
+        $db = Database::get();
+        $data = ['gcm_token' => $newToken];
+        $where = ['imei' => $IMEI,'gcm_token'=>$lastToken];
+        $db->update('devices', $data, $where);
+    }
+
 } 
