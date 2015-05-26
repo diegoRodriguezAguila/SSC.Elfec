@@ -1,14 +1,14 @@
 <br>
 <div class="row">
-    <div class="col-sm-6 col-md-6 col-md-offset-3">
+    <div class="col-sm-12 ">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h2 class="panel-title">Iniciar Sesion</h2>
             </div>
-            <div class="panel-body" style="background-color: #EFF0F2">
+            <div class="panel-body login-form">
                 <div class="row">
                     <?php if (isset($_GET["error"])) { ?>
-                        <div class="alert alert-dismissible alert-warning">
+                        <div class="alert alert-dismissible alert-danger">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <h4>Error!</h4>
 
