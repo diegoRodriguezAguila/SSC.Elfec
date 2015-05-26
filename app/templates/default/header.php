@@ -8,21 +8,27 @@
 
 	<!-- CSS -->
 	<?php
-		helpers\assets::css(array(
-			'//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css',
-			helpers\url::template_path() . 'css/style.css',helpers\url::template_path().'css/dropdown.css',
-		));
-    helpers\assets::js(array(helpers\Url::template_path().'js/jquery.min.js',helpers\Url::template_path().'js/bootstrap.min.js',helpers\Url::template_path().'js/bootstrap.dropdown.js'));
+		helpers\assets::css([
+            helpers\url::template_path() . 'css/vendor/bootstrap.min.css',
+            helpers\url::template_path() . 'css/flat-ui.css',
+            helpers\url::template_path() . 'css/select2.min.css',
+			helpers\url::template_path() . 'css/style.css', helpers\url::template_path().'css/dropdown.css',
+		]);
+    helpers\assets::js([helpers\Url::template_path().'js/jquery.min.js', helpers\Url::template_path().'js/select2.min.js',
+        helpers\Url::template_path().'js/flat-ui.js', helpers\Url::template_path().'js/bootstrap.min.js',helpers\Url::template_path().'js/bootstrap.dropdown.js']);
 	?>
+    <link rel="icon"
+          type="image/png"
+          href="<?php  echo helpers\url::template_path().'img/favicon.png' ?>">
     <script>
         $(document).ready(function () {
             $('.dropdown-toggle').dropdown();
         });
     </script>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 </head>
-<body style='background-image:url(/SSC.Elfec/app/templates/default/images/fondo.jpg); background-size: 100%;' >
+<body style='background-image:url(/SSC.Elfec/app/templates/default/img/fondo.jpg); background-size: 100%;' >
+<div class="row">
+    <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -39,8 +45,12 @@
             <ul class="nav navbar-nav navbar-right">
                 <?php use helpers\Session; if(Session::get('username')!=null){?>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo Session::get('username') ?><span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <?php echo Session::get('username') ?>
+                            <b class="caret" ></b>
+                        </a>
+                        <span class="dropdown-arrow"></span>
+                        <ul class="dropdown-menu">
                             <li><a href="/SSC.Elfec/logout">Salir</a></li>
                         </ul>
                     </li>
@@ -50,6 +60,8 @@
         </div>
     </div>
 </nav>
+</div>
+</div>
 <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8"  style="border-style: dashed;border-width: 1px; background-color:#ffffff;">
