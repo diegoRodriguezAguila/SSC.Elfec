@@ -27,9 +27,25 @@ class Url {
 	 * created the absolute address to the template folder
 	 * @return string url to template folder
 	 */
-	public static function template_path(){
+	public static function templatePath(){
 		return DIR.'app/templates/'.Session::get('template').'/';
 	}
+
+    /**
+     * created the absolute address to the css template folder
+     * @return string url to css template folder
+     */
+    public static function cssTemplatePath(){
+        return DIR.'app/templates/'.Session::get('template').'/css/';
+    }
+
+    /**
+     * created the absolute address to the js template folder
+     * @return string url to js template folder
+     */
+    public static function jsTemplatePath(){
+        return DIR.'app/templates/'.Session::get('template').'/js/';
+    }
 
 	/**
 	 * converts plain text urls into HTML links, second argument will be

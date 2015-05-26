@@ -19,8 +19,6 @@ class session extends \core\controller {
             \helpers\url::redirect('welcome');
         else
         {
-            $data['welcome_message'] = "asdasda";
-
             $data['title'] = "Inicio de sesion";
             View::rendertemplate('header', $data);
             View::render('session/login', $data);
