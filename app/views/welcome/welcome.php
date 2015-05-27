@@ -12,18 +12,18 @@
 
 <form class="form-horizontal" action="/SSC.Elfec/welcome/notification" method="POST" role="form">
     <div class="form-group">
-        <label class="control-label" for="messagge"><b>Ingrese la notificacion:</b></label>
-        <textarea class="form-control" name="messagge" placeholder="Mensaje..." ></textarea>
-    </div>
-    <div class="form-group">
         <label class="control-label" for="location"><b>Ubicacion:</b></label>
         <select name="location" class="select2-container form-control select select-primary js-example-basic-single">
-            <?php for ($i = 0; $i < count($data['locations']); $i++) { ?>
+            <?php for ($i = 0; $i < count($data['outage_cases']); $i++) { ?>
                 <option
-                    value="<?php echo $data['locations'][$i]['id'] ?>"><?php echo $data['locations'][$i]['name'] ?></option>
+                    value="<?php echo $data['outage_cases'][$i]->caso ?>"><?php echo  $data['outage_cases'][$i]->caso." - ".$data['outage_cases'][$i]->tipo_corte ?></option>
 
             <?php } ?>
         </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="messagge"><b>Ingrese la notificacion:</b></label>
+        <textarea class="form-control" name="messagge" placeholder="Mensaje..." ></textarea>
     </div>
     <div class="form-group">
         <button class="btn btn-block btn-primary" type="submit">

@@ -35,4 +35,15 @@ class DataBaseType {
         'name' => ODB_NAME,
         'user' => ODB_USER,
         'pass' => ODB_PASS];
+
+    /**
+     * Constante para usar como configuraciòn de centrality
+     * @var array
+     */
+    public static $CENTRALITY_DATABASE = ['type' => CENTRALITY_DB_TYPE,
+        'host' => CENTRALITY_DB_HOST,
+        'port' => CENTRALITY_DB_PORT,
+        'name' => CENTRALITY_DB_NAME,
+        'user' => CENTRALITY_DB_USER,
+        'pass' => CENTRALITY_DB_PASS];
 } 

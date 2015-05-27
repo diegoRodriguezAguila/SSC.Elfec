@@ -5,7 +5,7 @@ use business_logic\gcm_services\GCMOutageManager;
 use core\view;
 use data_access\AccountDALFactory;
 use business_logic\SessionManager;
-use business_logic\LocationManager;
+use business_logic\OutageCasesManager;
 use helpers\OracleToString;
 /*
  * Welcome controller
@@ -53,12 +53,12 @@ class Welcome extends \core\controller{
 	public function index() {
         if(SessionManager::isLoggedIn())
         {
-        $data['title'] = "Bienvenido";
-        $data['welcome_message'] = "Ingreso al sistema satisfactorio!";
-        $data['locations']=LocationManager::getLocations();
-      	View::rendertemplate('header', $data);
-		View::render('welcome/welcome', $data);
-		View::rendertemplate('footer', $data);
+            $data['title'] = "Bienvenido";
+            $data['welcome_message'] = "Ingreso al sistema satisfactorio!";
+            $data['outage_cases']=OutageCasesManager::getAllOutageCases();
+            View::rendertemplate('header', $data);
+            View::render('welcome/welcome', $data);
+            View::rendertemplate('footer', $data);
         }
         else
             \helpers\url::redirect('');
