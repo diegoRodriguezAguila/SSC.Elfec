@@ -22,7 +22,9 @@ class OutageCasesEDAL {
     public static function getAllExecutingOutageCases()
     {
         $db = database::get(DataBaseType::$CENTRALITY_DATABASE);
-        $result  = $db->select("SELECT  caso, tipo_corte, descripcion, count(nus) suministros_afectados, fecha_inicio, fecha_fin FROM ssc.ssc_cliente_interrumpido
+        $result  = $db->select("SELECT  caso, tipo_corte, descripcion, count(nus) suministros_afectados,
+                                to_char(fecha_inicio, 'YYYY-MM-DD HH24:MI:SS') fecha_inicio, to_char(fecha_fin, 'YYYY-MM-DD HH24:MI:SS') fecha_fin
+                                FROM ssc.ssc_cliente_interrumpido
                                 GROUP BY caso,tipo_corte, descripcion, fecha_inicio, fecha_fin
                                 ORDER BY tipo_corte, caso");
         return $result;

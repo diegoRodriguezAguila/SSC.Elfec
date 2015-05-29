@@ -32,6 +32,22 @@ class Url {
 	}
 
     /**
+     * created the absolute address to the angularjs controllers folder
+     * @return string url to template folder
+     */
+    public static function scriptControllerPath(){
+        return DIR.'app/scripts/controllers/';
+    }
+
+    /**
+     * created the absolute address to the angularjs services folder
+     * @return string url to template folder
+     */
+    public static function scriptServicePath(){
+        return DIR.'app/scripts/services/';
+    }
+
+    /**
      * created the absolute address to the css template folder
      * @return string url to css template folder
      */

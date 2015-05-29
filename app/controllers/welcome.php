@@ -1,11 +1,9 @@
 <?php namespace controllers;
-use business_logic\AccountManager;
 use business_logic\ClientManager;
 use business_logic\gcm_services\GCMOutageManager;
 use core\view;
 use data_access\AccountDALFactory;
 use business_logic\SessionManager;
-use business_logic\OutageCasesManager;
 use helpers\OracleToString;
 /*
  * Welcome controller
@@ -26,7 +24,6 @@ class Welcome extends \core\controller{
 	}
     public function notification()
     {
-        $location=$_POST['location'];
         $message=$_POST['messagge'];
         $accounts=AccountDALFactory::instance();
         $affected_accounts=$accounts->getAll();
@@ -55,7 +52,9 @@ class Welcome extends \core\controller{
         {
             $data['title'] = "Bienvenido";
             $data['welcome_message'] = "Ingreso al sistema satisfactorio!";
-            $data['outage_cases']=OutageCasesManager::getAllOutageCases();
+            //$data['outage_cases']=OutageCasesManager::getAllOutageCases();
+            $data['angular_controllers'] = ['outage_cases_controller.js'];
+            $data['angular_services'] = ['outage_cases.js'];
             View::rendertemplate('header', $data);
             View::render('welcome/welcome', $data);
             View::rendertemplate('footer', $data);

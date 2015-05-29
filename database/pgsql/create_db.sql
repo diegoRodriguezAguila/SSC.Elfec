@@ -107,7 +107,7 @@ CREATE TABLE location_points(
     address            varchar(100)      NOT NULL,
     phone              varchar(50),
     start_attention    varchar(25),
-    end_attention      varchar(25),
+    end_attention      varchar(100),
     latitude           decimal(22, 20)   NOT NULL,
     longitude          decimal(22, 20)   NOT NULL,
     type            integer               NOT NULL,

@@ -5,21 +5,28 @@
     <!-- Site meta -->
     <meta charset="utf-8">
     <title><?php echo $data['title'] . ' - ' . SITETITLE; //SITETITLE defined in app/core/config.php ?></title>
-
     <!-- CSS -->
     <?php
     helpers\assets::css([
         helpers\url::cssTemplatePath() . 'vendor/bootstrap.min.css',
         helpers\url::cssTemplatePath() . 'flat-ui.css',
         helpers\url::cssTemplatePath() . 'select2.min.css',
-        helpers\url::cssTemplatePath() . 'style.css',
-    ]);
-    helpers\assets::js([
+        helpers\url::cssTemplatePath() . 'style.css']);
+    $js = [
         helpers\Url::jsTemplatePath() . 'vendor/jquery.min.js',
         helpers\Url::jsTemplatePath() . 'select2.min.js',
         helpers\Url::jsTemplatePath() . 'flat-ui.js',
         helpers\Url::jsTemplatePath() . 'application.js',
-    ]);
+        helpers\Url::jsTemplatePath() . 'angular.min.js',
+        helpers\Url::jsTemplatePath() . 'angular-resource.min.js',
+        helpers\Url::scriptControllerPath() . 'app.js'];
+    if(isset($data['angular_services']))
+        foreach ($data['angular_services'] as $angular_service)
+            array_push($js,  helpers\Url::scriptServicePath().$angular_service);
+    if(isset($data['angular_controllers']))
+        foreach ($data['angular_controllers'] as $angular_controller)
+            array_push($js,  helpers\Url::scriptControllerPath().$angular_controller);
+    helpers\assets::js($js);
     ?>
     <link rel="icon"
           type="image/png"
