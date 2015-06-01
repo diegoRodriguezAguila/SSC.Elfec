@@ -11,15 +11,18 @@
         helpers\url::cssTemplatePath() . 'vendor/bootstrap.min.css',
         helpers\url::cssTemplatePath() . 'flat-ui.css',
         helpers\url::cssTemplatePath() . 'select2.min.css',
+        helpers\url::cssTemplatePath() . 'toastr.min.css',
         helpers\url::cssTemplatePath() . 'style.css']);
     $js = [
         helpers\Url::jsTemplatePath() . 'vendor/jquery.min.js',
         helpers\Url::jsTemplatePath() . 'select2.min.js',
         helpers\Url::jsTemplatePath() . 'flat-ui.js',
+        helpers\url::jsTemplatePath() . 'toastr.min.js',
         helpers\Url::jsTemplatePath() . 'application.js',
         helpers\Url::jsTemplatePath() . 'angular.min.js',
         helpers\Url::jsTemplatePath() . 'angular-resource.min.js',
-        helpers\Url::scriptControllerPath() . 'app.js'];
+        helpers\Url::scriptControllerPath() . 'app.js',
+        helpers\Url::scriptServicePath() . 'user_messages.js'];
     if(isset($data['angular_services']))
         foreach ($data['angular_services'] as $angular_service)
             array_push($js,  helpers\Url::scriptServicePath().$angular_service);

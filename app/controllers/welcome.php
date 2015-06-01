@@ -22,19 +22,7 @@ class Welcome extends \core\controller{
 
 		$this->language->load('welcome');
 	}
-    public function notification()
-    {
-        $message=$_POST['messagge'];
-        $accounts=AccountDALFactory::instance();
-        $affected_accounts=$accounts->getAll();
-        $formated_accounts=OracleToString::convertToSQL(($affected_accounts),"nus");
-        $owners=ClientManager::getOwners($formated_accounts);
-        foreach($owners as $owner)
-        {
-            GCMOutageManager::sendIncidentalOutageNotification($owner->gmail,$message);
-        }
-        \helpers\url::redirect('welcome?right=true');
-    }
+
     public function scheduled_notification()
     {
         //get $notifications
@@ -50,11 +38,10 @@ class Welcome extends \core\controller{
 	public function index() {
         if(SessionManager::isLoggedIn())
         {
-            $data['title'] = "Bienvenido";
+            $data['title'] = "Envío de notificaciones";
             $data['welcome_message'] = "Ingreso al sistema satisfactorio!";
-            //$data['outage_cases']=OutageCasesManager::getAllOutageCases();
             $data['angular_controllers'] = ['outage_cases_controller.js'];
-            $data['angular_services'] = ['outage_cases.js'];
+            $data['angular_services'] = ['outage_cases.js', 'notifications.js'];
             View::rendertemplate('header', $data);
             View::render('welcome/welcome', $data);
             View::rendertemplate('footer', $data);

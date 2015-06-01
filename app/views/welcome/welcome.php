@@ -1,19 +1,10 @@
 <div class="page-header">
     <h1><?php echo $data['title'] ?></h1>
 </div>
-<?php if (isset($_GET["right"])) { ?>
-    <div class="alert alert-dismissible alert-info">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <h4>Listo!</h4>
-
-        <p>Notificacion enviada correctamente</p>
-    </div>
-<?php } ?>
-
-<div ng-app="sscApp" ng-controller="OutageCasesController" class="form-horizontal">
+<form ng-app="sscApp" ng-controller="OutageCasesController" ng-submit="sendNotification()" class="form-horizontal" role="form" >
     <div class="form-group">
         <label class="control-label" for="location"><b>Ubicacion:</b></label>
-        <select ng-change="verifySelect(selected_outage_case)" ng-model="selected_outage_case" name="location"
+        <select ng-change="verifySelect(selected_outage_case)" ng-model="selected_outage_case" name="outage_case"
                 class="select2-container form-control select select-primary">
             <option ng-repeat="outage_case in outage_cases" value="{{ outage_case }}">{{ outage_case.caso + " - " +
                 outage_case.tipo_corte }}
@@ -71,12 +62,12 @@
     </div>
     <div class="form-group">
         <label class="control-label" for="messagge"><b>Ingrese la notificacion:</b></label>
-        <textarea class="form-control" name="messagge" placeholder="Mensaje..."></textarea>
+        <textarea ng-model="notification_message" class="form-control" ng-maxlength=500 required name="messagge" placeholder="Mensaje..."></textarea>
     </div>
     <div class="form-group">
         <button class="btn btn-block btn-primary" type="submit">
             Enviar
         </button>
     </div>
-</div>
+</form>
 <br>

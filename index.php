@@ -65,7 +65,7 @@ use \core\router;
 //define routes
 Router::any('', '\controllers\session@login');
 Router::post('/session/logout', '\controllers\session@logout');
-Router::post('/welcome/notification', '\controllers\welcome@notification');
+Router::post('/notifications/notification', '\controllers\notifications@notification');
 Router::any('/notifications/nonpayment_outage', '\controllers\notifications@nonpayment_outage');
 Router::get('/outage_cases', '\controllers\outage_case@getAllExecutingOutageCases');
 Router::any('/logout', '\controllers\session@destroy');
