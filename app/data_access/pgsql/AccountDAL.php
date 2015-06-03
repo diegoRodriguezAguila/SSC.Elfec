@@ -64,11 +64,24 @@ class AccountDAL implements IAccountDAL
     }
 
 
+
     public function getAll()
     {
         $db = Database::get();
         $result  = $db->select("SELECT * FROM accounts WHERE status=1");
         return $result;
 
+    }
+
+    /**
+     * Obtiene las cuentas que se encuentren en la condicion IN de nuses
+     * @param $nusINClause
+     * @return array
+     */
+    public function findAccountsINClause($nusINClause)
+    {
+        $db = Database::get();
+        $result  = $db->select("SELECT * FROM accounts WHERE status=1 AND nus ".$nusINClause);
+        return $result;
     }
 }

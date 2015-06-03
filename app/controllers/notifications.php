@@ -6,10 +6,7 @@
  */
 
 namespace controllers;
-use helpers\OracleToString;
-use business_logic\ClientManager;
-use business_logic\AccountManager;
-use business_logic\gcm_services\GCMOutageManager;
+use business_logic\NotificationManager;
 
 class Notifications extends \core\controller{
 
@@ -20,22 +17,21 @@ class Notifications extends \core\controller{
     public function notification()
     {
         header('Content-Type: application/json');
-        if(isset($_POST['message']) && isset($_POST['outage_case']) && isset($_POST['type']))
+        if(isset($_POST['message']) && isset($_POST['outage_case']))
         {
             $message=$_POST['message'];
-            $outage_case = $_POST['outage_case'];
-            $type =  $_POST['type'];
-            exit ('{ "message": "'.$message.'", "case": "'.$outage_case.'", "type": "'.$type.'"}');
-            /*$accounts=AccountDALFactory::instance();
-            $affected_accounts=$accounts->getAll();
-            $formated_accounts=OracleToString::convertToSQL(($affected_accounts),"nus");
-            $owners=ClientManager::getOwners($formated_accounts);
-            foreach($owners as $owner)
-            {
-                GCMOutageManager::sendIncidentalOutageNotification($owner->gmail,$message);
-            }*/
+            $outageCaseNumber = $_POST['outage_case'];
+            if(NotificationManager::processOutageNotificationSend($message, $outageCaseNumber))
+                exit ('{ "message": "'.$message.'", "case": "'.$outageCaseNumber.'"}');
+            else {
+                http_response_code(404);
+                exit ('{ "error_message": "No se encontró el número de caso solicitado, no se envió ningun mensaje"}');
+            }
         }
-        else http_response_code(400);
+        else{
+            http_response_code(400);
+            exit ('{ "error_message": "No se enviaron los parámetros suficientes para consumir el servicio"}');
+        }
     }
 
     /**
@@ -43,11 +39,6 @@ class Notifications extends \core\controller{
      */
     public function nonpayment_outage()
     {
-        $nonpayment_accounts= AccountManager::getNonPaymentOutageAccounts();
-        foreach($nonpayment_accounts as $account)
-        {
-            GCMOutageManager::sendNonPaymentOutageNotification($account);
-        }
-        \helpers\url::redirect('welcome?right=true');
+        NotificationManager::processNonPaymentOutageNotificationSend();
     }
 } 

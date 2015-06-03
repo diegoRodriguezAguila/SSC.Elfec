@@ -118,6 +118,35 @@ CREATE TABLE location_points(
 )
 ;
 
+--
+-- TABLE: notification_messages
+--
+
+CREATE TABLE notification_messages(
+  id                    SERIAL UNIQUE         NOT NULL,
+  sender_user           varchar(50)     NOT NULL,
+  message               varchar(500)    NOT NULL,
+  insert_date           timestamp       NOT NULL,
+  outage_case_number    varchar(15)     NOT NULL,
+  outage_type           integer            NOT NULL,
+  CONSTRAINT "PK14" PRIMARY KEY (id)
+)
+;
+COMMENT ON COLUMN notification_messages.outage_type IS '0=Programado, 1=No programado, 2=Por Mora';
+COMMENT ON COLUMN notification_messages.outage_case_number IS 'cuando el número de caso es 0 es un mensaje de corte por mora';
+--
+-- TABLE: notification_details
+--
+
+CREATE TABLE notification_details(
+  id                 SERIAL UNIQUE        NOT NULL,
+  notification_id    integer           NOT NULL,
+  nus                varchar(15)    NOT NULL,
+  insert_date        timestamp,
+  CONSTRAINT "PK13" PRIMARY KEY (id, notification_id)
+)
+;
+
 
 -- 
 -- INDEX: account_number_index 
@@ -149,6 +178,21 @@ CREATE INDEX imei_index ON devices(imei)
 
 CREATE INDEX number_index ON mobile_phones(number)
 ;
+
+--
+-- INDEX: number_index
+--
+
+CREATE INDEX number_index ON mobile_phones(number)
+;
+
+--
+-- INDEX: notification_id_index
+--
+
+CREATE INDEX notification_id_index ON notification_details(notification_id)
+;
+
 -- 
 -- TABLE: accounts 
 --
@@ -178,4 +222,11 @@ ALTER TABLE mobile_phones ADD CONSTRAINT "Refclients5"
     REFERENCES clients(id)
 ;
 
+--
+-- TABLE: notification_details
+--
 
+ALTER TABLE notification_details ADD CONSTRAINT "Refnotification_messages7"
+FOREIGN KEY (notification_id)
+REFERENCES notification_messages(id)
+;

@@ -38,4 +38,11 @@ interface IAccountDAL
      */
     public function findAccount($accountId);
 
+    /**
+     * Obtiene las cuentas que se encuentren en la condicion IN de nuses
+     * @param $nusINClause
+     * @return array
+     */
+    public function findAccountsINClause($nusINClause);
+
 }

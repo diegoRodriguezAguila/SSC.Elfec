@@ -20,9 +20,8 @@ class OracleToString {
      * Convierte la lista de objetos a la cadena utilizable en una consulta IN tomando en
      * cuenta el limite de <b>IN_LIMIT</b> valores en cada IN, debe utilizarse para cantidades de objetos superiores a <b>IN_LIMIT</b>
      * @param objectList
-     * @param columnName el nombre de la columna en la base de datos
-     * @param picker
-     * @return lista con el formato (123,425,...) OR COLUMNNAME IN (423,645,...)
+     * @param columnName , el nombre de la columna en la base de datos
+     * @return array con el formato (123,425,...) OR COLUMNNAME IN (423,645,...)
      */
     public static function convertToSQL($objectList,$columnName)
     {

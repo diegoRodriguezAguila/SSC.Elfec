@@ -15,7 +15,7 @@ sscApp.controller('OutageCasesController', ['$scope', 'OutageCasesService', 'Not
                     if ($scope.selected_outage_case != null) {
                         $scope.selected_outage_case = $scope.findOutage($scope.selected_outage_case);
                     }
-                    //setTimeout($scope.refreshOutageCases, 5000);
+                    setTimeout($scope.refreshOutageCases, 30000);
                 }, function (error) {
                     console.log(error);
                 });
@@ -43,23 +43,15 @@ sscApp.controller('OutageCasesController', ['$scope', 'OutageCasesService', 'Not
 
         $scope.sendNotification = function () {
             if ($scope.selected_outage_case != null) {
-                var type = $scope.convertOutageType($scope.selected_outage_case.tipo_corte);
                 NotificationService.notifications.send($.param({message: $scope.notification_message,
-                    outage_case: $scope.selected_outage_case.caso, type: type})).$promise.then(function (data) {
+                    outage_case: $scope.selected_outage_case.caso})).$promise.then(function (data) {
                         globalDatResult = data;
                         UserMessagesService.show.info("Mensaje enviado", 'Se envió el mensaje <i>"'+data.message+'"</i> a los destinatarios correspondientes de forma exitosa!');
                     }, function (error) {
-                        UserMessagesService.show.error("Error al enviar el mensaje", error);
+                        UserMessagesService.show.error("Error al enviar el mensaje",(typeof error.error_message != 'undefined')?error.error_message:"");
                         console.log(error);
                     });
             }
             else UserMessagesService.show.error("No se envió ningun mensaje", "Debe seleccionar un caso para poder enviar un mensaje");
-        }
-
-        $scope.convertOutageType = function (typeToConvert) {
-            var typesInterpreter = {"Programado": "ScheduledOutage", "No programado": "IncidentalOutage"};
-            if (typeToConvert in typesInterpreter)
-                return typesInterpreter[typeToConvert];
-            return null;
         };
     }]);
