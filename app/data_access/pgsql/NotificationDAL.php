@@ -11,6 +11,9 @@ namespace data_access\pgsql;
 
 use data_access\INotificationDAL;
 use helpers\Database;
+use helpers\Session;
+use models\enums\DataBaseType;
+
 /**
  * Capa de acceso a datos para notificaciones
  * Class NotificationDAL
@@ -19,16 +22,17 @@ use helpers\Database;
 class NotificationDAL implements INotificationDAL {
     /**
      * Registra una nueva notificacion y retorna el Id que se le asignó
-     * @param $message
-     * @param $outageCaseNumber
-     * @param $outageType
+     * @param $message string
+     * @param $outageCaseNumber string
+     * @param $outageType integer
+     * @param $userDBConnection array
      * @return integer
      */
-    public function registerNotificationMessage($message, $outageCaseNumber, $outageType)
+    public function registerNotificationMessage($message, $outageCaseNumber, $outageType, $userDBConnection)
     {
-        $db = Database::get();
+        $db = Database::get($userDBConnection);
         $data = [
-            'sender_user' => 'session_user',
+            'sender_user' => $db->currentUser(),
             'message' => $message,
             'insert_date'  => 'now()',
             'outage_case_number'  => $outageCaseNumber,
@@ -42,11 +46,12 @@ class NotificationDAL implements INotificationDAL {
      * Registra un nuevo detalle de notificacion y retorna el Id que se le asignó
      * @param $notificationId
      * @param $nus
+     * @param $userDBConnection array
      * @return integer
      */
-    public function registerNotificationDetail($notificationId, $nus)
+    public function registerNotificationDetail($notificationId, $nus, $userDBConnection)
     {
-        $db = Database::get();
+        $db = Database::get($userDBConnection);
         $data = [
             'notification_id' => $notificationId,
             'nus' => $nus,

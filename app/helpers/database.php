@@ -66,6 +66,15 @@ class Database extends PDO{
 		}
 	}
 
+    /**
+     * Obtiene el usuario logeado actual
+     * @return string
+     */
+    public function currentUser()
+    {
+        return ($this->select("SELECT current_user")[0]->current_user);
+    }
+
 	/**
 	 * method for selecting records from a database
 	 * @param  string $sql       sql query
@@ -180,6 +189,7 @@ class Database extends PDO{
 		$whereDetails = ltrim($whereDetails, ' AND ');
 
 		//if limit is a number use a limit on the query
+        $uselimit = "";
 		if(is_numeric($limit)){
 			$uselimit = "LIMIT $limit";
 		}

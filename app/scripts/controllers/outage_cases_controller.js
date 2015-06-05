@@ -1,7 +1,6 @@
 /**
  * Created by drodriguez on 27-05-15.
  */
-var globalDatResult = null;
 sscApp.controller('OutageCasesController', ['$scope', 'OutageCasesService', 'NotificationService', 'UserMessagesService',
     function ($scope, OutageCasesService, NotificationService, UserMessagesService) {
         $scope.selected_outage_case = null;
@@ -44,9 +43,10 @@ sscApp.controller('OutageCasesController', ['$scope', 'OutageCasesService', 'Not
         $scope.sendNotification = function () {
             if ($scope.selected_outage_case != null) {
                 NotificationService.notifications.send($.param({message: $scope.notification_message,
-                    outage_case: $scope.selected_outage_case.caso})).$promise.then(function (data) {
-                        globalDatResult = data;
+                                                        outage_case: $scope.selected_outage_case.caso}))
+                    .$promise.then(function (data) {
                         UserMessagesService.show.info("Mensaje enviado", 'Se envió el mensaje <i>"'+data.message+'"</i> a los destinatarios correspondientes de forma exitosa!');
+                        $scope.notification_message = null;
                     }, function (error) {
                         UserMessagesService.show.error("Error al enviar el mensaje",(typeof error.error_message != 'undefined')?error.error_message:"");
                         console.log(error);

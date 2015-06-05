@@ -12,17 +12,19 @@ namespace data_access;
 interface INotificationDAL {
     /**
      * Registra una nueva notificacion y retorna el Id que se le asignó
-     * @param $message
-     * @param $outageCaseNumber
-     * @param $outageType
+     * @param $message string
+     * @param $outageCaseNumber string
+     * @param $outageType integer
+     * @param $userDBConnection array
      * @return integer
      */
-    public function registerNotificationMessage($message, $outageCaseNumber, $outageType);
+    public function registerNotificationMessage($message, $outageCaseNumber, $outageType, $userDBConnection);
     /**
      * Registra un nuevo detalle de notificacion y retorna el Id que se le asignó
      * @param $notificationId
      * @param $nus
+     * @param $userDBConnection array
      * @return integer
      */
-    public function registerNotificationDetail($notificationId, $nus);
+    public function registerNotificationDetail($notificationId, $nus, $userDBConnection);
 } 

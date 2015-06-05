@@ -70,7 +70,7 @@
                                 </a>
                                 <span class="dropdown-arrow"></span>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/SSC.Elfec/logout">Salir</a></li>
+                                    <li><a href="/SSC.Elfec/session/logout">Salir</a></li>
                                 </ul>
                             </li>
 

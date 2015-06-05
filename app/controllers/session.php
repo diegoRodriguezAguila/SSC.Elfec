@@ -25,20 +25,19 @@ class session extends \core\controller {
             View::rendertemplate('footer', $data);
         }
     }
-    public function destroy()
+    public function logout()
     {
-        SessionManager::destroySession();
+        SessionManager::logOut();
         \helpers\url::redirect('');
     }
-    public function logout()
+    public function auth_user()
     {
         $username=$_POST['username'];
         $password=$_POST['password'];
         $session=SessionDALFactory::instance();
         if($session->testConnection($username,$password))
         {
-            SessionManager::logInUser($username);
-
+            SessionManager::logInUser($username, $password);
             \helpers\url::redirect('welcome');
         }
         else

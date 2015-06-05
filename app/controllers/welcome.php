@@ -1,10 +1,6 @@
 <?php namespace controllers;
-use business_logic\ClientManager;
-use business_logic\gcm_services\GCMOutageManager;
 use core\view;
-use data_access\AccountDALFactory;
 use business_logic\SessionManager;
-use helpers\OracleToString;
 /*
  * Welcome controller
  *
@@ -23,15 +19,6 @@ class Welcome extends \core\controller{
 		$this->language->load('welcome');
 	}
 
-    public function scheduled_notification()
-    {
-        //get $notifications
-        for($i=0;$i<1/*$notifications*/;$i++)
-            //$notifications[i].location $notification[i].message
-        GCMOutageManager::sendScheduledOutageNotification(1,"random");
-        echo "Mensaje enviado!";
-    }
-
 	/**
 	 * Define Index page title and load template files
 	 */
@@ -49,21 +36,5 @@ class Welcome extends \core\controller{
         else
             \helpers\url::redirect('');
 	}
-
-	/**
-	 * Define Subpage page title and load template files
-	 */
-	public function subpage() {
-		$data['title'] = $this->language->get('subpage_text');
-		$data['welcome_message'] = $this->language->get('subpage_message');
-		
-		View::rendertemplate('header', $data);
-		View::render('welcome/subpage', $data);
-		View::rendertemplate('footer', $data);
-	}
-
-    public function funcion() {
-        View::render('../web_services/testeo');
-    }
 
 }

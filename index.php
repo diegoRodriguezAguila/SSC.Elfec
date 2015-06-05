@@ -64,13 +64,11 @@ use \core\router;
 
 //define routes
 Router::any('', '\controllers\session@login');
-Router::post('/session/logout', '\controllers\session@logout');
+Router::post('/session/auth_user', '\controllers\session@auth_user');
 Router::post('/notifications/notification', '\controllers\notifications@notification');
 Router::any('/notifications/nonpayment_outage', '\controllers\notifications@nonpayment_outage');
 Router::get('/outage_cases', '\controllers\outage_case@getAllExecutingOutageCases');
-Router::any('/logout', '\controllers\session@destroy');
-Router::any('/subpage', '\controllers\welcome@subpage');
-Router::any('/notification', '\controllers\welcome@programmed_notification');
+Router::any('/session/logout', '\controllers\session@logout');
 Router::any('/welcome', '\controllers\welcome@index');
 
 //if no route found

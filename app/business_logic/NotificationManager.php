@@ -8,6 +8,7 @@
 
 namespace business_logic;
 use business_logic\gcm_services\GCMOutageManager;
+use business_logic\SessionManager;
 use data_access\NotificationDALFactory;
 use models\enums\NotificationKey;
 
@@ -28,10 +29,10 @@ class NotificationManager {
     {
         $nonpayment_accounts= AccountManager::getNonPaymentOutageAccounts();
         $notificationDAL = NotificationDALFactory::instance();
-        $notificationId = $notificationDAL->registerNotificationMessage("Corte por mora", 0, 2);
+        $notificationId = $notificationDAL->registerNotificationMessage("Corte por mora", 0, 2, SessionManager::getUserDataBaseConnection());
         foreach($nonpayment_accounts as $account)
         {
-            $notificationDAL->registerNotificationDetail($notificationId, $account->nus);
+            $notificationDAL->registerNotificationDetail($notificationId, $account->nus, SessionManager::getUserDataBaseConnection());
             GCMOutageManager::sendNonPaymentOutageNotification($account,
                 self::prepareNonPaymentOutageMessage($account->nus));
         }
@@ -61,14 +62,15 @@ class NotificationManager {
         {
             $affectedAccounts = OutageCasesManager::getOutageCaseAccounts($outageCaseNumber);
             $notificationDAL = NotificationDALFactory::instance();
-            $notificationId = $notificationDAL->registerNotificationMessage($message, $outageCaseNumber, self::convertOutageTypeToInt($outageCase->tipo_corte));
+            $notificationId = $notificationDAL->registerNotificationMessage($message, $outageCaseNumber,
+                self::convertOutageTypeToInt($outageCase->tipo_corte), SessionManager::getUserDataBaseConnection());
             foreach($affectedAccounts as $account)
             {
                  GCMOutageManager::sendOutageNotification($account,
                      self::prepareOutageMessage($account->nus, $message,
                          $outageCase->fecha_inicio, $outageCase->fecha_fin),
                      self::convertOutageTypeToNotificationKey($outageCase->tipo_corte));
-                $notificationDAL->registerNotificationDetail($notificationId, $account->nus);
+                $notificationDAL->registerNotificationDetail($notificationId, $account->nus, SessionManager::getUserDataBaseConnection());
             }
             return true;
         }
