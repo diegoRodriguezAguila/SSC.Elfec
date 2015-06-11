@@ -147,6 +147,20 @@ CREATE TABLE notification_details(
 )
 ;
 
+--
+-- TABLE: application
+--
+
+CREATE TABLE application(
+  id                integer         NOT NULL,
+  version_code      int4            NOT NULL,
+  signature_hash    varchar(256)    NOT NULL,
+  salt              varchar(128)    NOT NULL,
+  status            int4            NOT NULL,
+  CONSTRAINT "PK15" PRIMARY KEY (id)
+)
+;
+
 
 -- 
 -- INDEX: account_number_index 
@@ -191,6 +205,13 @@ CREATE INDEX number_index ON mobile_phones(number)
 --
 
 CREATE INDEX notification_id_index ON notification_details(notification_id)
+;
+
+--
+-- INDEX: application_id_index
+--
+
+CREATE INDEX application_id_index ON application(id)
 ;
 
 -- 

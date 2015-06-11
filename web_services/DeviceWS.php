@@ -9,6 +9,7 @@ include_once("lib/nusoap.php");
 include_once("auto_load.php");
 use \business_logic\DeviceManager,
     models\web_services\WSResponse,
+    business_logic\WSSecurity,
     models\web_services\WSValidationResult;
 
 
@@ -28,6 +29,7 @@ $server->register('UpdateDeviceGCMToken',
  */
 function UpdateDeviceGCMToken($LastToken, $IMEI, $NewToken)
 {
+    WSSecurity::verifyAuthenticity();
     $response = new WSResponse();
     $successResult = DeviceManager::updateDeviceGCMToken($LastToken, $IMEI, $NewToken);
     if(!$successResult)

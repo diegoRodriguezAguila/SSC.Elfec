@@ -10,7 +10,7 @@ include_once("lib/nusoap.php");
 include_once("auto_load.php");
 use business_logic\ClientManager;
 use business_logic\gcm_services\GCMAccountManager;
-use  models\Account,
+use business_logic\WSSecurity,
     models\web_services\WSResponse,
     models\web_services\WSValidationResult,
     data_access\ClientDALFactory,
@@ -39,6 +39,7 @@ $server->register('RegisterAccount',
  */
 function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
 {
+    WSSecurity::verifyAuthenticity();
     $response = new WSResponse();
     $registeredAccount = null;
     $clientId =  ClientManager::addClient($GMail);
@@ -66,6 +67,7 @@ $server->register('GetAllAccounts',
 
 function GetAllAccounts($GMail, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
 {
+    WSSecurity::verifyAuthenticity();
     $clientId =  ClientManager::addClient($GMail);
     ClientManager::addDeviceToClient($DeviceIMEI, $GCM, $DeviceBrand, $DeviceModel, $clientId);
     $response = new WSResponse();
@@ -84,6 +86,7 @@ $server->register('GetUsage',
 
 function GetUsage($NUS)
 {
+    WSSecurity::verifyAuthenticity();
     $response = new WSResponse();
     $response->setResponse(json_encode(AccountManager::getUsageFromAccount($NUS)));
    return json_encode($response->JsonSerialize());
@@ -95,6 +98,7 @@ $server->register('DeleteAccount',   array('DeviceIMEI' => 'xsd:string','NUS' =>
     'xsd:ssc_elfec');
 function DeleteAccount($DeviceIMEI,$NUS,$GMail)
 {
+    WSSecurity::verifyAuthenticity();
     $response = new WSResponse();
     $clientDAL = ClientDALFactory::instance();
     $clientId =  $clientDAL->GetClientId($GMail);

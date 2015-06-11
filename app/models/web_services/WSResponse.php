@@ -17,20 +17,22 @@ class WSResponse {
     {
         $this->Errors = array();
     }
-    public function JsonSerialize()
+    public function jsonSerialize()
     {
         $vars = get_object_vars($this);
         return $vars;
     }
+
     /**
-     * @param mixed $Errors
+     * @param $errors
      */
     public function setErrors($errors)
     {
         $this->Errors = $errors;
     }
+
     /**
-     * @param mixed $Error
+     * @param $error
      */
     public function addError($error)
     {

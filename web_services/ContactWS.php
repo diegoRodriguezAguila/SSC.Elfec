@@ -8,7 +8,9 @@
 include_once("lib/nusoap.php");
 include_once("auto_load.php");
 
-use data_access\ContactDALFactory, models\web_services\WSResponse;
+use data_access\ContactDALFactory,
+    business_logic\WSSecurity,
+    models\web_services\WSResponse;
 
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
@@ -21,10 +23,11 @@ $server->register('GetContactUpdate',
 
 function GetContactUpdate()
 {
+    WSSecurity::verifyAuthenticity();
     $contactDAL = ContactDALFactory::instance();
     $response = new WSResponse();
     $response->setResponse($contactDAL->GetCurrentActiveContact()->jsonSerialize());
-    return json_encode($response->JsonSerialize());
+    return json_encode($response->jsonSerialize());
 }
 
 

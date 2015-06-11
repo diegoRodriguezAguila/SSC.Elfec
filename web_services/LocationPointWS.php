@@ -7,7 +7,9 @@
 
 include_once("lib/nusoap.php");
 include_once("auto_load.php");
-use data_access\LocationPointDALFactory, models\web_services\WSResponse;
+use data_access\LocationPointDALFactory,
+    business_logic\WSSecurity,
+    models\web_services\WSResponse;
 
 $server = new soap_server();
 $server->configureWSDL('ssc_elfec', 'urn:ssc_elfec');
@@ -18,6 +20,7 @@ $server->register('GetAllLocationPoints',[],
     'xsd:ssc_elfec');
 function GetAllLocationPoints()
 {
+    WSSecurity::verifyAuthenticity();
     $response = new WSResponse();
     $pointDAL = LocationPointDALFactory::instance();
     $response->setResponse($pointDAL->GetAllLocations());

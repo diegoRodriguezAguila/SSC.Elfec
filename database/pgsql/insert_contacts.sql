@@ -1,0 +1,1 @@
+INSERT INTO contacts VALUES (1, '176 / 4259400', 'Av. Heroinas entre c. Falsuri y av. Costanera #686', 'elfec@elfec.com', 'www.elfec.com', 'touch.facebook.com/ende.elfec', '1451525075080740', 1, now(),null);
