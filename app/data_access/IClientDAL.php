@@ -67,7 +67,7 @@ interface IClientDAL
      * @param $ClientID
      * @return Array
      */
-    public function GetAllAccounts($ClientID);
+    public function getAllAccounts($ClientID);
     /**
      * Obtiene los dispositivos que le pertenecen a un cliente
      * @param $clientId

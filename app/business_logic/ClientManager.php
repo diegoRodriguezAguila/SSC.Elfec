@@ -10,7 +10,6 @@ namespace business_logic;
 use data_access\AccountDALFactory;
 use data_access\ClientDALFactory;
 
-use external_data_access\oracle\AccountEDAL;
 use data_access\DeviceDALFactory;
 use data_access\MobilePhoneDALFactory;
 
@@ -58,20 +57,19 @@ class ClientManager {
     /**
      * Verifica si es que el cliente tiene la cuenta con el nus proporcionado, sino la registra
      * @param $NUS
-     * @param $accountNumber
      * @param $clientId
-     * @return int
+     * @return int nus de la cuenta registrada
      */
-    public static function addAccountToClient($NUS, $accountNumber, $clientId)
+    public static function addAccountToClient($NUS, $clientId)
     {
         $clientDAL = ClientDALFactory::instance();
         $accountResult = $clientDAL->findAccount($NUS, $clientId);
-        if(!count($accountResult)>0)
+        if(count($accountResult)<=0)
         {
             $accountDAL = AccountDALFactory::instance();
-            return $accountDAL->registerAccount($NUS, $accountNumber, $clientId);
+            $accountDAL->registerAccount($NUS, $clientId);
         }
-        return $accountResult[0]->id;
+        return $NUS;
     }
 
     /**
@@ -129,13 +127,17 @@ class ClientManager {
     public static function getAllAccounts($gmail)
     {
         $clientDAL=ClientDALFactory::instance();
-        $result=$clientDAL->GetAllAccounts($gmail);
+        $result=$clientDAL->getAllAccounts($gmail);
         $accounts=array();
         foreach($result as $row)
         {
-          $account=  AccountManager::getFullAccountData($row->id);
+          $account=  AccountManager::getFullAccountData($row->nus);
           array_push($accounts, $account->jsonSerialize());
         }
+        usort($accounts, function($a, $b)
+        {
+            return strcmp($a["AccountNumber"], $b["AccountNumber"]);
+        });
         return $accounts;
     }
 

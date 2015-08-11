@@ -15,7 +15,6 @@
 CREATE TABLE accounts(
     id                SERIAL UNIQUE        NOT NULL,
     client_id         integer           NOT NULL,
-    account_number    varchar(20)    NOT NULL,
     nus               varchar(10)    NOT NULL,
     status            integer           NOT NULL,
     insert_date       timestamp      NOT NULL,

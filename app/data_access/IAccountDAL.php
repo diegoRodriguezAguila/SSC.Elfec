@@ -18,11 +18,10 @@ interface IAccountDAL
     /**
      * Registra una nueva cuenta y retorna el Id que se le asignó
      * @param $NUS
-     * @param $accountNumber
      * @param $clientId
      * @return int
      */
-    public function registerAccount($NUS, $accountNumber, $clientId);
+    public function registerAccount($NUS, $clientId);
     /**
      * Elimina una cuenta para un usuario determiando
      * @param $NUS

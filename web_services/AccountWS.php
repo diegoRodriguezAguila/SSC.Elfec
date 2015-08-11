@@ -45,10 +45,10 @@ function RegisterAccount($AccountNumber, $NUS, $GMail, $PhoneNumber, $DeviceBran
     $clientId =  ClientManager::addClient($GMail);
     if(AccountManager::isAValidAccount($NUS, $AccountNumber))
     {
-        $accountId = ClientManager::addAccountToClient($NUS,$AccountNumber, $clientId);
+        $nus = ClientManager::addAccountToClient($NUS, $clientId);
         ClientManager::addPhoneNumberToClient($PhoneNumber, $clientId);
         ClientManager::addDeviceToClient($DeviceIMEI, $GCM, $DeviceBrand, $DeviceModel, $clientId);
-        $registeredAccount = AccountManager::getFullAccountData($accountId);
+        $registeredAccount = AccountManager::getFullAccountData($nus);
         GCMAccountManager::propagateNewAccountToDevices($GMail,$registeredAccount,$DeviceIMEI);
     }
     else
@@ -71,7 +71,7 @@ function GetAllAccounts($GMail, $DeviceBrand, $DeviceModel, $DeviceIMEI,$GCM)
     $clientId =  ClientManager::addClient($GMail);
     ClientManager::addDeviceToClient($DeviceIMEI, $GCM, $DeviceBrand, $DeviceModel, $clientId);
     $response = new WSResponse();
-    $accounts=ClientManager::GetAllAccounts($GMail);
+    $accounts=ClientManager::getAllAccounts($GMail);
 
     $response->setResponse($accounts);
 

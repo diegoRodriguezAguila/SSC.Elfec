@@ -17,7 +17,21 @@ use models\enums\DataBaseType;
 class AccountEDAL {
 
     const V_ACCOUNT_VALIDATION = "V_VALIDACION_CUENTA";
-    CONST V_ACCOUNT_INFO = "V_INFO_CUENTA";
+    const V_ACCOUNT_INFO = "V_INFO_CUENTA";
+    /**
+     * Obtiene la información de una cuenta que coincida con el nus indicado
+     * @param $NUS
+     * @param $tableToFind
+     * @return array
+     */
+    public static function findAccountData($NUS, $tableToFind)
+    {
+        $db = database::get(DataBaseType::$ORACLE_DATABASE);
+        $result  = $db->select("SELECT /*+CHOOSE*/ * FROM ELFEC_SSC.".$tableToFind." WHERE IDSUMINISTRO=:nus",
+        [":nus"=>$NUS]);
+        return $result;
+    }
+
     /**
      * Obtiene la información de una cuenta que coincida con el nus y el número de cuenta indicado
      * @param $NUS
@@ -25,11 +39,11 @@ class AccountEDAL {
      * @param $tableToFind
      * @return array
      */
-    public static function findAccountData($NUS, $accountNumber, $tableToFind)
+    public static function findAccount($NUS, $accountNumber, $tableToFind)
     {
         $db = database::get(DataBaseType::$ORACLE_DATABASE);
         $result  = $db->select("SELECT /*+CHOOSE*/ * FROM ELFEC_SSC.".$tableToFind." WHERE IDSUMINISTRO=:nus AND NROSUM=:accountNumber",
-        [":nus"=>$NUS, ":accountNumber"=>$accountNumber]);
+            [":nus"=>$NUS, ":accountNumber"=>$accountNumber]);
         return $result;
     }
 

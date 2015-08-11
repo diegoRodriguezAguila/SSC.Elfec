@@ -7,6 +7,7 @@
  */
 
 namespace business_logic;
+
 use data_access\AccountDALFactory;
 use external_data_access\oracle\AccountEDAL;
 use models\Account;
@@ -17,7 +18,8 @@ use models\Usage;
  * Class AccountManager Maneja la información de las cuentas y su lógica de negocio
  * @package business_logic
  */
-class AccountManager {
+class AccountManager
+{
 
 
     /**
@@ -29,50 +31,42 @@ class AccountManager {
      */
     public static function isAValidAccount($NUS, $AccountNumber)
     {
-        $result = AccountEDAL::findAccountData($NUS, $AccountNumber, AccountEDAL::V_ACCOUNT_INFO);
-        return count($result)>=1;
+        $result = AccountEDAL::findAccount($NUS, $AccountNumber, AccountEDAL::V_ACCOUNT_INFO);
+        return count($result) >= 1;
     }
 
     public static function getUsageFromAccount($NUS)
     {
-        $result=array();
-       $usage=AccountEDAL::getUsageFromAccount($NUS);
-        foreach($usage as $item)
-        {
-            array_push($result,Usage::create()->setEnergyUsage($item->CONSUMO)->setTerm($item->GESTION)->jsonSerialize());
+        $result = array();
+        $usage = AccountEDAL::getUsageFromAccount($NUS);
+        foreach ($usage as $item) {
+            array_push($result, Usage::create()->setEnergyUsage($item->CONSUMO)->setTerm($item->GESTION)->jsonSerialize());
         }
         return $result;
     }
+
     /**
      * Devuelve una cuenta con su información completa de deudas, direción y nombre
-     * @param $accountId
+     * @param $nus
      * @return Account
      */
-    public static function getFullAccountData($accountId)
+    public static function getFullAccountData($nus)
     {
-        $accountDAL = AccountDALFactory::instance();
-        $accResult = $accountDAL->findAccount($accountId);
-        if(count($accResult)>0)
-        {
-            $foundAccount = $accResult[0];
-            $fullAccount = Account::create()->setAccountNumber($foundAccount->account_number)
-                ->setNUS($foundAccount->nus);
-            $extraDataResult = AccountEDAL::findAccountData($foundAccount->nus, $foundAccount->account_number,AccountEDAL::V_ACCOUNT_INFO );
-            $fullAccount->setAccountOwner($extraDataResult[0]->NOMBRE)
-                ->setAddress($extraDataResult[0]->DIRECCION)
-                ->setEnergySupplyStatus($extraDataResult[0]->ESTADO);
-            foreach($extraDataResult as $extraData)
-            {
-                array_push($fullAccount->Debts,
+        $fullAccount = Account::create()
+            ->setNUS($nus);
+        $extraDataResult = AccountEDAL::findAccountData($nus, AccountEDAL::V_ACCOUNT_INFO);
+        $fullAccount->setAccountNumber($extraDataResult[0]->NROSUM)->setAccountOwner($extraDataResult[0]->NOMBRE)
+            ->setAddress($extraDataResult[0]->DIRECCION)
+            ->setEnergySupplyStatus($extraDataResult[0]->ESTADO);
+        foreach ($extraDataResult as $extraData) {
+            array_push($fullAccount->Debts,
                 Debt::create()->setAmount($extraData->TOTALIMP)
-                              ->setExpirationDate($extraData->FECHA_VTO)
-                              ->setMonth($extraData->MES)
-                              ->setYear($extraData->ANIO)
-                              ->setReceiptNumber($extraData->NROCBTE));
-            }
-            return $fullAccount;
+                    ->setExpirationDate($extraData->FECHA_VTO)
+                    ->setMonth($extraData->MES)
+                    ->setYear($extraData->ANIO)
+                    ->setReceiptNumber($extraData->NROCBTE));
         }
-        return null;
+        return $fullAccount;
     }
 
     /**
@@ -84,10 +78,8 @@ class AccountManager {
     {
         $accounts = AccountDALFactory::instance()->getAll();
         $nonPaymentOutageAccounts = [];
-        foreach($accounts as $acc)
-        {
-            if(AccountEDAL::isNonPaymentOutageAccount($acc->nus))
-            {
+        foreach ($accounts as $acc) {
+            if (AccountEDAL::isNonPaymentOutageAccount($acc->nus)) {
                 array_push($nonPaymentOutageAccounts, $acc);
             }
         }
