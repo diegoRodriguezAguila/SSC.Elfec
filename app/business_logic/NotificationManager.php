@@ -7,6 +7,7 @@
  */
 
 namespace business_logic;
+
 use business_logic\gcm_services\GCMOutageManager;
 use business_logic\SessionManager;
 use data_access\NotificationDALFactory;
@@ -17,9 +18,11 @@ use models\enums\NotificationKey;
  * Class NotificationManager
  * @package business_logic
  */
-class NotificationManager {
+class NotificationManager
+{
 
-    const NON_PAYMENT_MESSAGE ='Estimado cliente, se le informa que la cuenta con NUS: <b>%s</b> es pasible a corte a partir de la fecha de mañana: <b>%s</b>. Le recomendamos pagar todas sus deudas pendientes, para evitar quedarse sin suministro de energía.';
+    const NON_PAYMENT_MESSAGE = 'Estimado cliente, se le informa que la cuenta con NUS: <b>%s</b> Y dirección: %s, es pasible a corte a partir de la fecha de mañana: <b>%s</b>. Le recomendamos pagar todas sus deudas pendientes, para evitar quedarse sin suministro de energía.';
+    const OUTAGE_MESSAGE = '%s.<br/>Cuenta afectada con NUS: <b>%s</b> y dirección: %s.<br/>Desde el: %s %s';
 
     /**
      * Realiza el envío de las notificaciones a aquellos clientes que tengan facturas
@@ -27,11 +30,10 @@ class NotificationManager {
      */
     public static function processNonPaymentOutageNotificationSend()
     {
-        $nonpayment_accounts= AccountManager::getNonPaymentOutageAccounts();
+        $nonpayment_accounts = AccountManager::getNonPaymentOutageAccounts();
         $notificationDAL = NotificationDALFactory::instance();
         $notificationId = $notificationDAL->registerNotificationMessage("Corte por mora", 0, 2, SessionManager::getUserDataBaseConnection());
-        foreach($nonpayment_accounts as $account)
-        {
+        foreach ($nonpayment_accounts as $account) {
             $notificationDAL->registerNotificationDetail($notificationId, $account->nus, SessionManager::getUserDataBaseConnection());
             GCMOutageManager::sendNonPaymentOutageNotification($account,
                 self::prepareNonPaymentOutageMessage($account->nus));
@@ -45,7 +47,9 @@ class NotificationManager {
      */
     private static function prepareNonPaymentOutageMessage($nus)
     {
-        return sprintf(self::NON_PAYMENT_MESSAGE, $nus, (new \DateTime('tomorrow'))->format('d/m/Y'));
+        $fullAccountInfo = AccountManager::getFullAccountData($nus);
+        return sprintf(self::NON_PAYMENT_MESSAGE, $nus, mb_convert_case($fullAccountInfo->getAddress(), MB_CASE_TITLE, "UTF-8"),
+            (new \DateTime('tomorrow'))->format('d/m/Y'));
     }
 
     /**
@@ -58,18 +62,16 @@ class NotificationManager {
     public static function processOutageNotificationSend($message, $outageCaseNumber)
     {
         $outageCase = OutageCasesManager::getOutageCase($outageCaseNumber);
-        if($outageCase!=null)
-        {
+        if ($outageCase != null) {
             $affectedAccounts = OutageCasesManager::getOutageCaseAccounts($outageCaseNumber);
             $notificationDAL = NotificationDALFactory::instance();
             $notificationId = $notificationDAL->registerNotificationMessage($message, $outageCaseNumber,
                 self::convertOutageTypeToInt($outageCase->tipo_corte), SessionManager::getUserDataBaseConnection());
-            foreach($affectedAccounts as $account)
-            {
-                 GCMOutageManager::sendOutageNotification($account,
-                     self::prepareOutageMessage($account->nus, $message,
-                         $outageCase->fecha_inicio, $outageCase->fecha_fin),
-                     self::convertOutageTypeToNotificationKey($outageCase->tipo_corte));
+            foreach ($affectedAccounts as $account) {
+                GCMOutageManager::sendOutageNotification($account,
+                    self::prepareOutageMessage($account->nus, $message,
+                        $outageCase->fecha_inicio, $outageCase->fecha_fin),
+                    self::convertOutageTypeToNotificationKey($outageCase->tipo_corte));
                 $notificationDAL->registerNotificationDetail($notificationId, $account->nus, SessionManager::getUserDataBaseConnection());
             }
             return true;
@@ -87,9 +89,11 @@ class NotificationManager {
      */
     private static function prepareOutageMessage($nus, $message, $startDate, $endDate)
     {
-        return "$message.<br/>Cuenta afectada: <b>$nus</b>.<br/>Desde el: "
-        .(new \DateTime($startDate))->format('d/m/Y H:i').(($endDate!=null)?
-            (" hasta el: ".(new \DateTime($endDate))->format('d/m/Y H:i')):"");
+        $fullAccountInfo = AccountManager::getFullAccountData($nus);
+        return sprintf(self::OUTAGE_MESSAGE, $message, $nus, mb_convert_case($fullAccountInfo->getAddress(), MB_CASE_TITLE, "UTF-8"),
+            (new \DateTime($startDate))->format('d/m/Y H:i'),
+            (($endDate != null) ?
+                (" hasta el: " . (new \DateTime($endDate))->format('d/m/Y H:i')) : ""));
     }
 
     /**
@@ -99,16 +103,19 @@ class NotificationManager {
      */
     private static function convertOutageTypeToNotificationKey($outageType)
     {
-        switch($outageType){
-            case "Programado":{
+        switch ($outageType) {
+            case "Programado":
+            {
                 return NotificationKey::SCHEDULED_OUTAGE;
             }
-            case "No programado":{
+            case "No programado":
+            {
                 return NotificationKey::INCIDENTAL_OUTAGE;
             }
-            default:{
+            default:
+                {
                 return null;
-            }
+                }
         }
     }
 
@@ -119,16 +126,19 @@ class NotificationManager {
      */
     private static function convertOutageTypeToInt($outageType)
     {
-        switch($outageType){
-            case "Programado":{
+        switch ($outageType) {
+            case "Programado":
+            {
                 return 0;
             }
-            case "No programado":{
+            case "No programado":
+            {
                 return 1;
             }
-            default:{
+            default:
+                {
                 return -1;
-            }
+                }
         }
     }
 } 

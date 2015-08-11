@@ -71,7 +71,7 @@ class AccountEDAL {
         $db = database::get(DataBaseType::$ORACLE_DATABASE);
         $result  = $db->select("SELECT count(1) HAS_TO_SEND_NOTIFICATION FROM dual
                                 WHERE CORTES.VALIDA_VENCIDAS(:nus)>1
-                                AND ELFEC_SSC.TIENE_VENCIDA_EN_FECHA(:nus, TO_DATE('30-12-2014'))>0 ",
+                                AND ELFEC_SSC.TIENE_VENCIDA_EN_FECHA(:nus, TO_DATE('05-05-2015'))>0 ",
                             [":nus"=>$NUS]);
         return count($result)>0?$result[0]->HAS_TO_SEND_NOTIFICATION>0:false;
     }
