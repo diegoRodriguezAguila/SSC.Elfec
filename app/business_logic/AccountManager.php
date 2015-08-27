@@ -57,7 +57,9 @@ class AccountManager
         $extraDataResult = AccountEDAL::findAccountData($nus, AccountEDAL::V_ACCOUNT_INFO);
         $fullAccount->setAccountNumber($extraDataResult[0]->NROSUM)->setAccountOwner($extraDataResult[0]->NOMBRE)
             ->setAddress($extraDataResult[0]->DIRECCION)
-            ->setEnergySupplyStatus($extraDataResult[0]->ESTADO);
+            ->setEnergySupplyStatus($extraDataResult[0]->ESTADO)
+            ->setLongitude($extraDataResult[0]->LONGITUD)
+            ->setLatitude($extraDataResult[0]->LATITUD);
         foreach ($extraDataResult as $extraData) {
             array_push($fullAccount->Debts,
                 Debt::create()->setAmount($extraData->TOTALIMP)

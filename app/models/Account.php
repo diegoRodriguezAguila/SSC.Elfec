@@ -21,6 +21,10 @@ class Account
     private $NUS;
     private $AccountOwner;
     private $Address;
+    private $Latitude;
+    private $Longitude;
+
+
     /**
      * Deudas de la cuenta
      * @var array
@@ -245,6 +249,42 @@ class Account
     public function getUpdateDate()
     {
         return $this->UpdateDate;
+    }
+
+    /**
+     * @param double $Longitude
+     * @return $this
+     */
+    public function setLongitude($Longitude)
+    {
+        $this->Longitude = $Longitude;
+        return $this;
+    }
+
+    /**
+     * @return double
+     */
+    public function getLongitude()
+    {
+        return $this->Longitude;
+    }
+
+    /**
+     * @param double $Latitude
+     * @return $this
+     */
+    public function setLatitude($Latitude)
+    {
+        $this->Latitude = $Latitude;
+        return $this;
+    }
+
+    /**
+     * @return double
+     */
+    public function getLatitude()
+    {
+        return $this->Latitude;
     }
     //endregion
 
