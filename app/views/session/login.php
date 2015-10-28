@@ -19,7 +19,7 @@
                         <h4 class="text-center login-title">Ingrese sus datos</h4>
 
                         <div class="account-wall">
-                            <form class="form-horizontal" action="/SSC.Elfec/session/auth_user" method="POST" role="form">
+                            <form class="form-horizontal" action="session/auth_user" method="POST" role="form">
                                 <div class="form-group input-group">
                                     <span class="input-group-addon fui-user"></span>
                                     <input type="text" class="form-control" name="username" placeholder="Usuario"

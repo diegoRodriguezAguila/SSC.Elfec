@@ -3,7 +3,7 @@
  */
 sscApp.factory('NotificationService', ['$resource',  function($resource) {
     var service = {
-        notifications: $resource('/SSC.Elfec/notifications/notification', {},
+        notifications: $resource('notifications/notification', {},
             {
                 send: {method: 'POST'}
             })
