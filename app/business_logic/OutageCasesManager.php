@@ -7,6 +7,7 @@
  */
 
 namespace business_logic;
+use data_access\NotificationDALFactory;
 use external_data_access\centrality\OutageCasesEDAL,
     helpers\OracleToString,
     data_access\AccountDALFactory;
@@ -23,7 +24,12 @@ class OutageCasesManager {
      */
     public static function getAllOutageCases()
     {
-        return OutageCasesEDAL::getAllExecutingOutageCases();
+        $outage_cases = OutageCasesEDAL::getAllExecutingOutageCases();
+        foreach ($outage_cases as $outage_case)
+        {
+            $outage_case->sent_notifications = self::getOutageCaseNotifications($outage_case->caso);
+        }
+        return $outage_cases;
     }
 
     /**
@@ -49,6 +55,16 @@ class OutageCasesManager {
         if (count($result)>0)
             return $result[0];
         return null;
+    }
+
+    /**
+     * Obtiene las notificaciones enviadas de un caso específico
+     * @param $outageCase , El numero de caso
+     * @return array , null en caso de que no se haya encontrado un caso con el numero provisto
+     */
+    public static function getOutageCaseNotifications($outageCase)
+    {
+        return NotificationDALFactory::instance()->getOutageCaseNotifications($outageCase);
     }
 
 } 

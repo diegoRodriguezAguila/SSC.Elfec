@@ -1,6 +1,6 @@
 <br>
 <div class="row">
-    <div class="col-sm-12 ">
+    <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h2 class="panel-title">Iniciar Sesion</h2>

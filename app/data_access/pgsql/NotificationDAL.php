@@ -60,4 +60,17 @@ class NotificationDAL implements INotificationDAL {
         $db->insert('notification_details', $data);
         return $db->lastInsertId('notification_details_id_seq');
     }
-} 
+
+    /**
+     * Obtiene las notificaciones de cierto caso
+     * @param $outageCaseNumber
+     * @return array
+     */
+    public function getOutageCaseNotifications($outageCaseNumber)
+    {
+        $db = Database::get();
+        return $db->select("SELECT outage_case_number, sender_user, message, insert_date FROM notification_messages
+        where outage_case_number=:outage_case_number",
+            [':outage_case_number'=>$outageCaseNumber]);
+    }
+}

@@ -27,4 +27,6 @@ interface INotificationDAL {
      * @return integer
      */
     public function registerNotificationDetail($notificationId, $nus, $userDBConnection);
+
+    public function getOutageCaseNotifications($outageCaseNumber);
 } 
