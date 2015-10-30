@@ -19,4 +19,10 @@ interface IAppDAL {
      * @return array
      */
     public function getLastAppInfo();
+
+    /**
+     * Obtiene todas las información de la aplicación válidas
+     * @return array|null
+     */
+    public function getAllValidAppInfos();
 } 

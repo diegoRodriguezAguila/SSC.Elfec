@@ -7,19 +7,29 @@
  */
 
 namespace business_logic;
+
 use data_access\AppDALFactory,
     models\web_services\WSToken;
 
 
-class TokenManager {
+class TokenManager
+{
 
     /**
      * Verifica la validéz de un token
      * @param $wsToken WSToken
      * @return bool
      */
-    public static function isWSTokenValid($wsToken){
-       return $wsToken->getToken()==self::generateToken($wsToken->getImei())->getToken();
+    public static function isWSTokenValid($wsToken)
+    {
+        $appDAL = AppDALFactory::instance();
+        $appInfos = $appDAL->getAllValidAppInfos();
+        foreach ($appInfos as $appInfo) {
+            if($wsToken->getToken() == self::generateToken($wsToken->getImei(), $appInfo->signature_hash,
+                    $appInfo->salt, $appInfo->version_code)->getToken())
+                return true;
+        }
+        return false;
     }
 
     /**
@@ -31,15 +41,15 @@ class TokenManager {
      * @param null $versionCode integer
      * @return WSToken
      */
-    public static function generateToken($deviceIMEI, $signature=null,
-                                         $salt=null, $versionCode=null){
-        if($signature==null || $salt==null || $versionCode==null)
-        {
+    public static function generateToken($deviceIMEI, $signature = null,
+                                         $salt = null, $versionCode = null)
+    {
+        if ($signature == null || $salt == null || $versionCode == null) {
             $appDAL = AppDALFactory::instance();
             $appInfo = $appDAL->getLastAppInfo();
-            $signature = $signature==null?$appInfo->signature_hash:$signature;
-            $salt = $salt==null?$appInfo->salt:$salt;
-            $versionCode = $versionCode==null?$appInfo->version_code:$versionCode;
+            $signature = $signature == null ? $appInfo->signature_hash : $signature;
+            $salt = $salt == null ? $appInfo->salt : $salt;
+            $versionCode = $versionCode == null ? $appInfo->version_code : $versionCode;
         }
         return self::_generateToken($deviceIMEI, $signature, $salt, $versionCode);
     }
@@ -53,13 +63,14 @@ class TokenManager {
      * @return WSToken
      */
     private static function _generateToken($deviceIMEI, $signature,
-                                                        $salt, $versionCode){
-        $key = hash('sha512',self::mergeBetween($deviceIMEI, $signature), true);
-        $message = self::mergeBetween(self::prepareMessage($salt, $versionCode), substr($key,32,32));
-        $pos = (floor(strlen($deviceIMEI)/2));
+                                           $salt, $versionCode)
+    {
+        $key = hash('sha512', self::mergeBetween($deviceIMEI, $signature), true);
+        $message = self::mergeBetween(self::prepareMessage($salt, $versionCode), substr($key, 32, 32));
+        $pos = (floor(strlen($deviceIMEI) / 2));
         $ivSelector = $deviceIMEI[(integer)$pos];
-        $subKey = $versionCode%2!=0?substr($key,0,16):substr($key,16,16);
-        $iv = $ivSelector%2!=0?substr($key,0,16):substr($key,16,16);
+        $subKey = $versionCode % 2 != 0 ? substr($key, 0, 16) : substr($key, 16, 16);
+        $iv = $ivSelector % 2 != 0 ? substr($key, 0, 16) : substr($key, 16, 16);
         $token = openssl_encrypt($message, 'AES-256-CBC', $subKey, 0, $iv);
         return new WSToken($deviceIMEI, $token);
     }
@@ -70,10 +81,11 @@ class TokenManager {
      * @param $versionCode
      * @return string
      */
-    private static function prepareMessage($salt, $versionCode){
+    private static function prepareMessage($salt, $versionCode)
+    {
         $hex = dechex($versionCode);
         $length = strlen($hex);
-        for($i = 0; $i<$length; $i++){
+        for ($i = 0; $i < $length; $i++) {
             $pos = hexdec($salt[$i]);
             $salt = substr_replace($salt, $hex[$i], $pos, 0);
         }
@@ -84,11 +96,12 @@ class TokenManager {
      * Merges two strings in a way that a pattern like ABABAB will be
      * the result.
      *
-     * @param     string    $str1   String A
-     * @param     string    $str2   String B
+     * @param     string $str1 String A
+     * @param     string $str2 String B
      * @return    string    Merged string
      */
-    private static function mergeBetween($str1, $str2){
+    private static function mergeBetween($str1, $str2)
+    {
 
         // Split both strings
         $str1 = str_split($str1, 1);
@@ -99,7 +112,7 @@ class TokenManager {
             list($str1, $str2) = array($str2, $str1);
 
         // Append the shorter string to the longer string
-        for($x=0; $x < count($str1); $x++)
+        for ($x = 0; $x < count($str1); $x++)
             $str2[$x] .= $str1[$x];
 
         return implode('', $str2);
@@ -113,11 +126,14 @@ class TokenManager {
      * @param $versionCode integer
      * @return bool
      */
-    public static function areCredentialsValid($signature, $salt, $versionCode){
+    public static function areCredentialsValid($signature, $salt, $versionCode)
+    {
         $appDAL = AppDALFactory::instance();
-        $appInfo = $appDAL->getLastAppInfo();
-        return $appInfo!=null?
-            ($appInfo->signature_hash==$signature && $appInfo->salt==$salt && $appInfo->version_code==$versionCode):
-            false;
+        $appInfos = $appDAL->getAllValidAppInfos();
+        foreach ($appInfos as $appInfo) {
+            if($appInfo->signature_hash == $signature && $appInfo->salt == $salt && $appInfo->version_code == $versionCode)
+                return true;
+        }
+        return false;
     }
 } 

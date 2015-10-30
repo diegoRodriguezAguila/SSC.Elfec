@@ -22,4 +22,13 @@ class AppDAL implements IAppDAL {
         $result  = $db->select("SELECT * FROM application WHERE status=1 ORDER BY id DESC LIMIT 1");
         return count($result)>0?$result[0]:null;
     }
+
+    /**
+     * Obtiene todas las información de la aplicación válidas
+     * @return array|null
+     */
+    public function getAllValidAppInfos(){
+        $db = Database::get();
+        return $db->select("SELECT * FROM application WHERE status=1 ORDER BY id DESC");
+    }
 } 
