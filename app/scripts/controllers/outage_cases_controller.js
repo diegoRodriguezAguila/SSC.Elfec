@@ -37,7 +37,7 @@ sscApp.controller('OutageCasesController', ['$scope', 'OutageCasesService', 'Not
         };
 
         $scope.convertToDate = function (stringDate) {
-            return new Date(stringDate);
+            return stringDate.replace(/-/g , "/");
         };
 
         $scope.sendNotification = function () {

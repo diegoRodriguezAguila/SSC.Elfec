@@ -12,7 +12,7 @@
             <li ng-repeat="notif in selected_outage_case.sent_notifications" class="list-group-item">
                <small> {{ notif.message }}<br />
                 <b>{{notif.sender_user}}</b><br />
-                   {{convertToDate(notif.insert_date)|date : 'dd/MM/yyyy HH:mm:ss'}}</small>
+                   {{convertToDate(notif.insert_date)}}</small>
             </li>
         </ul>
     </div>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-sm-8">
                                 <small
-                                    ng-bind="convertToDate(selected_outage_case.fecha_inicio)|date : 'dd/MM/yyyy HH:mm:ss'"></small>
+                                    ng-bind="convertToDate(selected_outage_case.fecha_inicio)"></small>
                             </div>
                         </div>
                         <div class="row ng-hide" ng-hide="selected_outage_case.fecha_fin == null">
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-sm-8">
                                 <small
-                                    ng-bind="convertToDate(selected_outage_case.fecha_fin)|date : 'dd/MM/yyyy HH:mm:ss'"></small>
+                                    ng-bind="convertToDate(selected_outage_case.fecha_fin)"></small>
                             </div>
                         </div>
                     </div>
