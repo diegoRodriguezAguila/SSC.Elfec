@@ -22,6 +22,7 @@ class NotificationManager
 {
 
     const NON_PAYMENT_MESSAGE = 'Estimado cliente, se le informa que la cuenta con NUS: <b>%s</b> y dirección: %s, es pasible a corte a partir de la fecha de mañana: <b>%s</b>. Le recomendamos pagar todas sus deudas pendientes, para evitar quedarse sin suministro de energía.';
+    const NON_PAYMENT_MESSAGE2 = 'Estimado cliente, el suministro de Energía Eléctrica con NUS <b>%s</b> ubicado en %s tiene facturas pendientes de pago del: %s, por lo que se encuentra en proceso de CORTE DEL SERVICIO. Agradecemos pase a cancelar su deuda al punto de cobranza más cercano.';
     const OUTAGE_MESSAGE = '%s.<br/>Cuenta afectada con NUS: <b>%s</b> y dirección: %s.<br/>Desde el: %s %s';
 
     /**

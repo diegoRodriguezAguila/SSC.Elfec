@@ -6,6 +6,7 @@ sscApp.controller('OutageCasesController', ['$scope', 'OutageCasesService', 'Not
         $scope.selected_outage_case = null;
         $scope.outage_cases = [];
         $scope.notification_message = null;
+        $scope.proccessSchedule = null;
 
         $scope.refreshOutageCases = function () {
             $scope.outage_cases = OutageCasesService.outage_cases.getAllExecuting()
@@ -14,7 +15,7 @@ sscApp.controller('OutageCasesController', ['$scope', 'OutageCasesService', 'Not
                     if ($scope.selected_outage_case != null) {
                         $scope.selected_outage_case = $scope.findOutage($scope.selected_outage_case);
                     }
-                    setTimeout($scope.refreshOutageCases, 30000);
+                    $scope.proccessSchedule = setTimeout($scope.refreshOutageCases, 30000);
                 }, function (error) {
                     console.log(error);
                 });
@@ -47,6 +48,8 @@ sscApp.controller('OutageCasesController', ['$scope', 'OutageCasesService', 'Not
                     .$promise.then(function (data) {
                         UserMessagesService.show.info("Mensaje enviado", 'Se envió el mensaje <i>"'+data.message+'"</i> a los destinatarios correspondientes de forma exitosa!');
                         $scope.notification_message = null;
+                        clearTimeout($scope.proccessSchedule);
+                        $scope.refreshOutageCases();
                     }, function (error) {
                         UserMessagesService.show.error("Error al enviar el mensaje",(typeof error.error_message != 'undefined')?error.error_message:"");
                         console.log(error);

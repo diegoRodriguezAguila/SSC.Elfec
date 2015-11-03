@@ -18,7 +18,7 @@ use helpers\GCMSender;
  */
 class GCMOutageManager {
 
-    const MAX_DEVICES_PER_GCM = 1000;
+
 
     /**
      * Envia el mensaje de corte enviado por el administrador
@@ -28,34 +28,8 @@ class GCMOutageManager {
      */
     public static function sendOutageNotification($account, $message, $key)
     {
-        $clientDAL = ClientDALFactory::instance();
-        $owner = $clientDAL->getClientById($account->client_id);
-        $devices  = $clientDAL->getClientDevicesByOwner($owner->gmail);
-        $totalDevices = count($devices);
-        $counter = 1;
-        $msg = [
-            'message'       => $message,
-            'title'         => $key==NotificationKey::SCHEDULED_OUTAGE?'Corte programado':'Corte fortuito',
-            'key'           => $key,
-            'type'          => NotificationType::OUTAGE,
-            'gmail'         => $owner->gmail
-        ];
-        $deviceTokens = array();
-        for ($i = 0; $i < $totalDevices; $i++)
-        {
-            array_push($deviceTokens,$devices[$i]->gcm_token);
-            $counter++;
-            if($counter==self::MAX_DEVICES_PER_GCM)
-            {
-                $counter=1;
-                GCMSender::sendDataToDevices($deviceTokens,$msg);
-                $deviceTokens = array();
-            }
-        }
-        if($counter>1)
-        {
-            GCMSender::sendDataToDevices($deviceTokens,$msg);
-        }
+        self::sendMessageToAccount($account, $message, $key==NotificationKey::SCHEDULED_OUTAGE?'Corte programado':'Corte fortuito',
+            $key, NotificationType::OUTAGE);
     }
 
     /**
@@ -65,33 +39,29 @@ class GCMOutageManager {
      */
     public static function sendNonPaymentOutageNotification($account, $message)
     {
+        self::sendMessageToAccount($account, $message, 'Corte por mora', NotificationKey::NONPAYMENT_OUTAGE, NotificationType::OUTAGE);
+    }
+
+    /**
+     * Envia un mensaje a todos los dispositivos de una cuenta
+     * @param $account
+     * @param $message
+     * @param $title
+     * @param $key
+     * @param $type
+     */
+    private static function sendMessageToAccount($account, $message, $title, $key, $type)
+    {
         $clientDAL = ClientDALFactory::instance();
         $owner = $clientDAL->getClientById($account->client_id);
         $devices  = $clientDAL->getClientDevicesByOwner($owner->gmail);
-        $totalDevices = count($devices);
-        $counter = 1;
         $msg = [
             'message'       => $message,
-            'title'         => 'Corte por mora',
-            'key'           => NotificationKey::NONPAYMENT_OUTAGE,
-            'type'          => NotificationType::OUTAGE,
+            'title'         => $title,
+            'key'           => $key,
+            'type'          => $type,
             'gmail'         => $owner->gmail
         ];
-        $deviceTokens = array();
-        for ($i = 0; $i < $totalDevices; $i++)
-        {
-            array_push($deviceTokens,$devices[$i]->gcm_token);
-            $counter++;
-            if($counter==self::MAX_DEVICES_PER_GCM)
-            {
-                $counter=1;
-                GCMSender::sendDataToDevices($deviceTokens,$msg);
-                $deviceTokens = array();
-            }
-        }
-        if($counter>1)
-        {
-            GCMSender::sendDataToDevices($deviceTokens,$msg);
-        }
+        GCMSender::sendMessageToDevices($devices,$msg);
     }
 } 

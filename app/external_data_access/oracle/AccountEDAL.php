@@ -69,8 +69,9 @@ class AccountEDAL {
     public static function isNonPaymentOutageAccount($NUS)
     {
         $db = database::get(DataBaseType::$ORACLE_DATABASE);
+        // producción: SYSDATE CUENTA_VENCIDAS y SYSDATE-1 TIENE_VENCIDA_EN_FECHA
         $result  = $db->select("SELECT count(1) HAS_TO_SEND_NOTIFICATION FROM dual
-                                WHERE CORTES.VALIDA_VENCIDAS(:nus)>1
+                                WHERE ELFEC_SSC.CUENTA_VENCIDAS(:nus, TO_DATE('06-05-2015'))>=2
                                 AND ELFEC_SSC.TIENE_VENCIDA_EN_FECHA(:nus, TO_DATE('05-05-2015'))>0 ",
                             [":nus"=>$NUS]);
         return count($result)>0?$result[0]->HAS_TO_SEND_NOTIFICATION>0:false;
