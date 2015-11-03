@@ -12,7 +12,7 @@ use business_logic\gcm_services\GCMOutageManager;
 use business_logic\SessionManager;
 use data_access\NotificationDALFactory;
 use models\enums\NotificationKey;
-
+use models\enums\DataBaseType;
 /**
  * Clase que se encarga de el envío y gestión de notificaciones
  * Class NotificationManager
@@ -32,9 +32,9 @@ class NotificationManager
     {
         $nonpayment_accounts = AccountManager::getNonPaymentOutageAccounts();
         $notificationDAL = NotificationDALFactory::instance();
-        $notificationId = $notificationDAL->registerNotificationMessage("Corte por mora", 0, 2, SessionManager::getUserDataBaseConnection());
+        $notificationId = $notificationDAL->registerNotificationMessage("Corte por mora", 0, 2, DataBaseType::$PGSQL_DATABASE);
         foreach ($nonpayment_accounts as $account) {
-            $notificationDAL->registerNotificationDetail($notificationId, $account->nus, SessionManager::getUserDataBaseConnection());
+            $notificationDAL->registerNotificationDetail($notificationId, $account->nus, DataBaseType::$PGSQL_DATABASE);
             GCMOutageManager::sendNonPaymentOutageNotification($account,
                 self::prepareNonPaymentOutageMessage($account->nus));
         }
