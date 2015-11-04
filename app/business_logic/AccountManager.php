@@ -95,13 +95,13 @@ class AccountManager
     public static function getTodayExpiredDebtAccounts()
     {
         $accounts = AccountDALFactory::instance()->getAll();
-        $nonPaymentOutageAccounts = [];
+        $expiredDebtAccounts = [];
         foreach ($accounts as $acc) {
             if (AccountEDAL::hasJustExpiredDebt($acc->nus)) {
-                array_push($nonPaymentOutageAccounts, $acc);
+                array_push($expiredDebtAccounts, $acc);
             }
         }
-        return $nonPaymentOutageAccounts;
+        return $expiredDebtAccounts;
     }
 
 } 

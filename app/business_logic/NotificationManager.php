@@ -67,7 +67,7 @@ class NotificationManager
         $notificationId = $notificationDAL->registerNotificationMessage(self::EXPIRED_DEBT_MESSAGE, -1, OutageType::EXPIRED_DEBT, DataBaseType::$PGSQL_DATABASE);
         foreach ($expired_debt_accounts as $account) {
             $notificationDAL->registerNotificationDetail($notificationId, $account->nus, DataBaseType::$PGSQL_DATABASE);
-            GCMOutageManager::sendNonPaymentOutageNotification($account,
+            GCMOutageManager::sendExpiredDebtNotification($account,
                 self::prepareExpiredDebtMessage($account->nus));
         }
     }
