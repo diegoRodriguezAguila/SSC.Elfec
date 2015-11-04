@@ -29,7 +29,7 @@ class GCMOutageManager {
     public static function sendOutageNotification($account, $message, $key)
     {
         self::sendMessageToAccount($account, $message, $key==NotificationKey::SCHEDULED_OUTAGE?'Corte programado':'Corte fortuito',
-            $key, NotificationType::OUTAGE);
+            $key, NotificationType::OUTAGE_OR_INFO);
     }
 
     /**
@@ -39,7 +39,17 @@ class GCMOutageManager {
      */
     public static function sendNonPaymentOutageNotification($account, $message)
     {
-        self::sendMessageToAccount($account, $message, 'Corte por mora', NotificationKey::NONPAYMENT_OUTAGE, NotificationType::OUTAGE);
+        self::sendMessageToAccount($account, $message, 'Corte por mora', NotificationKey::NONPAYMENT_OUTAGE, NotificationType::OUTAGE_OR_INFO);
+    }
+
+    /**
+     * Envia el mensaje de factura vencida a todos los dispositivos que hayan registrado la cuenta
+     * @param $account , cuenta
+     * @param $message , mensaje de factura vencida
+     */
+    public static function sendExpiredDebtNotification($account, $message)
+    {
+        self::sendMessageToAccount($account, $message, 'Vencimiento de factura', NotificationKey::EXPIRED_DEBT, NotificationType::OUTAGE_OR_INFO);
     }
 
     /**

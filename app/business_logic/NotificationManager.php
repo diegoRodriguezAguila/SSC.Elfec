@@ -13,6 +13,7 @@ use business_logic\SessionManager;
 use data_access\NotificationDALFactory;
 use models\enums\NotificationKey;
 use models\enums\DataBaseType;
+use models\enums\OutageType;
 use external_data_access\oracle\AccountEDAL;
 
 /**
@@ -25,15 +26,17 @@ class NotificationManager
     const NON_PAYMENT_MESSAGE = 'Estimado cliente, el suministro de Energía Eléctrica con NUS <b>%s</b> ubicado en %s tiene facturas pendientes de pago del: %s, por lo que se encuentra en proceso de CORTE DEL SERVICIO. Agradecemos pase a cancelar su deuda al punto de cobranza más cercano.';
     const OUTAGE_MESSAGE = '%s.<br/>Cuenta afectada con NUS: <b>%s</b> y dirección: %s.<br/>Desde el: %s %s';
 
+    const EXPIRED_DEBT_MESSAGE = 'Estimado cliente, hoy vence el plazo para pagar su factura de consumo de Energía Eléctrica del suministro con NUS <b>%s</b> ubicado en %s correspondiente al mes de <b>%s</b>';
+
     /**
-     * Realiza el envío de las notificaciones a aquellos clientes que tengan facturas
-     * que esten vencidas el día de hoy
+     * Realiza el envío de las notificaciones a aquellos clientes que tengan 2 o más facturas
+     * que esten vencidas el día de hoy, avisandoles sobre el posible corte de suministro
      */
     public static function processNonPaymentOutageNotificationSend()
     {
         $nonpayment_accounts = AccountManager::getNonPaymentOutageAccounts();
         $notificationDAL = NotificationDALFactory::instance();
-        $notificationId = $notificationDAL->registerNotificationMessage("Corte por mora", 0, 2, DataBaseType::$PGSQL_DATABASE);
+        $notificationId = $notificationDAL->registerNotificationMessage(self::NON_PAYMENT_MESSAGE, -1, OutageType::NON_PAYMENT, DataBaseType::$PGSQL_DATABASE);
         foreach ($nonpayment_accounts as $account) {
             $notificationDAL->registerNotificationDetail($notificationId, $account->nus, DataBaseType::$PGSQL_DATABASE);
             GCMOutageManager::sendNonPaymentOutageNotification($account,
@@ -51,6 +54,34 @@ class NotificationManager
         $fullAccountInfo = AccountManager::getFullAccountData($nus);
         return sprintf(self::NON_PAYMENT_MESSAGE, $nus, mb_convert_case($fullAccountInfo->getAddress(), MB_CASE_TITLE, "UTF-8"),
             AccountEDAL::getPeriodsOfAllExpiredDebts($nus));
+    }
+
+    /**
+     * Realiza el envío de las notificaciones a aquellos clientes que tengan facturas
+     * que esten vencidas el día de hoy
+     */
+    public static function processExpiredDebtNotificationSend()
+    {
+        $expired_debt_accounts = AccountManager::getTodayExpiredDebtAccounts();
+        $notificationDAL = NotificationDALFactory::instance();
+        $notificationId = $notificationDAL->registerNotificationMessage(self::EXPIRED_DEBT_MESSAGE, -1, OutageType::EXPIRED_DEBT, DataBaseType::$PGSQL_DATABASE);
+        foreach ($expired_debt_accounts as $account) {
+            $notificationDAL->registerNotificationDetail($notificationId, $account->nus, DataBaseType::$PGSQL_DATABASE);
+            GCMOutageManager::sendNonPaymentOutageNotification($account,
+                self::prepareExpiredDebtMessage($account->nus));
+        }
+    }
+
+    /**
+     * Prepara el mensaje que se enviará al usuario en caso de corte por falta de pago
+     * @param $nus
+     * @return string
+     */
+    private static function prepareExpiredDebtMessage($nus)
+    {
+        $fullAccountInfo = AccountManager::getFullAccountData($nus);
+        return sprintf(self::EXPIRED_DEBT_MESSAGE, $nus, mb_convert_case($fullAccountInfo->getAddress(), MB_CASE_TITLE, "UTF-8"),
+            AccountEDAL::getJustExpiredDebtPeriod($nus));
     }
 
     /**
@@ -130,15 +161,15 @@ class NotificationManager
         switch ($outageType) {
             case "Programado":
             {
-                return 0;
+                return OutageType::SCHEDULED;
             }
             case "No programado":
             {
-                return 1;
+                return OutageType::INCIDENTAL;
             }
             default:
                 {
-                return -1;
+                return OutageType::UNDEFINED;
                 }
         }
     }

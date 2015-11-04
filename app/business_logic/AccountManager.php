@@ -88,4 +88,20 @@ class AccountManager
         return $nonPaymentOutageAccounts;
     }
 
+    /**
+     * Obtiene todas las cuentas a las que hay que enviarles notificación de vencimiento de factura
+     * @return array
+     */
+    public static function getTodayExpiredDebtAccounts()
+    {
+        $accounts = AccountDALFactory::instance()->getAll();
+        $nonPaymentOutageAccounts = [];
+        foreach ($accounts as $acc) {
+            if (AccountEDAL::hasJustExpiredDebt($acc->nus)) {
+                array_push($nonPaymentOutageAccounts, $acc);
+            }
+        }
+        return $nonPaymentOutageAccounts;
+    }
+
 } 

@@ -15,9 +15,9 @@ namespace models\enums;
  */
 class NotificationType {
     /**
-     * Grupo de notificaciones de tipo de corte de luz
+     * Grupo de notificaciones de tipo de corte de luz o de informaciones
      */
-    const OUTAGE = 0;
+    const OUTAGE_OR_INFO = 0;
     /**
      * Grupo de notificaciones de tipo de cuentas
      */

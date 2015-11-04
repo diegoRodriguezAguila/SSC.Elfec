@@ -35,10 +35,43 @@ class Notifications extends \core\controller{
     }
 
     /**
-     * Envia notificaciones a todos los suminsitros que tengan deudas y sean pasibles a corte desde el día siguiente
+     * Envia notificaciones a todos los suminsitros que tengan 2 o más facturas vencidas hasta el día de hoy y que recién
+     * el día anterior se haya vencido
      */
     public function nonpayment_outage()
     {
+        set_time_limit(0);
+        ignore_user_abort(true);
+        ob_start();
+        http_response_code(202);
+        header('Connection: close');
+        header('Content-Length: 0');
+        ob_end_flush();
+        ob_flush();
+        flush();
+        // close current session
+        if (session_id()) session_write_close();
+        //Continue processing
         NotificationManager::processNonPaymentOutageNotificationSend();
+    }
+
+    /**
+     * Envia notificaciones a todos los suminsitros que tengan facturas vencidas el día de hoy
+     */
+    public function expired_debts()
+    {
+        set_time_limit(0);
+        ignore_user_abort(true);
+        ob_start();
+        http_response_code(202);
+        header('Connection: close');
+        header('Content-Length: 0');
+        ob_end_flush();
+        ob_flush();
+        flush();
+        // close current session
+        if (session_id()) session_write_close();
+        //Continue processing
+        NotificationManager::processExpiredDebtNotificationSend();
     }
 } 

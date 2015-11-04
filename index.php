@@ -67,6 +67,7 @@ Router::any('', '\controllers\session@login');
 Router::post('/session/auth_user', '\controllers\session@auth_user');
 Router::post('/notifications/notification', '\controllers\notifications@notification');
 Router::get('/notifications/nonpayment_outage', '\controllers\notifications@nonpayment_outage');
+Router::get('/notifications/expired_debts', '\controllers\notifications@expired_debts');
 Router::get('/outage_cases', '\controllers\outage_case@getAllExecutingOutageCases');
 Router::any('/session/logout', '\controllers\session@logout');
 Router::any('/welcome', '\controllers\welcome@index');

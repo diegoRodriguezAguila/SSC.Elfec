@@ -46,5 +46,9 @@ class NotificationKey {
      * Key de Notificación indefinido
      */
     const MISCELLANEOUS = "Miscellaneous";
+    /**
+     * Notificación de vencimiento de factura
+     */
+    const EXPIRED_DEBT = "ExpiredDebt";
 
 }
