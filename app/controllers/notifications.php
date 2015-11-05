@@ -7,6 +7,7 @@
 
 namespace controllers;
 use business_logic\NotificationManager;
+use helpers\Logging;
 
 class Notifications extends \core\controller{
 
@@ -52,7 +53,13 @@ class Notifications extends \core\controller{
         // close current session
         if (session_id()) session_write_close();
         //Continue processing
-        NotificationManager::processNonPaymentOutageNotificationSend();
+        $log = new Logging();
+        $log->lfile( $_SERVER['DOCUMENT_ROOT'].'\logs\nonpayment_outage.txt');
+        $log->lwrite('Inicio de proceso de envío de mensajes de cortes por mora');
+        $log->lclose();
+        $count = NotificationManager::processNonPaymentOutageNotificationSend();
+        $log->lwrite("Fin de proceso de envío de mensajes de cortes por mora. Número de mensajes enviados: $count");
+        $log->lclose();
     }
 
     /**
@@ -72,6 +79,12 @@ class Notifications extends \core\controller{
         // close current session
         if (session_id()) session_write_close();
         //Continue processing
-        NotificationManager::processExpiredDebtNotificationSend();
+        $log = new Logging();
+        $log->lfile( $_SERVER['DOCUMENT_ROOT'].'\logs\expired_debts.txt');
+        $log->lwrite('Inicio de proceso de envío de mensajes de facturas vencidas');
+        $log->lclose();
+        $count = NotificationManager::processExpiredDebtNotificationSend();
+        $log->lwrite("Fin de proceso de envío de mensajes de facturas vencidas. Número de mensajes enviados: $count");
+        $log->lclose();
     }
 } 

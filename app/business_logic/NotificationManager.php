@@ -31,6 +31,7 @@ class NotificationManager
     /**
      * Realiza el envío de las notificaciones a aquellos clientes que tengan 2 o más facturas
      * que esten vencidas el día de hoy, avisandoles sobre el posible corte de suministro
+     * @return integer número de mensajes enviados
      */
     public static function processNonPaymentOutageNotificationSend()
     {
@@ -42,6 +43,7 @@ class NotificationManager
             GCMOutageManager::sendNonPaymentOutageNotification($account,
                 self::prepareNonPaymentOutageMessage($account->nus));
         }
+        return count($nonpayment_accounts);
     }
 
     /**
@@ -59,6 +61,7 @@ class NotificationManager
     /**
      * Realiza el envío de las notificaciones a aquellos clientes que tengan facturas
      * que esten vencidas el día de hoy
+     * @return integer número de mensajes enviados
      */
     public static function processExpiredDebtNotificationSend()
     {
@@ -70,6 +73,7 @@ class NotificationManager
             GCMOutageManager::sendExpiredDebtNotification($account,
                 self::prepareExpiredDebtMessage($account->nus));
         }
+        return count($expired_debt_accounts);
     }
 
     /**
