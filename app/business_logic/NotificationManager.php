@@ -101,14 +101,15 @@ class NotificationManager
         if ($outageCase != null) {
             $affectedAccounts = OutageCasesManager::getOutageCaseAccounts($outageCaseNumber);
             $notificationDAL = NotificationDALFactory::instance();
+            $userDBConnection = SessionManager::getUserDataBaseConnection();
+            $notifKey = self::convertOutageTypeToNotificationKey($outageCase->tipo_corte);
             $notificationId = $notificationDAL->registerNotificationMessage($message, $outageCaseNumber,
-                self::convertOutageTypeToInt($outageCase->tipo_corte), SessionManager::getUserDataBaseConnection());
+                self::convertOutageTypeToInt($outageCase->tipo_corte), $userDBConnection);
             foreach ($affectedAccounts as $account) {
                 GCMOutageManager::sendOutageNotification($account,
                     self::prepareOutageMessage($account->nus, $message,
-                        $outageCase->fecha_inicio, $outageCase->fecha_fin),
-                    self::convertOutageTypeToNotificationKey($outageCase->tipo_corte));
-                $notificationDAL->registerNotificationDetail($notificationId, $account->nus, SessionManager::getUserDataBaseConnection());
+                        $outageCase->fecha_inicio, $outageCase->fecha_fin), $notifKey);
+                $notificationDAL->registerNotificationDetail($notificationId, $account->nus, $userDBConnection);
             }
             return true;
         }

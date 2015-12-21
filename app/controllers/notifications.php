@@ -23,7 +23,7 @@ class Notifications extends \core\controller{
             $message=$_POST['message'];
             $outageCaseNumber = $_POST['outage_case'];
             if(NotificationManager::processOutageNotificationSend($message, $outageCaseNumber))
-                exit ('{ "message": "'.$message.'", "case": "'.$outageCaseNumber.'"}');
+                exit ('{ "message": '.json_encode($message).', "case": "'.$outageCaseNumber.'"}');
             else {
                 http_response_code(404);
                 exit ('{ "error_message": "No se encontró el número de caso solicitado, no se envió ningun mensaje"}');
