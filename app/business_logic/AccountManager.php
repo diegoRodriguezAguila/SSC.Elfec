@@ -61,12 +61,13 @@ class AccountManager
             ->setLongitude($extraDataResult[0]->LONGITUD)
             ->setLatitude($extraDataResult[0]->LATITUD);
         foreach ($extraDataResult as $extraData) {
-            array_push($fullAccount->Debts,
-                Debt::create()->setAmount($extraData->TOTALIMP)
-                    ->setExpirationDate($extraData->FECHA_VTO)
+			$debt = Debt::create()->setAmount($extraData->TOTALIMP)
+                    ->setExpirationDate(date('d/m/Y', strtotime($extraData->FECHA_VTO)))
                     ->setMonth($extraData->MES)
                     ->setYear($extraData->ANIO)
-                    ->setReceiptNumber($extraData->NROCBTE));
+                    ->setReceiptNumber($extraData->NROCBTE);
+            array_push($fullAccount->Debts,$debt);
+					error_log("ACCOUNT PARSED:".json_encode($debt->jsonSerialize()), 0);
         }
         return $fullAccount;
     }

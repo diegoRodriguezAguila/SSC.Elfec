@@ -43,9 +43,10 @@ class DeviceDAL implements IDeviceDAL{
      */
     public function findByTokenAndIMEI($GCMToken, $IMEI)
     {
+		//Ya no se usa GCMToken para identificar dispositivo, es muy variable
         $db = Database::get();
-        return $db->select("SELECT * FROM devices WHERE imei=:imei and gcm_token=:gcm_token",
-            [':imei'=>$IMEI, ':gcm_token'=>$GCMToken]);
+        return $db->select("SELECT * FROM devices WHERE imei=:imei",
+            [':imei'=>$IMEI]);
     }
     /**
      * @param string $lastToken
@@ -54,12 +55,12 @@ class DeviceDAL implements IDeviceDAL{
      */
     public function updateDevicesGCMToken($lastToken, $IMEI, $newToken)
     {
+		//Ya no se usa GCMToken para identificar dispositivo, es muy variable
         $db = Database::get();
-        $sql = "UPDATE devices SET gcm_token = :newToken WHERE imei = :IMEI AND gcm_token = :lastToken";
+        $sql = "UPDATE devices SET gcm_token = :newToken WHERE imei = :IMEI";
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':newToken', $newToken, Database::PARAM_STR);
         $stmt->bindParam(':IMEI', $IMEI, Database::PARAM_STR);
-        $stmt->bindParam(':lastToken', $lastToken, Database::PARAM_STR);
         $stmt->execute();
     }
 

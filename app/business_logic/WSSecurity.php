@@ -14,7 +14,7 @@ class WSSecurity
      */
     public static function verifyAuthenticity()
     {
-        $protocol = stripos($_SERVER['SERVER_PROTOCOL'], 'https') === true ? 'HTTPS' : 'HTTP';
+        $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')? 'HTTPS' : 'HTTP';
         $tokenName = ($protocol . '_X_WS_TOKEN');
         if (!isset($_SERVER[$tokenName]))
             die(http_response_code(403));
